@@ -8,7 +8,7 @@ import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   public loginForm: FormGroup;
-  error: any;
+  submitted: any = false;
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -17,11 +17,11 @@ export class AppComponent implements OnInit {
     });
   }
   login(obj: any) {
+    this.submitted = true;
     if (this.loginForm.valid) {
       console.log(obj);
     }else {
       console.log('error');
-      this.error = true;
     }
   }
 }
