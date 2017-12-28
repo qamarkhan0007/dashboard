@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   logout() {
      localStorage.removeItem('token');
      this.token = localStorage.getItem('token');
-     console.log('.>>>>>>>>>>', this.token);
      this.route.navigate(['/login']);
   }
 
