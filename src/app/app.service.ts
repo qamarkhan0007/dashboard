@@ -20,4 +20,14 @@ export class AppService {
         return res.json();
     });
     }
+    getUser() {
+        const _path: string = ('http://localhost:3000/3.0/users?key=classicspecs_dev'),
+        headers = new Headers({'Content-Type': 'application/json'}),
+        options = new RequestOptions({headers: headers});
+        console.log(',,,,,,,,,,,,,,');
+        return this._http.get(_path, options).map(res => {
+        console.log('res in service ', res);
+            return res.json();
+        });
+    }
 }
