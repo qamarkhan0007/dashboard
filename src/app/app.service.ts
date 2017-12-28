@@ -17,8 +17,7 @@ export class AppService {
       console.log('>>>>>>>path>>>>>>', _path);
       console.log('>>>>>>>options>>>>>>', options);
       return this._http.post(_path, body, options).map(res => {
-        console.log('>>>>>>>>>>>>>>>>>>>>.', res);
         return res.json();
     });
-  }
+    }
 }
