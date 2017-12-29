@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent} from './home/home.component';
 import { UserComponent} from './user/user.component';
 import { DiscountComponent} from './discount/discount.component';
+import { LetterPressComponent } from './letter-press/letter-press.component';
 import { AppComponent } from './app.component';
 import { StoreLocationComponent} from './store-location/store-location.component';
 
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
         path: 'discount/:brand',
         component: DiscountComponent
+    },
+    {
+      path: 'letterpress/:brand',
+      component: LetterPressComponent
     }
 ];
 

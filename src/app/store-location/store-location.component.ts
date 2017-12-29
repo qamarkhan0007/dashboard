@@ -12,7 +12,6 @@ export class StoreLocationComponent implements OnInit {
   brand: any;
   private CurrentPageValue: any = 1;
   private selectedValue: any = 10;
-  index: any = 1;
   constructor(private service: AppService , private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -20,12 +19,16 @@ export class StoreLocationComponent implements OnInit {
   }
   getStores() {
       this.route.params.subscribe((params: Params) => {
-          this.brand = params['brand'];
-          this.service.getStores(this.brand)
-          .subscribe(res => {
-              console.log('cureent page >>>>>>>', res.data);
-              this.data = res.data;
-          });
+      this.brand = params['brand'];
+      this.service.getStores(this.brand)
+        .subscribe(res => {
+          if ( res.data.length > 0 ) {
+          this.data = res.data;
+        }else {
+          this.data = [];
+        }
+          console.log('//////////////', this.data);
+        });
       });
    }
-   }
+  }
