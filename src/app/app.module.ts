@@ -15,6 +15,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StoreLocationComponent } from './store-location/store-location.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DiscountComponent } from './discount/discount.component';
+import { LetterPressComponent } from './letter-press/letter-press.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DiscountComponent } from './discount/discount.component';
     UserComponent,
     StoreLocationComponent,
     NavbarComponent,
-    DiscountComponent
+    DiscountComponent,
+    LetterPressComponent
   ],
   imports: [
     BrowserModule,
