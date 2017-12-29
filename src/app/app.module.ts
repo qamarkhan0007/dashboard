@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
+import { StoreLocationComponent } from './store-location/store-location.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { UserComponent } from './user/user.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    StoreLocationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

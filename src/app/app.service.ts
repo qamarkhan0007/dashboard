@@ -30,4 +30,13 @@ export class AppService {
             return res.json();
         });
     }
+
+    getStores() {
+        const _path: string = ('http://localhost:3000/3.0/store_locations?key=classicspecs_dev'),
+        headers = new Headers({'Content-Type': 'application/json'}),
+        options = new RequestOptions({headers: headers});
+        return this._http.get(_path, options).map(res => {
+            return res.json();
+        });
+    }
 }
