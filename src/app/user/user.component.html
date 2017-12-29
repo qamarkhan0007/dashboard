@@ -2,13 +2,14 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-18 col-md-12">
-            <h1>ano</h1><br>show
+            <h1>{{brand}}</h1><br>show
             <select [(ngModel)]="selectedValue">
                 <option [ngValue] = "10">10</option>
                 <option [ngValue] = "20">25</option>
                 <option [ngValue] = "50">50</option>
                 <option [ngValue] = "100">100</option>
             </select>entries
+            <h5 align="right">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -16,7 +17,7 @@
                         <th>Email</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let user of data | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+                <tbody *ngFor="let user of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
                         <td>{{user.first_name}}</td>
                         <td>{{user.email}}</td>
             </tbody>

@@ -20,8 +20,11 @@ export class AppService {
         return res.json();
     });
     }
-    getUser() {
-        const _path: string = ('http://localhost:3000/3.0/users?key=classicspecs_dev'),
+    getUser(brand) {
+        console.log('.........', brand);
+        brand = brand + '_dev';
+        console.log('pppppppppp', brand);
+        const _path: string = ('http://localhost:3000/3.0/users?key=' + brand),
         headers = new Headers({'Content-Type': 'application/json'}),
         options = new RequestOptions({headers: headers});
         console.log(',,,,,,,,,,,,,,');

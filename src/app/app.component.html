@@ -41,13 +41,13 @@
         <div class="dropdown">
           <button class="dropbtn">Users</button>
           <li class="dropdown-content">
-            <a href="#">ano</a>
-            <a href="#">billyreid</a>
-            <a routerLink="/user">classicspecs</a>
-            <a href="#">jasonwu</a>
-            <a href="#">johnnywas</a>
-            <a href="#">ottavo</a>
-            <a href="#">stevenalanoptical</a>
+            <a [routerLink]="['/user','classicspecs' ]">classicspecs</a>
+            <a [routerLink]="['/user','ano' ]">ano</a>
+            <a [routerLink]="['user','billyreid' ]">billyreid</a>
+            <a [routerLink]="['user','jasonwu' ]">jasonwu</a>
+            <a [routerLink]="['user','johnnywas' ]">johnnywas</a>
+            <a [routerLink]="['user','ottavo' ]">ottavo</a>
+            <a [routerLink]="['user','stevenalanoptical' ]">stevenalanoptical</a>
           </li>
         </div>
         <div class="dropdown">

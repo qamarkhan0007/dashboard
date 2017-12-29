@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+//import {AppRoutingModule} from '../app-routing.module';
+import {ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,20 +10,23 @@ import { AppService } from '../app.service';
 })
 export class UserComponent implements OnInit {
     data: any;
+    brand: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
 
-  constructor(private service: AppService) { }
+  constructor(private service: AppService , private route: ActivatedRoute) { }
 
   ngOnInit() {
       this.getUser();
   }
 
   getUser() {
-      console.log('cureent page >>>>>>>', this.CurrentPageValue);
-      this.service.getUser()
+      this.route.params.subscribe((params: Params) => {
+        this.brand = params['brand'];
+      this.service.getUser(this.brand)
       .subscribe(res => {
        this.data = res.data;
+       });
    });
 }
 }
