@@ -12,6 +12,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StoreLocationComponent } from './store-location/store-location.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    StoreLocationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-18 col-md-12">
+            <h1>ano</h1><br>show
+            <select [(ngModel)]="selectedValue">
+                <option [ngValue] = "10">10</option>
+                <option [ngValue] = "20">25</option>
+                <option [ngValue] = "50">50</option>
+                <option [ngValue] = "100">100</option>
+            </select>entries
+            <table class="table table-bordered custom-tbl">
+                <thead>
+                    <tr>
+                        <th>Kiosk Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Pins</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let store of data | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+                        <td>{{store.kiosk_id}}</td>
+                        <td>{{store.name}}</td>
+                        <td>{{store.address.address1}}
+                            {{store.address.address2}}
+                            {{store.address.city}}
+                            {{store.address.country}}
+                            {{store.address.state}}
+                        </td>
+                        <td>{{store.address.phone}}</td>
+                        <td>{{store.pin_codes}}</td>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
