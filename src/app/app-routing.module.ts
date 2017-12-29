@@ -4,6 +4,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent} from './home/home.component';
 import { UserComponent} from './user/user.component';
+import { DiscountComponent} from './discount/discount.component';
 import { AppComponent } from './app.component';
 import { StoreLocationComponent} from './store-location/store-location.component';
 
@@ -25,8 +26,12 @@ const routes: Routes = [
         component: UserComponent
     },
     {
-        path: 'store',
+        path: 'store/:brand',
         component: StoreLocationComponent
+    },
+    {
+        path: 'discount/:brand',
+        component: DiscountComponent
     }
 ];
 

@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AppService {
+    dataValue: any;
+    token: any;
 
   constructor(private _http: Http) { }
   authLogin(data: any) {
@@ -34,12 +36,25 @@ export class AppService {
         });
     }
 
-    getStores() {
-        const _path: string = ('http://localhost:3000/3.0/store_locations?key=classicspecs_dev'),
+    getStores(brand) {
+        brand = brand + '_dev';
+        const _path: string = ('http://localhost:3000/3.0/store_locations?key=' + brand),
         headers = new Headers({'Content-Type': 'application/json'}),
         options = new RequestOptions({headers: headers});
         return this._http.get(_path, options).map(res => {
             return res.json();
         });
+    }
+    getDiscounts(brand) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue.user_auth_token);
+        const _path: string = ('http://localhost:3000/3.0/discount_codes?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json'}),
+        options = new RequestOptions({headers: headers});
+        return this._http.get(_path, options).map(res => {
+            return res.json();
+        });
+
     }
 }
