@@ -8,6 +8,8 @@ import { AppService } from '../app.service';
 })
 export class UserComponent implements OnInit {
     data: any;
+    private CurrentPageValue: any = 1;
+    private selectedValue: any = 10;
 
   constructor(private service: AppService) { }
 
@@ -16,9 +18,10 @@ export class UserComponent implements OnInit {
   }
 
   getUser() {
+      console.log('cureent page >>>>>>>', this.CurrentPageValue);
       this.service.getUser()
       .subscribe(res => {
-       this.data = res;
+       this.data = res.data;
    });
 }
 }

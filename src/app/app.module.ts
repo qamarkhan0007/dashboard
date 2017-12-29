@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AppService} from './app.service';
 import {HttpModule} from '@angular/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ import { UserComponent } from './user/user.component';
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

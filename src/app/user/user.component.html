@@ -2,10 +2,11 @@
     <div class="row">
         <div class="col-xs-18 col-md-12">
             <h1>ano</h1><br>show
-            <select>
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
+            <select [(ngModel)]="selectedValue">
+                <option [ngValue] = "10">10</option>
+                <option [ngValue] = "20">25</option>
+                <option [ngValue] = "50">50</option>
+                <option [ngValue] = "100">100</option>
             </select>entries
             <table class="table table-bordered">
                 <thead>
@@ -14,6 +15,10 @@
                         <th>Email</th>
                     </tr>
                 </thead>
+                <tbody *ngFor="let user of data | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.email}}</td>
+            </tbody>
             </table>
         </div>
     </div>
