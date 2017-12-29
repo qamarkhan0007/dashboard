@@ -23,9 +23,7 @@ export class DiscountComponent implements OnInit {
           this.brand = params['brand'];
           this.service.getDiscounts(this.brand)
           .subscribe(res => {
-            console.log('cureent page >>>>>>>', res.data);
            this.data = res.data;
-           console.log('........>>>>>>>>>>', this.data);
        });
        });
   }

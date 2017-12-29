@@ -48,13 +48,13 @@ export class AppService {
     getDiscounts(brand) {
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
-        this.token = 'Basic ' + btoa('token:' + this.dataValue.user_auth_token);
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
         const _path: string = ('http://localhost:3000/3.0/discount_codes?key=' + brand),
-        headers = new Headers({'Content-Type': 'application/json'}),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
         options = new RequestOptions({headers: headers});
-        return this._http.get(_path, options).map(res => {
-            return res.json();
+        return this._http.get(_path, {headers: headers} )
+        .map((res: any) => {
+          return res.json();
         });
-
     }
 }

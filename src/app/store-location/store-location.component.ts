@@ -16,16 +16,16 @@ export class StoreLocationComponent implements OnInit {
   constructor(private service: AppService , private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getDiscounts();
+    this.getStores();
   }
-  getDiscounts() {
+  getStores() {
       this.route.params.subscribe((params: Params) => {
-        this.brand = params['brand'];
-      this.service.getDiscounts(this.brand)
-      .subscribe(res => {
-        console.log('cureent page >>>>>>>', res.data);
-       this.data = res.data;
-   });
-   });
+          this.brand = params['brand'];
+          this.service.getStores(this.brand)
+          .subscribe(res => {
+              console.log('cureent page >>>>>>>', res.data);
+              this.data = res.data;
+          });
+      });
    }
    }
