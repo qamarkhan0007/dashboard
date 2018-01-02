@@ -1,0 +1,19 @@
+.order:hover{
+    cursor:pointer;
+
+    color:#154360;
+    text-decoration:underline;
+}
+.order{
+    color:#5499C7;
+}
+
+.Prewiew{
+    margin-left: 100px
+
+}
+
+.formet a{
+    color:#154360;
+    text-decoration: underline;
+}

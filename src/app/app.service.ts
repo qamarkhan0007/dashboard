@@ -51,15 +51,79 @@ export class AppService {
     }
     findOneTemplate(name, brand) {
       brand = brand + '_dev';
-      console.log('<<<<<<<<<<<<here here<', brand);
       this.dataValue = localStorage.getItem('token');
       this.token = 'Basic ' + btoa('token:' + this.dataValue);
       const _path: string = ('http://localhost:3000/3.0/mail/templates/' + name + '?key=' + brand),
       headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
-      // options = new RequestOptions({headers: headers});
       return this._http.get(_path, {headers: headers}).map(res => {
-        console.log('MMMMMMMMMMMMMMM', res);
+          console.log('>>>>>>>>>>>>>>', res);
           return res.json();
       });
     }
-}
+
+    updateTemplate(subject, from_name, from_email, text, html, brand, name) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/mail/templates/' + name + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+        body: any = JSON.stringify({'subject': subject, 'name': name, 'from_name': from_name, 'from_email' : from_email , 'text': text ,
+         'html' : html });
+        return this._http.put(_path, body, {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    updateCommonTemplate(content , brand , name) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/mail/templates/common/' + name + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+        body: any = JSON.stringify({'content': content , 'name': name });
+        return this._http.put(_path, body, {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+
+        findTemplates(brand) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/mail/templates/' + name + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+            return this._http.get(_path, {headers: headers}).map(res => {
+                return res.json();
+            });
+        }
+
+        findOneCommonTemplate(common, brand) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/mail/templates/common/' + common + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+            return this._http.get(_path, {headers: headers}).map(res => {
+                return res.json();
+            });
+        }
+
+        findCommonTemplate(brand) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/mail/templates/common/' + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+            return this._http.get(_path, {headers: headers}).map(res => {
+                return res.json();
+            });
+        }
+
+        getOrder(brand, order_id) {
+                brand = brand + '_dev';
+                const _path: string = ('http://localhost:3000/3.0/orders/' + order_id + '?key=' + brand),
+                headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+                return this._http.get(_path, {headers: headers}).map(res => {
+                    return res.json();
+                });
+        }
+    }
