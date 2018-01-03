@@ -49,6 +49,18 @@ export class AppService {
           return res.json();
         });
     }
+    createDiscount(obj: any, brand) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/discount_codes?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.post(_path, obj, {headers: headers})
+        .map((res: any) => {
+          console.log('Response>>>>>>>>>>>>>>', res);
+          return res.json();
+        });
+    }
     findOneTemplate(name, brand) {
       brand = brand + '_dev';
       this.dataValue = localStorage.getItem('token');
@@ -56,7 +68,6 @@ export class AppService {
       const _path: string = ('http://localhost:3000/3.0/mail/templates/' + name + '?key=' + brand),
       headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
       return this._http.get(_path, {headers: headers}).map(res => {
-          console.log('>>>>>>>>>>>>>>', res);
           return res.json();
       });
     }

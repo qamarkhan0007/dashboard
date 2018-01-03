@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DiscountComponent } from './discount/discount.component';
 import { LetterPressComponent } from './letter-press/letter-press.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { InventoryComponent } from './inventory/inventory.component';
     NavbarComponent,
     DiscountComponent,
     LetterPressComponent,
+    OrderComponent,
     InventoryComponent
   ],
   imports: [
