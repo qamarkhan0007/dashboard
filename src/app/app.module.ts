@@ -16,6 +16,7 @@ import { StoreLocationComponent } from './store-location/store-location.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { DiscountComponent } from './discount/discount.component';
 import { LetterPressComponent } from './letter-press/letter-press.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LetterPressComponent } from './letter-press/letter-press.component';
     StoreLocationComponent,
     NavbarComponent,
     DiscountComponent,
-    LetterPressComponent
+    LetterPressComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
