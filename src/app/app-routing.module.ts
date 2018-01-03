@@ -8,6 +8,7 @@ import { DiscountComponent} from './discount/discount.component';
 import { LetterPressComponent } from './letter-press/letter-press.component';
 import { AppComponent } from './app.component';
 import { StoreLocationComponent} from './store-location/store-location.component';
+import { InventoryComponent} from './inventory/inventory.component';
 
 const routes: Routes = [
     {
@@ -37,7 +38,11 @@ const routes: Routes = [
     {
       path: 'letterpress/:brand',
       component: LetterPressComponent
-    }
+  },
+  {
+      path: 'inventory/:brand',
+      component: InventoryComponent
+  }
 ];
 
 @NgModule({

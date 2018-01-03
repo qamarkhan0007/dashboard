@@ -16,6 +16,7 @@ import { StoreLocationComponent } from './store-location/store-location.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { DiscountComponent } from './discount/discount.component';
 import { LetterPressComponent } from './letter-press/letter-press.component';
+import { InventoryComponent } from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
 
 
@@ -29,7 +30,8 @@ import { OrderComponent } from './order/order.component';
     NavbarComponent,
     DiscountComponent,
     LetterPressComponent,
-    OrderComponent
+    OrderComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
