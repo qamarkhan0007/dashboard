@@ -126,4 +126,28 @@ export class AppService {
                     return res.json();
                 });
         }
+
+        getInventory(brand, product_id) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/products/' + product_id  + '/get_inventory' + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+            return this._http.get(_path, {headers: headers}).map(res => {
+                return res.json();
+            });
+        }
+        adjustInventory(brand, ware, htk , tro , mars, product_id) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/products/' + product_id  + '/adjust_inventory' + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+            body: any = {'tro': Number(tro) , 'warehouse': Number(ware) , 'kmarsoptical': Number(mars) , 'htk_quantity': Number(htk) };
+            console.log('>>>>>>>>>body', body);
+            return this._http.put(_path, body,  {headers: headers}).map(res => {
+                console.log('>>>>>>>>>>>res', res);
+                return res.json();
+            });
+        }
     }

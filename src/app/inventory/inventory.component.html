@@ -1,3 +1,117 @@
-<p>
-  inventory works!
-</p>
+
+<app-navbar></app-navbar>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-18 col-sm-12">
+            <div class="container-fluid">
+                <h2>Adjust inventory</h2>
+                <form type="get" class="form-inline">
+                    <div class="form-group">
+                        <label for="product_id" class="control-label"><b>Product ID:</b>   </label>
+                        &nbsp;
+                        <input type="text" class="form-control" name="product_id" id="product_id" placeholder="Product Id"
+                        value="" required #product_id>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" value="Load..." (click)="getInventory(product_id.value)">
+                    </div>
+                </form>
+                <br>
+                <form id="product_form" class="form-inline" *ngIf='responseData'>
+                    <div class="container-fluid">
+                        <!-- <div class="row">
+                            <div class="col-xs-3 col-lg-2"><label id="labell" class="control-label"><b>Name: </b></label></div>
+                            <div class="col-xs-9 col-lg-10"><p class="form-control-static">AO053 </p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-lg-2"><label id="labell" class="control-label"><b>Color: </b></label></div>
+                            <div class="col-xs-9 col-lg-10"><p class="form-control-static">Black &amp; White </p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-lg-2"><label class="control-label"><b>Eyewear inventory: </b></label></div>
+                            <div class="col-xs-9 col-lg-10"><p class="form-control-static">False </p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-lg-2"><label class="control-label"><b>HTK inventory: </b></label></div>
+                            <div class="col-xs-9 col-lg-10"><p class="form-control-static">False </p></div>
+                        </div> -->
+                        <div class="row">
+                            &#123;&#34;inventory_item&#34;: [&#34;{{getInventory.inventory_item}}&#34;], &#34;tro&#34;: {{getInventory.tro}}, &#34;kmarsoptical&#34;: {{getInventory.kmarsoptical}}, &#34;warehouse&#34;:{{getInventory.warehouse}}, &#34;htk_quantity&#34;:{{getInventory.htk_quantity}}, &#34;quantity&#34;: 0&#125;
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><label class="control-label">Adjust inventory by: </label></div>
+                        </div>
+                    </div>
+
+
+
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="form-group">
+                        <p><label for="adjustment" class="control-label">Warehouse: </label></p>&nbsp;
+                        <input type="number" class="form-control" name="adjustment" id="adjustment" placeholder="Adjust eyewear inventory by" size="2" required #warehouse>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="form-group">
+                        <p><label for="htk_adjustment" class="control-label">HTK: </label></p>&nbsp;
+                        <input type="number" class="form-control" name="htk_adjustment" id="adjustment" required placeholder="Adjust HTK inventory by" size="5" #htk_inventory>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="form-group">
+                        <p><label for="tro_adjustment" class="control-label">TRO: </label></p>&nbsp;
+                        <input type="number" class="form-control" name="tro_adjustment" id="adjustment" required placeholder="Adjust TRO inventory by" size="5" #tro>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="form-group">
+                        <p><label for="kmars_adjustment" class="control-label">K-Mars: </label></p>&nbsp;
+                        <input type="number" class="form-control" name="kmars_adjustment" id="adjustment" required placeholder="Adjust K-Mars inventory by"
+                        size="5" #mars>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" (click)='adjustInventory(warehouse.value, htk_inventory.value, tro.value, mars.value ,getInventory.inventory_item)' value="Submit">
+                    </div>
+                    <br><br>
+                    <div class="row" *ngIf='aadjustInventory'>
+                        &#123;&#34;warehouse&#34;: [&#34;{{adjustInventory.warehouse}}&#34;], &#34;tro&#34;: {{adjustInventory.tro}}, &#34;kmarsoptical&#34;: {{adjustInventory.kmarsoptical}}, &#34;product_id&#34;:{{adjustInventory.product_id}}, &#34;htk_quantity&#34;:{{adjustInventory.htk_quantity}},&#125;
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+                <br>
+                <h3>Upload inventory</h3>
+                <form id="upload_inventory" method="POST" action="/products/classicspecs/upload_inventory" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="update_type" class="form-label">Adjust or Overwrite</label>
+                        <div>
+                            <select name="update_type" class="form-control" required>
+                                <option value="update">Adjust Values</option>
+                                <option value="overwrite">Full Cycle Count (Overwrite)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventory_file" class="form-label">Select file</label>
+                        <input type="file" class="file" name="inventory_file" required>
+                    </div>
+                    <button type="submit" value="Save" class="btn btn-primary btn-sm" style="float: right;margin-right: 10px" >Upload</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
