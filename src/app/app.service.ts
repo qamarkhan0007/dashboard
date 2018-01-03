@@ -155,10 +155,33 @@ export class AppService {
             const _path: string = ('http://localhost:3000/3.0/products/' + product_id  + '/adjust_inventory' + '?key=' + brand),
             headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
             body: any = {'tro': Number(tro) , 'warehouse': Number(ware) , 'kmarsoptical': Number(mars) , 'htk_quantity': Number(htk) };
-            console.log('>>>>>>>>>body', body);
             return this._http.put(_path, body,  {headers: headers}).map(res => {
-                console.log('>>>>>>>>>>>res', res);
                 return res.json();
             });
         }
+        getdiscount(discount_name, brand) {
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/discount_codes/' + discount_name + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+            return this._http.get(_path, {headers: headers}).map(res => {
+                return res.json();
+        });
     }
+    updateDiscount(discount_name, discount_type, amount, quantity, discount_reason, expiration_date, brand) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/discount_codes/' + discount_name + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+        body: any = {'discount_code': discount_name, 'discount_type': discount_type, 'amount': Number(amount), 'quantity': Number(quantity),
+         'discount_reason': discount_reason,
+         'expiration_date': expiration_date};
+         console.log('body>>>>>>>>>>>>', body);
+        return this._http.put(_path, body,  {headers: headers}).map(res => {
+            return res.json();
+        });
+
+    }
+}
