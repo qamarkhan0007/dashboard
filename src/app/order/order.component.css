@@ -16,13 +16,16 @@ footer {
 ul {
   list-style: none;
 }
-.makeMeAnchor :hover{
+.makeMeAnchor:hover{
     cursor:pointer;
 
     color:#154360;
     text-decoration:underline;
 }
 .makeMeAnchor{
+    color:#5499C7;
+}
+#makeMeAnchorColor{
     color:#5499C7;
 }
 .firstTd{
