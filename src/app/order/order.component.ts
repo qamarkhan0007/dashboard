@@ -8,6 +8,7 @@ import { AppService } from '../app.service';
 })
 export class OrderComponent implements OnInit {
   orderData: any;
+  foundOrder: any;
 
   constructor(private _service: AppService) { }
 
@@ -16,8 +17,13 @@ export class OrderComponent implements OnInit {
   getOrders(brand) {
     this._service.getOrders(brand).subscribe( res => {
       this.orderData =  res.data;
-      console.log('>>>>>>>>>>>>>>>', this.orderData);
     });
+  }
+  showMeOrder(orderId) {
+    this.foundOrder = this.orderData.find(x => {
+      return x.order_id === orderId;
+    });
+    console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.foundOrder);
   }
 
 }
