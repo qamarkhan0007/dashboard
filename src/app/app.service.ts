@@ -191,6 +191,16 @@ export class AppService {
         return this._http.put(_path, body,  {headers: headers}).map(res => {
             return res.json();
         });
-
     }
+    ErpSend(action, perform, payload, brand) {
+        brand = brand + '_dev';
+        const _path: string = ('http://localhost:3000/3.0/erp_integration/' + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json'}),
+        body: any = {'action': action, 'payload': payload, performed_at: perform};
+         console.log('body>>>>>>>>>>>>', body);
+        return this._http.post(_path, body,  {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+
 }

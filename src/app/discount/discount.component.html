@@ -76,7 +76,7 @@
 
                 <!-- //<ng-container  -->
                 <tr *ngIf="!quantityAvailable && !expirationDate">
-                  <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
+                  <td><a id="formedAt" (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
                   <td>{{discount.discount_type}}</td>
                   <td>{{discount.amount}}</td>
                   <td>{{discount.quantity}}</td>

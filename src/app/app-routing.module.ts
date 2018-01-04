@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { StoreLocationComponent} from './store-location/store-location.component';
 import { InventoryComponent} from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
+import { SendErpComponent} from './send-erp/send-erp.component';
 
 const routes: Routes = [
     {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
       path: 'orders/:group',
       component: OrderComponent
+  },
+  {
+      path: 'sendErp/:brand',
+      component: SendErpComponent
   }
 ];
 
