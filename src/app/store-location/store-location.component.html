@@ -33,6 +33,11 @@
                         <td>{{store.pin_codes}}</td>
             </tbody>
             </table>
+            <br>
+            show {{(CurrentPageValue * selectedValue)-selectedValue}} to {{CurrentPageValue * selectedValue + selectedValue -selectedValue}} of {{data.length}} entries
+            <div class="formatting">
+                <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

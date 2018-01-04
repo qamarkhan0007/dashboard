@@ -18,6 +18,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { LetterPressComponent } from './letter-press/letter-press.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
+import { SendErpComponent } from './send-erp/send-erp.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { OrderComponent } from './order/order.component';
     DiscountComponent,
     LetterPressComponent,
     OrderComponent,
-    InventoryComponent
+    InventoryComponent,
+    SendErpComponent
   ],
   imports: [
     BrowserModule,

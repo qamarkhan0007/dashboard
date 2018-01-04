@@ -9,6 +9,7 @@ import { LetterPressComponent } from './letter-press/letter-press.component';
 import { AppComponent } from './app.component';
 import { StoreLocationComponent} from './store-location/store-location.component';
 import { InventoryComponent} from './inventory/inventory.component';
+import { SendErpComponent} from './send-erp/send-erp.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
       path: 'inventory/:brand',
       component: InventoryComponent
+  },
+  {
+      path: 'sendErp/:brand',
+      component: SendErpComponent
   }
 ];
 
