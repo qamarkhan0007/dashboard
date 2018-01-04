@@ -138,6 +138,15 @@ export class AppService {
                 });
         }
 
+        getOrders(brand) {
+                brand = brand + '_dev';
+                const _path: string = ('http://localhost:3000/3.0/orders/' + '?key=' + brand),
+                headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+                return this._http.get(_path, {headers: headers}).map(res => {
+                    return res.json();
+                });
+        }
+
         getInventory(brand, product_id) {
             brand = brand + '_dev';
             this.dataValue = localStorage.getItem('token');

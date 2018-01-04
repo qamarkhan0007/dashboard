@@ -1,33 +1,36 @@
+<app-navbar></app-navbar>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-xs-18 col-sm-12">
-      <h1>
+      <h2>
         select a brand
-      </h1>
+      </h2>
+      <br>
       <div class="container">
         <div class="row">
           <div class="col-md-2">
-            <ul class="nav nav-pills nav-stacked">
+            <ul class="nav-pills nav-stacked">
               <li>
-                <a href="/orders/eyewear/ano/processing/">ano</a>
+                <p class="makeMeAnchor" (click)="getOrders('ano')" >ano</p>
               </li>
               <li>
-                <a href="/orders/eyewear/billyreid/processing/">billyreid</a>
+                <p class="makeMeAnchor" (click)="getOrders('billyreid')" >billyreid</p>
               </li>
               <li>
-                <a href="/orders/eyewear/classicspecs/processing/">classicspecs</a>
+                <p class="makeMeAnchor" (click)="getOrders('classicspecs')" >classicspecs</p>
               </li>
               <li>
-                <a href="/orders/eyewear/jasonwu/processing/">jasonwu</a>
+                <p class="makeMeAnchor" (click)="getOrders('jasonwu')" >jasonwu</p>
               </li>
               <li>
-                <a href="/orders/eyewear/johnnywas/processing/">johnnywas</a>
+                <p class="makeMeAnchor" (click)="getOrders('johnnywas')" >johnnywas</p>
               </li>
               <li>
-                <a href="/orders/eyewear/ottavo/processing/">ottavo</a>
+                <p class="makeMeAnchor" (click)="getOrders('ottavo')" >ottavo</p>
               </li>
               <li>
-                <a href="/orders/eyewear/stevenalanoptical/processing/">stevenalanoptical</a>
+                <p class="makeMeAnchor" (click)="getOrders('stevenalanoptical')" >stevenalanoptical</p>
               </li>
             </ul>
           </div>
@@ -48,6 +51,26 @@
                   <th>Action</th>
                   <th>Total</th>
                 </tr>
+                <tbody *ngFor="let order of orderData">
+                  <tr class="firstTd">
+                      <td>{{order.order_id}}</td>
+                      <td>{{order.ordered_at}}</td>
+                      <td>{{order.customer.name}}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>{{order.totals.total}}</td>
+                  </tr>
+                  <tr *ngFor="let item of order.items.eyewear.items">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{item.product_id}}</td>
+                    <td>{{item.lens_type}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
               </table>
               <!--
 

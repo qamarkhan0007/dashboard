@@ -1,0 +1,30 @@
+/*
+* Style tweaks
+* --------------------------------------------------
+*/
+html,
+body {
+  /* overflow-x: hidden; Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+}
+footer {
+  padding: 30px 0;
+}
+
+ul {
+  list-style: none;
+}
+.makeMeAnchor :hover{
+    cursor:pointer;
+
+    color:#154360;
+    text-decoration:underline;
+}
+.makeMeAnchor{
+    color:#5499C7;
+}
+.firstTd{
+  background-color: #e1e7f6;
+}
