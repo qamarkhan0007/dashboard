@@ -11,6 +11,7 @@ import { StoreLocationComponent} from './store-location/store-location.component
 import { InventoryComponent} from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
 import { SendErpComponent} from './send-erp/send-erp.component';
+import { OrderHtkComponent} from './order-htk/order-htk.component';
 
 const routes: Routes = [
     {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
       path: 'sendErp/:brand',
       component: SendErpComponent
+  },
+  {
+      path: 'orderhtk',
+      component: OrderHtkComponent
   }
 ];
 
