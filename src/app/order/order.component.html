@@ -36,14 +36,14 @@
           </div>
           <div class="col-md-10">
             <ul class="nav nav-tabs">
-              <li><a href="#">Processing</a></li>
-              <li><a href="#">At Lab</a></li>
-              <li><a href="#">Unshipped</a></li>
+              <li><a href="#">Processing</a></li>&nbsp;&nbsp;
+              <li><a href="#">At Lab</a></li>&nbsp;&nbsp;
+              <li><a href="#">Unshipped</a></li>&nbsp;&nbsp;
             </ul>
             <form method="POST">
               <table class="table table-condensed table-bordered">
                 <tr>
-                  <th>Order</th>
+                  <th>Order</th>classicspecs
                   <th>Date</th>
                   <th>Name</th>
                   <th>Item</th>
@@ -156,39 +156,37 @@
               <th>rx</th>
               <th>Action</th>
             </tr>
-            <tr id="0">
+            <tr id="0" *ngFor= "let item of items">
               <td>1.</td>
-              <td>0201301C001801F8: Fox in Forest Fade </td>
+              <td>{{item.product.name}}:{{item.product_id}}</td>
               <td>
                 <div class="panel">
-                  <div class="panel-heading">
-                    <a data-toggle="collapse" href="#collapsecost0">Item Pricing</a>
+                  <div class="panel-heading" id="itemPrice">
+                    <a data-toggle="collapse" (click)="itemPrice(item.product_id)">Item Pricing</a>
                   </div>
-                  <div id="collapsecost0" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="panel-body" *ngIf='prdId ===item.product_id && state'>
                       <dl>
                         <dt>initial_charge</dt>
-                        <dd>$80.00</dd>
+                        <dd>{{item.totals[0].initial_charge}}</dd>
                         <dt>list_price</dt>
-                        <dd>$80.00</dd>
+                        <dd>{{item.totals[0].list_price}}</dd>
                         <dt>item_tax</dt>
-                        <dd>$7.10</dd>
+                        <dd>{{item.totals[0].item_tax}}</dd>
                         <dt>refunded</dt>
-                        <dd>$0.00</dd>
+                        <dd>{{item.totals[0].refunded}}</dd>
                         <dt>item_net</dt>
-                        <dd>$87.10</dd>
+                        <dd>{{item.totals[0].item_net}}</dd>
                         <dt>discount</dt>
-                        <dd>$0.00</dd>
+                        <dd>{{item.totals[0].discount}}</dd>
                         <dt>upcharge</dt>
-                        <dd>$0.00</dd>
+                        <dd>{{item.totals[0].upcharge}}</dd>
                         <dt>credit_issued</dt>
-                        <dd>$0.00</dd>
+                        <dd>{{item.totals[0].credit_issued}}</dd>
                       </dl>
                     </div>
-                  </div>
                 </div>
               </td>
-              <td>NO_LENS</td>
+              <td>{{item.lens_type}}</td>
               <td>
                 <div class="panel  ">
                   <div class="panel-heading">
@@ -255,20 +253,19 @@
                 " data-brand="classicspecs" class="send_to_lab" value="Proceed with sending to lab.">
               -->
               <hr>
-              <div class="container-fluid">
+              <div class="container-fluid" *ngIf="!statte && itmId">
                 <div class="panel-group">
                   <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading" >
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapseCancel0">Cancellation</a>
+                        <a data-toggle="collapse" (click)="cancelStatus('cancel', item.id)">Cancellation</a>
                       </h4>
                     </div>
-                    <div id="collapseCancel0" class="panel-collapse collapse">
-                      <div class="panel-body">
+                      <div class="panel-body" *ngIf="cancelStatuss==='cancel' && itm===item.id">
                         <div class="row">
                           <div class="col-sm-3"><label for="return_reason">Reason</label></div>
                           <div class="col-sm-9">
-                            <select name="return_reason" id="return_reason" class="form-control" size="1">
+                            <select name="return_reason" id="return_reason" class="form-control" size="1" #selectedvalue>
                               <option value="">--select reason code--</option>
 
                               <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
@@ -385,25 +382,28 @@
 
                             </select>
                           </div>
-                        </div>
+                      </div><br>
                         <div class="row">
                           <div class="col-sm-3"><label for="return_description">Description</label></div>
                           <div class="col-sm-9"><input type="text" class="form-control" name="return_description"
                             id="return_description"
-                            size="30"></div>
+                            size="30" [(ngModel)]="return_description"></div>
                           </div>
+                          <br>
                           <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                               <input type="button" data-orderid="4857466" data-itemid="0"
                               data-brand="classicspecs"
-                              class="btn btn-danger btn-xs cancel_item" value="Cancel item">
+                              class="btn btn-danger btn-xs cancel_item" (click)="cancelItem(foundOrder.order_id, selectedvalue.value,item.id )"value="Cancel item">
                             </div>
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
+                </div>
+                <div *ngIf="statte && cancelStatuss==='cancel' && itm===item.id">
+                    <p>This item was cancelled</p>
                 </div>
                 <div class="container-fluid">
                   <div class="panel-group">
@@ -704,6 +704,8 @@
             </div>
           </td>
         </tr>
+
+
       </table>
       <hr>
       <div class="container-fluid">

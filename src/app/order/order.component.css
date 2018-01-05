@@ -31,3 +31,11 @@ ul {
 .firstTd{
   background-color: #e1e7f6;
 }
+#itemPrice:hover{
+    cursor:pointer;
+    color:#154360;
+    text-decoration:underline;
+}
+#itemPrice{
+    color:#5499C7;
+}
