@@ -36,9 +36,9 @@
           </div>
           <div class="col-md-10">
             <ul class="nav nav-tabs">
-              <li><a href="#">Processing</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <li><a href="#">At Lab</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <li><a href="#">Unshipped</a></li>
+              <li (click)="processing()"><a [routerLink]="['/orders','processing']">Processing</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li (click)="atLab()"><a [routerLink]="['/orders','atlab']">At Lab</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li (click)="unshipped()"><a [routerLink]="['/orders','unshipped']">Unshipped</a></li>
             </ul>
             <form method="POST">
               <table class="table table-condensed table-bordered">

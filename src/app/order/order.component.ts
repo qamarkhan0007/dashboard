@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import {ActivatedRoute, Params } from '@angular/router';
-
+import * as _ from 'underscore';
 
 @Component({
     selector: 'app-order',
@@ -10,6 +10,7 @@ import {ActivatedRoute, Params } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
     orderData: any;
+    orderDataForIterate: any;
     foundOrder: any;
     items: any;
     prdId: any;
@@ -24,6 +25,7 @@ export class OrderComponent implements OnInit {
     itm: any;
     itmId: any = true;
     response: any;
+    tempArray: any = [];
 
     constructor(private route: ActivatedRoute , private _service: AppService) { }
 
@@ -33,16 +35,16 @@ export class OrderComponent implements OnInit {
         this.brandAfter = brand;
         this._service.getOrders(brand).subscribe( res => {
             this.orderData =  res.data;
+            this.orderDataForIterate =  this.orderData;
         });
     }
     showMeOrder(orderId) {
-        console.log('>>>>>>>>>>>>show me order >>>>>>>>>>>>>>>>>');
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
         this.items = this.foundOrder.items.eyewear.items ;
         console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.foundOrder);
-        console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.items);
+        console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.foundOrder.status);
     }
     itemPrice(productId) {
         if (this.state) {
@@ -80,5 +82,44 @@ export class OrderComponent implements OnInit {
         this._service.getCustomerByEmail(email, this.brand).subscribe(res => {
             this.response = res.data;
         });
+    }
+    processing() {
+      this.tempArray = [];
+      if (this.orderDataForIterate) {
+        this.orderDataForIterate.find(x => {
+          if (x.status != null) {
+            if (_.contains(['New_Order', 'Partially_Return', 'Return_Authorized', 'Partially_Refunded', 'Refunded'], x.status)) {
+              this.tempArray.push(x);
+            }
+          }
+        });
+        this.orderData = this.tempArray;
+      }
+    }
+    atLab() {
+      this.tempArray = [];
+      if (this.orderDataForIterate) {
+        this.orderDataForIterate.find(x => {
+          if (x.status != null) {
+            if (_.contains(['Add_To_lab'], x.status)) {
+              this.tempArray.push(x);
+            }
+          }
+        });
+        this.orderData = this.tempArray;
+      }
+    }
+    unshipped() {
+      this.tempArray = [];
+      if (this.orderDataForIterate) {
+        this.orderDataForIterate.find(x => {
+          if (x.status != null) {
+            if (_.contains(['Lab_Finished', 'Partially_Shipped'], x.status)) {
+              this.tempArray.push(x);
+            }
+          }
+        });
+        this.orderData = this.tempArray;
+      }
     }
 }
