@@ -43,7 +43,7 @@
             <form method="POST">
               <table class="table table-condensed table-bordered">
                 <tr>
-                  <th>Order</th>classicspecs
+                  <th>Order</th>
                   <th>Date</th>
                   <th>Name</th>
                   <th>Item</th>
@@ -55,7 +55,7 @@
                   <tr class="firstTd">
                     <td><a (click)="showMeOrder(order.order_id)" id="makeMeAnchorColor" class="makeMeAnchor">{{order.order_id}}</a></td>
                     <td>{{order.ordered_at}}</td>
-                    <td>{{order.customer.name}}</td>
+                    <td><a (click)="getCustomer(order.email)" id="makeMeAnchorColor">{{order.customer.name}}</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -87,8 +87,8 @@
 <div class="container" *ngIf="foundOrder">
   <div class="row">
     <div class="col-xs-18 col-sm-12">
-      <h1>classicspecs</h1>
-      <h2><a href="/users/classicspecs/mukesh%40unyscape.com/view">{{foundOrder.customer.name}}</a>: Order
+      <h1></h1>
+      <h2><a >{{foundOrder.customer.name}}</a>: Order
         #{{foundOrder.order_id}}</h2>
         <h4>Ordered at: {{foundOrder.ordered_at}}</h4>
         <table class="table">

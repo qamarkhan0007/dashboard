@@ -37,6 +37,19 @@ export class AppService {
             return res.json();
         });
     }
+    createStore(obj, brand) {
+        console.log('obj obj obj ', obj);
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/store_locations?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.post(_path, obj, {headers: headers})
+        .map((res: any) => {
+            return res.json();
+        });
+    }
+
     getDiscounts(brand) {
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
@@ -208,6 +221,20 @@ export class AppService {
         return this._http.post(_path, body,  {headers: headers}).map(res => {
             return res.json();
         });
+    }
+    getCustomerByEmail(email, brand) {
+        console.log('>>>>>>>>>>email>>', email);
+        console.log('>>>>brand>>>>>>>>', brand);
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/users/' + email + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token });
+        return this._http.get(_path,  {headers: headers}).map(res => {
+            console.log('......>>>>res>>>>>>>>', res);
+            return res.json();
+        });
+
     }
 
 }

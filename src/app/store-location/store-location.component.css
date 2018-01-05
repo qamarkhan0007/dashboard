@@ -6,3 +6,11 @@
   border: #2E86C1;
   color: #2E86C1;
 }
+#newStore{
+    cursor:pointer;
+    color:#154360;
+    text-decoration:underline;
+}
+#newStore{
+    color:#5499C7;
+}
