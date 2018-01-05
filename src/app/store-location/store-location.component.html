@@ -1,9 +1,10 @@
 <app-navbar></app-navbar>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-xs-18 col-md-12">
             <h1>{{brand}}</h1><br>show
-            <select [(ngModel)]="selectedValue">
+            <select [(ngModel)]="selectedValue" class="box">
                 <option [ngValue] = "10">10</option>
                 <option [ngValue] = "20">25</option>
                 <option [ngValue] = "50">50</option>

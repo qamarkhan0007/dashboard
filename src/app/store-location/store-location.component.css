@@ -1,3 +1,8 @@
 .table-bordered td{
   width: 150px;
 }
+.box{
+  background-color: #D6EAF8;
+  border: #2E86C1;
+  color: #2E86C1;
+}

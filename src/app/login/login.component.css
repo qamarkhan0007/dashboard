@@ -3,9 +3,13 @@
   margin-left: 20%;
   margin-top: 2%;
   width: 50%;
-  border: 12px solid #ddd;
+  border: 12px double #BFC9CA;
 }
 label{
   font-size: 15px;
   font-weight: bold;
+}
+.customBtn {
+  background-color: #CD5C5C;
+  border: #CD5C5C
 }

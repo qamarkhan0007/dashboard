@@ -15,7 +15,7 @@
           <label><input (click)='checkExpired(checkMe)' [(ngModel)]="expirationDate" type="checkbox" #checkMe />Not Expired</label>
         </div>
         <h6>Show
-          <select [(ngModel)]="selectedValue">
+          <select [(ngModel)]="selectedValue" class="box">
             <option [ngValue]="10">10</option>
             <option [ngValue]="25">25</option>
             <option [ngValue]="50">50</option>
@@ -68,7 +68,7 @@
                     </select>
                   </td>
                   <td><input type="date" #date name="expiration_date" class="form-control input-xlarge"></td>
-                  <td><input id="buttonValue" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="button" value="Create New"></td>
+                  <td><input class="button2" id="buttonValue" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="button" value="Create New"></td>
                   <!-- <td><button id="buttonValue" onclick="showDiv('toggle')" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="submit"> Create New</button></td> -->
                 </tr>
               </thead>
