@@ -9,13 +9,15 @@ import { AppService } from '../app.service';
 export class OrderComponent implements OnInit {
   orderData: any;
   foundOrder: any;
+  brand: any;
 
   constructor(private _service: AppService) { }
 
   ngOnInit() {
   }
-  getOrders(brand) {
-    this._service.getOrders(brand).subscribe( res => {
+  getOrders(brnd) {
+    this.brand = brnd;
+    this._service.getOrders(brnd).subscribe( res => {
       this.orderData =  res.data;
     });
   }

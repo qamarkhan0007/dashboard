@@ -6,3 +6,9 @@
   border: #2E86C1;
   color: #2E86C1;
 }
+td{
+  font-size: 14px;
+}
+#pin-td{
+  width: 100px;
+}
