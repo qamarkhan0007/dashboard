@@ -16,9 +16,14 @@
     color: #D6EAF8;
     border: 1px solid #2E86C1;
     border-radius: .2em;
+    width: 90px;
+    height: 40px;
 }
 
 .button2:hover {
     background-color: #2E86C1;
     color: white;
+}
+td{
+  font-size: 14px;
 }
