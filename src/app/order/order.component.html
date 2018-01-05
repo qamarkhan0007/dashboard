@@ -55,7 +55,7 @@
                   <tr class="firstTd fnt">
                     <td><a (click)="showMeOrder(order.order_id)" id="makeMeAnchorColor" class="makeMeAnchor">{{order.order_id}}</a></td>
                     <td>{{order.ordered_at}}</td>
-                    <td>{{order.customer.name}}</td>
+                    <td><a (click)="getCustomer(order.email)" id="makeMeAnchorColor">{{order.customer.name}}</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
