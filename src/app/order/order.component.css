@@ -35,7 +35,7 @@ ul {
   background-color: #D6EAF8;
 }
 .fnt{
-  font-size: 13px;
+    font-size: 13px;
 }
 .nav-li{
   margin-right: 20px;
@@ -61,4 +61,8 @@ a{
 }
 #itemPrice{
     color:#5499C7;
+}
+#tabletime{
+     width: 50px;
+     height: 50px;
 }

@@ -26,6 +26,15 @@ export class OrderComponent implements OnInit {
     response: any;
     getcustomerStatus: any = false;
     checkMe: any = false;
+    store: any;
+    address: any;
+    getorderOfUsers: any;
+    updateUserPage: any = false;
+    firstName: any;
+    lastName: any;
+    brand1: any;
+    email: any;
+    saved: any;
 
     constructor(private route: ActivatedRoute , private _service: AppService) { }
 
@@ -38,13 +47,12 @@ export class OrderComponent implements OnInit {
         });
     }
     showMeOrder(orderId) {
-        console.log('>>>>>>>>>>>>show me order >>>>>>>>>>>>>>>>>');
+        console.log('show me orde ');
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
         this.items = this.foundOrder.items.eyewear.items ;
-        console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.foundOrder);
-        console.log('foundOrder >>>>>>>>>>>>>>>>>>', this.items);
+        console.log('.........>>>>>>>>>>>>>>', this.items);
     }
     itemPrice(productId) {
         if (this.state) {
@@ -81,6 +89,28 @@ export class OrderComponent implements OnInit {
         this.checkMe = true;
         this._service.getCustomerByEmail(email, this.brandAfter).subscribe(res => {
             this.response = res.data;
+            this.store = this.response.store_credits;
+            this.address = this.response.addresses;
+            this._service.getOrdersByUsers(this.brandAfter, this.response.email).subscribe(respon => {
+                this.getorderOfUsers = respon.data ;
+            });
         });
+    }
+    updateUser(email, first, last , brand) {
+        this.firstName = first;
+        this.lastName = last;
+        this.email = email;
+        this.brand1 = brand;
+        this.updateUserPage = true ;
+    }
+    saveUser(first, last, email, marketing, brand ) {
+        this.response.first_name = first;
+        this.response.last_name = last;
+        this.response.email = email;
+        this.response.marketing_opt_in = marketing;
+        this._service.saveUser(this.response, brand).subscribe(res => {
+            this.saved = 'saving...';
+        });
+
     }
 }

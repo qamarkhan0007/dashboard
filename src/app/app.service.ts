@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class AppService {
     dataValue: any;
     token: any;
+    response: any;
 
     constructor(private _http: Http) { }
     authLogin(data: any) {
@@ -234,7 +235,31 @@ export class AppService {
             console.log('......>>>>res>>>>>>>>', res);
             return res.json();
         });
+    }
+    getOrdersByUsers(brand, email) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/users/' + email + '/orders' + '?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token });
+        return this._http.get(_path,  {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    saveUser(response, brand) {
+           this.response = response;
+            brand = brand + '_dev';
+            this.dataValue = localStorage.getItem('token');
+            this.token = 'Basic ' + btoa('token:' + this.dataValue);
+            const _path: string = ('http://localhost:3000/3.0/users/' + response.email + '?key=' + brand),
+            headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+            body: any = { 'first_name': response.first_name , 'last_name': response.last_name, 'email': response.email,
+             'guest': response.guest, 'roles': response.roles, 'marketing': { 'email_opt_in': response.marketing.email_opt_in },
+             'active_flag': true} ;
+            return this._http.put(_path, body,  {headers: headers}).map(res => {
+                return res.json();
+            });
+
 
     }
-
 }
