@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import {ActivatedRoute, Params } from '@angular/router';
+import {ActivatedRoute, RouterModule, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import * as _ from 'underscore';
 
 @Component({
@@ -38,7 +39,7 @@ export class OrderComponent implements OnInit {
     saved: any;
     tempArray: any = [];
 
-    constructor(private route: ActivatedRoute , private _service: AppService) { }
+    constructor(private route: Router , private _service: AppService) { }
 
     ngOnInit() {
     }
@@ -152,6 +153,8 @@ export class OrderComponent implements OnInit {
         this.response.marketing_opt_in = marketing;
         this._service.saveUser(this.response, brand).subscribe(res => {
             this.saved = 'saving...';
+            location.reload();
+            //this.route.navigate(['']);
         });
     }
 }
