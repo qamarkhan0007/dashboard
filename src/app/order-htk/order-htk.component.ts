@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-htk.component.css']
 })
 export class OrderHtkComponent implements OnInit {
-
-  constructor() { }
+  token: any;
+  constructor() {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
   }

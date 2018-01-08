@@ -26,8 +26,11 @@ export class OrderComponent implements OnInit {
     itmId: any = true;
     response: any;
     tempArray: any = [];
+    token: any;
 
-    constructor(private route: ActivatedRoute , private _service: AppService) { }
+    constructor(private route: ActivatedRoute , private _service: AppService) {
+      this.token = localStorage.getItem('token');
+    }
 
     ngOnInit() {
     }

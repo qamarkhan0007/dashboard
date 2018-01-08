@@ -12,9 +12,12 @@ export class StoreLocationComponent implements OnInit {
     brand: any;
     statusform: any;
     storeData: any;
+    token: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
-    constructor(private service: AppService , private route: ActivatedRoute) { }
+    constructor(private service: AppService , private route: ActivatedRoute) {
+      this.token = localStorage.getItem('token');
+    }
 
     ngOnInit() {
         this.getStores();

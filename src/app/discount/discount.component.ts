@@ -12,11 +12,14 @@ export class DiscountComponent implements OnInit {
     brand: any;
     data: any;
     msg: any;
+    token: any;
     discountCode: any;
     currentDate: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
-    constructor(private route: ActivatedRoute , private service: AppService, private router: Router) { }
+    constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
+      this.token = localStorage.getItem('token');
+    }
 
     ngOnInit() {
         this.getDiscounts();

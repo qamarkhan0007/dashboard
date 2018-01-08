@@ -8,29 +8,41 @@ import {ActivatedRoute, Params } from '@angular/router';
     styleUrls: ['./letter-press.component.css']
 })
 export class LetterPressComponent implements OnInit {
-    template: any;
+    template: any = false;
     getOnetemplate: any;
     brand: any;
     save: any;
-    commonTemplate: any;
+    commonTemplate: any = false;
     getOneCommontemplate: any;
-    Prewiew: any;
+    Prewiew: any = false;
     name1: any;
-    getOrderValue: any;
-    constructor(private service: AppService , private route: ActivatedRoute) { }
-
-    ngOnInit() {
-        console.log('in ng o it >>>>>>>');
-        this.getAllEmailTemplate();
-        this.getCommonEmailTemplates();
+    getOrderValue: any = false;
+    token: any;
+    templates: any;
+    commontemplate: any;
+    commonEmailTemplates: any;
+    constructor(private service: AppService , private route: ActivatedRoute) {
+      this.token = localStorage.getItem('token');
     }
 
+    ngOnInit() {
+        this.route.params.subscribe((params: Params) => {
+          console.log(params['brand']);
+            if (params['elem']) {
+              this.getEmailTemplate(params['elem']);
+            }
+            if (params['brand']) {
+              this.getAllEmailTemplate();
+              this.getCommonEmailTemplates();
+            }
+          });
+    }
     getAllEmailTemplate() {
         this.route.params.subscribe((params: Params) => {
             this.brand = params['brand'];
-            this.service.findTemplates(this.brand).subscribe(res => {
-                this.getAllEmailTemplate = res.data;
-            });
+        });
+        this.service.findTemplates(this.brand).subscribe(res => {
+          this.templates = res.data;
         });
     }
 
@@ -48,7 +60,7 @@ export class LetterPressComponent implements OnInit {
         this.route.params.subscribe((params: Params) => {
             this.brand = params['brand'];
             this.service.findOneCommonTemplate(common,  this.brand).subscribe(res => {
-                this.getOneCommontemplate = res.data;
+                this.commontemplate = res.data;
                 this.commonTemplate = true;
             });
         });
@@ -58,7 +70,7 @@ export class LetterPressComponent implements OnInit {
         this.route.params.subscribe((params: Params) => {
             this.brand = params['brand'];
             this.service.findCommonTemplate(this.brand).subscribe(res => {
-                this.getCommonEmailTemplates = res.data;
+                this.commonEmailTemplates = res.data;
             });
         });
     }
@@ -87,13 +99,11 @@ export class LetterPressComponent implements OnInit {
     }
     toPrewiew(name) {
         this.name1 = name;
-        console.log('>>>>>>>>>>>>>>>>>> name', typeof this.name1);
         this.Prewiew = true;
     }
     gettemp(name) {
         this.route.params.subscribe((params: Params) => {
             this.brand = params['brand'];
-            console.log('welcome_Email-----------------', name);
             this.service.findOneTemplate(name,  this.brand).subscribe(res => {
                 this.getOnetemplate = res.data;
                 this.getOrderValue = true;

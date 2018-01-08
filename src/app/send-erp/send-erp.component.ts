@@ -12,7 +12,10 @@ export class SendErpComponent implements OnInit {
     brand: any;
     erpData: any;
     distat: any = false;
-  constructor(private route: ActivatedRoute, private _service: AppService) { }
+    token: any;
+  constructor(private route: ActivatedRoute, private _service: AppService) {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
       this.route.params.subscribe((params: Params) => {
