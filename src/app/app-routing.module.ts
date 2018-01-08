@@ -38,26 +38,39 @@ const routes: Routes = [
         path: 'discount/:brand',
         component: DiscountComponent
     },
+    // {
+    //   path: 'letterpress/parent/:brand',
+    //   component: LetterPressComponent
+    // },
     {
       path: 'letterpress/:brand',
-      component: LetterPressComponent
-  },
-  {
-      path: 'inventory/:brand',
-      component: InventoryComponent
-  },
-  {
-      path: 'orders/:group',
-      component: OrderComponent
-  },
-  {
-      path: 'sendErp/:brand',
-      component: SendErpComponent
-  },
-  {
-      path: 'orderhtk',
-      component: OrderHtkComponent
-  }
+      children: [
+        {
+          path: '',
+          component: LetterPressComponent
+        },
+      {
+        path: 'child/:elem',
+        component: LetterPressComponent
+      }
+    ]
+    },
+    {
+        path: 'inventory/:brand',
+        component: InventoryComponent
+    },
+    {
+        path: 'orders/:group',
+        component: OrderComponent
+    },
+    {
+        path: 'sendErp/:brand',
+        component: SendErpComponent
+    },
+    {
+        path: 'orderhtk',
+        component: OrderHtkComponent
+    }
 ];
 
 @NgModule({

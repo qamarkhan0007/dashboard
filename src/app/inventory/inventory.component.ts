@@ -13,7 +13,10 @@ export class InventoryComponent implements OnInit {
     responseData: any;
     save: any;
     aadjustInventory: any;
-  constructor(private route: ActivatedRoute , private service: AppService) { }
+    token: any;
+  constructor(private route: ActivatedRoute , private service: AppService) {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
   }

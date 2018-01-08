@@ -38,9 +38,10 @@ export class OrderComponent implements OnInit {
     email: any;
     saved: any;
     tempArray: any = [];
+    token: any;
+
 
     constructor(private route: Router , private _service: AppService) { }
-
     ngOnInit() {
     }
     getOrders(brand) {
