@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <br>
-<div class="container" *ngIf="!foundOrder">
+<div class="container" *ngIf="!foundOrder && !getcustomerStatus" >
   <div class="row">
     <div class="col-xs-18 col-sm-12">
       <h2>
@@ -34,7 +34,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-md-10">
+          <div *ngIf='!getcustomerStatus' class="col-md-10">
             <ul class="nav nav-tabs">
               <li><a href="#">Processing</a></li>&nbsp;&nbsp;
               <li><a href="#">At Lab</a></li>&nbsp;&nbsp;
@@ -55,7 +55,7 @@
                   <tr class="firstTd fnt">
                     <td><a (click)="showMeOrder(order.order_id)" id="makeMeAnchorColor" class="makeMeAnchor">{{order.order_id}}</a></td>
                     <td>{{order.ordered_at}}</td>
-                    <td><a (click)="getCustomer(order.email)" id="makeMeAnchorColor">{{order.customer.name}}</a></td>
+                    <td><a (click)="getCustomer(order.customer.email)" id="makeMeAnchorColor">{{order.customer.name}}</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -81,6 +81,558 @@
     </div>
   </div>
 </div>
+</div>
+<div class="" *ngIf='checkMe'>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-18 col-sm-12">
+<h2>
+    {{brandAfter}}: {{response.first_name }} {{response.last_name}}
+    <a class="btn btn-default" href="/users/stevenalanoptical/rumo%40mailinator.com/edit">Edit</a>
+</h2>
+
+<table class="table">
+    <tr>
+        <td>First Name</td>
+        <td>{{response.first_name }}</td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>{{response.last_name}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{response.email}}</td>
+    </tr>
+    <tr>
+        <td>Marketing Email Optin</td>
+        <td>{{response.marketing.email_opt_in}}</td>
+    </tr>
+    <tr>
+        <td>Available Store Credits</td>
+        <td>
+        <table width="100%" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>Credit Id</th>
+                        <th>Order Id</th>
+                        <th>Issued On</th>
+                        <th>Credit Available</th>
+                        <th>Revert Credit</th>
+                    </tr>
+        </table>
+        </td>
+
+    </tr>
+    <tr>
+        <td>Addresses</td>
+        <td>{{response.billing_address}}</td>
+    </tr>
+    <tr>
+        <td>Rx</td>
+        <td>
+                <b>(no name)</b><br><br>
+                RX_SEND_LATER<br>
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+                <b>(no name)</b><br><br>
+                RX_SEND_LATER<br>
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+                <b>(no name)</b><br><br>
+                RX_SEND_LATER<br>
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+
+                <b>(no name)</b><br><br>
+
+                RX_SEND_LATER<br>
+
+
+
+
+
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>SP</th>
+                        <th>CYL</th>
+                        <th>AX</th>
+                        <th>ADD</th>
+                        <th>SEG HT</th>
+                        <th>PD MONO</th>
+                    </tr>
+                    <tr>
+                        <th>OD</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th>OS</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <b>PD BINO</b> None
+            <hr>
+
+        </td>
+    </tr>
+    <tr>
+        <td>Orders</td>
+        <td>
+            <div class="row">
+                <div class="col-sm-3">Order Id</div>
+                <div class="col-sm-3">Orderd At</div>
+                <div class="col-sm-3">Order Net</div>
+                <div class="col-sm-3">Discount</div>
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/3043132/view">3043132</a></div>
+                <div class="col-sm-3">2017-12-12</div>
+                <div class="col-sm-3">$460.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/3039418/view">3039418</a></div>
+                <div class="col-sm-3">2017-12-07</div>
+                <div class="col-sm-3">$235.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/2898849/view">2898849</a></div>
+                <div class="col-sm-3">2017-11-14</div>
+                <div class="col-sm-3">$265.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/2897718/view">2897718</a></div>
+                <div class="col-sm-3">2017-11-14</div>
+                <div class="col-sm-3">$655.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/2896926/view">2896926</a></div>
+                <div class="col-sm-3">2017-11-14</div>
+                <div class="col-sm-3">$460.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/2895246/view">2895246</a></div>
+                <div class="col-sm-3">2017-11-14</div>
+                <div class="col-sm-3">$265.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+            <div class="row" style="border: 1px solid black">
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/2890229/view">2890229</a></div>
+                <div class="col-sm-3">2017-11-13</div>
+                <div class="col-sm-3">$220.00</div>
+                <div class="col-sm-3">
+
+                </div>
+
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td>API</td>
+        <td>
+            <a href="/users/stevenalanoptical/rumo%40mailinator.com/api">don't touch this</a>
+        </td>
+    </tr>
+</table>
+
+<div id="revertModal" class="modal fade modal-lg" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Revert Store Credit</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">Reason</div>
+                    <div class="col-md-8"><input type="text" id="reason" name="reason" class="form-control"></div>
+                </div>
+                <input type="hidden" name="credit_id" id = "credit_id" value=""/>
+                <input type="hidden" name="amount" id = "amount" value=""/>
+                <input type="hidden" name="brand_id" id = "brand_id" value=""/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default modal_revert_btn">Revert Credit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 

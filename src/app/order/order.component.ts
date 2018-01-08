@@ -24,6 +24,8 @@ export class OrderComponent implements OnInit {
     itm: any;
     itmId: any = true;
     response: any;
+    getcustomerStatus: any = false;
+    checkMe: any = false;
 
     constructor(private route: ActivatedRoute , private _service: AppService) { }
 
@@ -75,9 +77,9 @@ export class OrderComponent implements OnInit {
         });
     }
     getCustomer(email) {
-        console.log('>>>>>>>>>>>get customer');
-        console.log('>>>this>>>>>>>>>>', this.brand);
-        this._service.getCustomerByEmail(email, this.brand).subscribe(res => {
+        this.getcustomerStatus = true;
+        this.checkMe = true;
+        this._service.getCustomerByEmail(email, this.brandAfter).subscribe(res => {
             this.response = res.data;
         });
     }
