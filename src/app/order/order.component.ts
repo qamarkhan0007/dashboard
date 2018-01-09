@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import {ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import * as _ from 'underscore';
 
 @Component({
@@ -38,27 +39,38 @@ export class OrderComponent implements OnInit {
     saved: any;
     tempArray: any = [];
     token: any;
+    order_brand: any;
+    order_id: any;
 
-    constructor(private route: ActivatedRoute , private _service: AppService) {
+    constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
       this.token = localStorage.getItem('token');
     }
 
     ngOnInit() {
+      this.route.params.subscribe((params: Params) => {
+        console.log(params['order_brand']);
+          if (params['order_brand']) {
+            this.order_brand = params['order_brand'];
+            this.getOrders(params['order_brand']);
+          }
+        });
     }
     getOrders(brand) {
         this.brandAfter = brand;
         this._service.getOrders(brand).subscribe( res => {
             this.orderData =  res.data;
             this.orderDataForIterate =  this.orderData;
+            this.processing();
         });
     }
     showMeOrder(orderId) {
-        console.log('show me orde ');
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
         this.items = this.foundOrder.items.eyewear.items ;
-        console.log('.........>>>>>>>>>>>>>>', this.items);
+        console.log('>>>>>>>><<<<<<<<', this.items);
+        console.log('>>>>>>>><<<<<<<<', this.token);
+        this.order_id = orderId;
     }
     itemPrice(productId) {
         if (this.state) {
@@ -107,7 +119,7 @@ export class OrderComponent implements OnInit {
       if (this.orderDataForIterate) {
         this.orderDataForIterate.find(x => {
           if (x.status != null) {
-            if (_.contains(['New_Order', 'Partially_Return', 'Return_Authorized', 'Partially_Refunded', 'Refunded'], x.status)) {
+            if (_.contains(['New_Order'], x.status)) {
               this.tempArray.push(x);
             }
           }
@@ -133,7 +145,7 @@ export class OrderComponent implements OnInit {
       if (this.orderDataForIterate) {
         this.orderDataForIterate.find(x => {
           if (x.status != null) {
-            if (_.contains(['Lab_Finished', 'Partially_Shipped'], x.status)) {
+            if (_.contains(['Lab_Finished','Partially_Shipped','Partially_Return','Return_Authorized','Partially_Refunded','Refunded'],x.status)) {
               this.tempArray.push(x);
             }
           }
@@ -156,5 +168,11 @@ export class OrderComponent implements OnInit {
         this._service.saveUser(this.response, brand).subscribe(res => {
             this.saved = 'saving...';
         });
+    }
+    sendToLab(itemId) {
+      this._service.sendToLab(this.order_id, itemId, this.order_brand).subscribe(res => {
+        console.log(res.data);
+        console.log(res);
+      });
     }
 }

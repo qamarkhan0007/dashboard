@@ -12,33 +12,34 @@
                     <div class="col-md-2">
                         <ul class="nav-pills nav-stacked">
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('ano')" >ano</p>
+                                <a href="http://localhost:4200/orders/eyewear/ano/processing" class="makeMeAnchor" >ano</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('billyreid')" >billyreid</p>
+                                <a href="http://localhost:4200/orders/eyewear/billyreid/processing" class="makeMeAnchor" >billyreid</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('classicspecs')" >classicspecs</p>
+                                <a href="http://localhost:4200/orders/eyewear/classicspecs/processing" class="makeMeAnchor">classicspecs</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('jasonwu')" >jasonwu</p>
+                                <a href="http://localhost:4200/orders/eyewear/jasonwu/processing" class="makeMeAnchor">jasonwu</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('johnnywas')" >johnnywas</p>
+                                <a href="http://localhost:4200/orders/eyewear/johnnywas/processing" class="makeMeAnchor">johnnywas</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('ottavo')" >ottavo</p>
+                                <a href="http://localhost:4200/orders/eyewear/ottavo/processing" class="makeMeAnchor">ottavo</a>
                             </li>
                             <li>
-                                <p class="makeMeAnchor" (click)="getOrders('stevenalanoptical')" >stevenalanoptical</p>
+                                <a href="http://localhost:4200/orders/eyewear/stevenalanoptical/processing" class="makeMeAnchor">stevenalanoptical</a>
                             </li>
+                            <router-outlet></router-outlet>
                         </ul>
                     </div>
                     <div *ngIf='!getcustomerStatus' class="col-md-10">
                         <ul class="nav nav-tabs">
-                            <li><a href="#">Processing</a></li>&nbsp;&nbsp;
-                            <li><a href="#">At Lab</a></li>&nbsp;&nbsp;
-                            <li><a href="#">Unshipped</a></li>&nbsp;&nbsp;
+                            <li><p (click)='processing()' class='makeMeAnchor'>Processing</p></li>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><p (click)='atLab()' class='makeMeAnchor'>At Lab</p></li>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><p (click)='unshipped()' class='makeMeAnchor'>Unshipped</p></li>&nbsp;&nbsp;&nbsp;&nbsp;
                         </ul>
                         <form method="POST">
                             <table class="table table-condensed table-bordered">
@@ -437,9 +438,11 @@
                                     <option value="kmarsoptical">kmarsoptical 9</option>
                                     <option value="tro">tro 13</option>
                                 </select>
-                                <br>
-                                <input type="button" data-orderid="4857466" data-itemid="0"
-                                data-brand="classicspecs" value="Send to lab" class="btn btn-lg btn-success send_to_lab"/>
+                                <!-- {{item.status}}
+                                <div *ngIf=item.status>
+
+                                </div> -->
+                                <input (click)="sendToLab(item.id)" type="button" value="Send to lab" class="btn btn-lg btn-success send_to_lab"/>
                             <hr>
                             <div class="container-fluid" *ngIf="!statte && itmId">
                                 <div class="panel-group">
