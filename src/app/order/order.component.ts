@@ -41,6 +41,8 @@ export class OrderComponent implements OnInit {
     token: any;
     order_brand: any;
     order_id: any;
+    internalNotes: any = false;
+    notes: any;
 
     constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
       this.token = localStorage.getItem('token');
@@ -67,9 +69,8 @@ export class OrderComponent implements OnInit {
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
+        console.log('>>>>>>>><<<this.foundOrderthis.foundOrder<<<<<', this.foundOrder);
         this.items = this.foundOrder.items.eyewear.items ;
-        console.log('>>>>>>>><<<<<<<<', this.items);
-        console.log('>>>>>>>><<<<<<<<', this.token);
         this.order_id = orderId;
     }
     itemPrice(productId) {
@@ -145,7 +146,8 @@ export class OrderComponent implements OnInit {
       if (this.orderDataForIterate) {
         this.orderDataForIterate.find(x => {
           if (x.status != null) {
-            if (_.contains(['Lab_Finished','Partially_Shipped','Partially_Return','Return_Authorized','Partially_Refunded','Refunded'],x.status)) {
+            if (_.contains(['Lab_Finished', 'Partially_Shipped', 'Partially_Return', 'Return_Authorized',
+            'Partially_Refunded', 'Refunded'], x.status)) {
               this.tempArray.push(x);
             }
           }
@@ -175,6 +177,15 @@ export class OrderComponent implements OnInit {
       this._service.sendToLab(this.order_id, itemId, this.order_brand).subscribe(res => {
         console.log(res.data);
         console.log(res);
+      });
+    }
+    createInternalNotes(notes) {
+      this._service.createInternalNotes(this.order_id, notes, this.order_brand ).subscribe(res => {
+        if (res.data) {
+          this.notes = res.data;
+          console.log('>>>>>>this.notesthis.notesthis.notes>>>>', this.notes);
+          this.internalNotes = true;
+        }
       });
     }
 }
