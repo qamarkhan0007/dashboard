@@ -39,7 +39,6 @@ export class AppService {
         });
     }
     createStore(obj, brand) {
-        console.log('obj obj obj ', obj);
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
@@ -224,15 +223,12 @@ export class AppService {
         });
     }
     getCustomerByEmail(email, brand) {
-        console.log('>>>>>>>>>>email>>', email);
-        console.log('>>>>brand>>>>>>>>', brand);
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
         const _path: string = ('http://localhost:3000/3.0/users/' + email + '?key=' + brand),
         headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token });
         return this._http.get(_path,  {headers: headers}).map(res => {
-            console.log('......>>>>res>>>>>>>>', res);
             return res.json();
         });
     }
@@ -259,7 +255,51 @@ export class AppService {
             return this._http.put(_path, body,  {headers: headers}).map(res => {
                 return res.json();
             });
-
-
+    }
+    getAllbatches() {
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/upc_codes/batch_names/?key=DASHBOARD'),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.get(_path, {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    createUpc(batchName, file) {
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/dashboard/upc_codes?key=DASHBOARD'),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+        body: any = {
+            'batch_names': batchName ,
+            'file': file
+        };
+        return this._http.post(_path, body, {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    getProducts(brand) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        console.log('>>>>>>>>>>>', this.token);
+        const _path: string = ('http://localhost:3000/3.0/products/?key=' + brand),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.get(_path, {headers: headers}).map(res => {
+            console.log('>>>>>>>>>>>res products >>>>>>>>>>>>', res);
+            return res.json();
+        });
+    }
+    getProductsById(brand, product_id) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        console.log('>>>>>>>>>>>', this.token);
+        const _path: string = ('http://localhost:3000/3.0/products/?key=' + brand + '&product_id=' + product_id),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.get(_path, {headers: headers}).map(res => {
+            console.log('>>>>>>>>>>>>>', res);
+            return res.json();
+        });
     }
 }

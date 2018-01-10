@@ -40,7 +40,6 @@ export class OrderComponent implements OnInit {
     tempArray: any = [];
     token: any;
 
-
     constructor(private route: Router , private _service: AppService) { }
     ngOnInit() {
     }
@@ -52,12 +51,10 @@ export class OrderComponent implements OnInit {
         });
     }
     showMeOrder(orderId) {
-        console.log('show me orde ');
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
         this.items = this.foundOrder.items.eyewear.items ;
-        console.log('.........>>>>>>>>>>>>>>', this.items);
     }
     itemPrice(productId) {
         if (this.state) {

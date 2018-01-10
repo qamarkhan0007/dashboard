@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, RouterModule, Params } from '@angular/router';
+import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   token: any;
-  constructor() {
+  show: any = false;
+  hide: any = false;
+  upcData: any;
+  reportUpc: any = false;
+  msg: any;
+  constructor(private route: Router , private _service: AppService) {
       this.token = localStorage.getItem('token');
   }
 
   ngOnInit() {
+      this.getAllbatches();
   }
+  createUpc(batchName, file) {
+      this._service.createUpc(batchName, file).subscribe(res => {
+      });
+  }
+  getAllbatches() {
+      this._service.getAllbatches()
+      .subscribe(res => {
+          this.upcData = res.data;
+      });
+  }
+  getReportUpc() {
+      this.reportUpc = true;
+      this.msg = 'Ok';
+      this.hide = false;
+  }
+
+
 
 }

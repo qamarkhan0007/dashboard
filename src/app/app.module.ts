@@ -20,6 +20,10 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
 import { SendErpComponent } from './send-erp/send-erp.component';
 import { OrderHtkComponent } from './order-htk/order-htk.component';
+import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductNewComponent } from './product-new/product-new.component';
+import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
 
 
 @NgModule({
@@ -35,7 +39,11 @@ import { OrderHtkComponent } from './order-htk/order-htk.component';
     OrderComponent,
     InventoryComponent,
     SendErpComponent,
-    OrderHtkComponent
+    OrderHtkComponent,
+    ProductComponent,
+    ProductDetailComponent,
+    ProductNewComponent,
+    ProductNavbarComponent
   ],
   imports: [
     BrowserModule,

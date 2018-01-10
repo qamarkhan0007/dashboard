@@ -12,6 +12,9 @@ import { InventoryComponent} from './inventory/inventory.component';
 import { OrderComponent } from './order/order.component';
 import { SendErpComponent} from './send-erp/send-erp.component';
 import { OrderHtkComponent} from './order-htk/order-htk.component';
+import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductNewComponent } from './product-new/product-new.component';
 
 const routes: Routes = [
     {
@@ -43,17 +46,17 @@ const routes: Routes = [
     //   component: LetterPressComponent
     // },
     {
-      path: 'letterpress/:brand',
-      children: [
-        {
-          path: '',
-          component: LetterPressComponent
-        },
-      {
-        path: 'child/:elem',
-        component: LetterPressComponent
-      }
-    ]
+        path: 'letterpress/:brand',
+        children: [
+            {
+                path: '',
+                component: LetterPressComponent
+            },
+            {
+                path: 'child/:elem',
+                component: LetterPressComponent
+            }
+        ]
     },
     {
         path: 'inventory/:brand',
@@ -70,6 +73,23 @@ const routes: Routes = [
     {
         path: 'orderhtk',
         component: OrderHtkComponent
+    },
+    {
+        path: 'home/product/:pro_brand',
+        children: [
+            {
+                path: '',
+                component: ProductComponent
+            },
+            {
+                path: 'details/:product_id',
+                component: ProductDetailComponent
+            },
+            {
+                path: 'new',
+                component: ProductNewComponent
+            }
+        ]
     }
 ];
 

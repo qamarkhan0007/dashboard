@@ -15,3 +15,19 @@ li{
 a{
   color: #2E86C1;
 }
+#pop1{
+    cursor:pointer;
+    color:#154360;
+    text-decoration:underline;
+}
+#pop1{
+    color:#5499C7;
+}
+#alert{
+    height: 50px;
+    width: 1000px;
+    position: fixed;
+    left: 120px;
+    top: 70px;
+    text-align: left;
+}
