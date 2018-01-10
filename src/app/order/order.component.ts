@@ -39,22 +39,39 @@ export class OrderComponent implements OnInit {
     saved: any;
     tempArray: any = [];
     token: any;
+    order_brand: any;
+    order_id: any;
+    internalNotes: any = false;
+    notes: any;
 
-    constructor(private route: Router , private _service: AppService) { }
+    constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
+      this.token = localStorage.getItem('token');
+    }
+
     ngOnInit() {
+      this.route.params.subscribe((params: Params) => {
+        console.log(params['order_brand']);
+          if (params['order_brand']) {
+            this.order_brand = params['order_brand'];
+            this.getOrders(params['order_brand']);
+          }
+        });
     }
     getOrders(brand) {
         this.brandAfter = brand;
         this._service.getOrders(brand).subscribe( res => {
             this.orderData =  res.data;
             this.orderDataForIterate =  this.orderData;
+            this.processing();
         });
     }
     showMeOrder(orderId) {
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
+        console.log('>>>>>>>><<<this.foundOrderthis.foundOrder<<<<<', this.foundOrder);
         this.items = this.foundOrder.items.eyewear.items ;
+        this.order_id = orderId;
     }
     itemPrice(productId) {
         if (this.state) {
@@ -103,7 +120,7 @@ export class OrderComponent implements OnInit {
       if (this.orderDataForIterate) {
         this.orderDataForIterate.find(x => {
           if (x.status != null) {
-            if (_.contains(['New_Order', 'Partially_Return', 'Return_Authorized', 'Partially_Refunded', 'Refunded'], x.status)) {
+            if (_.contains(['New_Order'], x.status)) {
               this.tempArray.push(x);
             }
           }
@@ -129,7 +146,8 @@ export class OrderComponent implements OnInit {
       if (this.orderDataForIterate) {
         this.orderDataForIterate.find(x => {
           if (x.status != null) {
-            if (_.contains(['Lab_Finished', 'Partially_Shipped'], x.status)) {
+            if (_.contains(['Lab_Finished', 'Partially_Shipped', 'Partially_Return', 'Return_Authorized',
+            'Partially_Refunded', 'Refunded'], x.status)) {
               this.tempArray.push(x);
             }
           }
@@ -154,5 +172,20 @@ export class OrderComponent implements OnInit {
             location.reload();
             //this.route.navigate(['']);
         });
+    }
+    sendToLab(itemId) {
+      this._service.sendToLab(this.order_id, itemId, this.order_brand).subscribe(res => {
+        console.log(res.data);
+        console.log(res);
+      });
+    }
+    createInternalNotes(notes) {
+      this._service.createInternalNotes(this.order_id, notes, this.order_brand ).subscribe(res => {
+        if (res.data) {
+          this.notes = res.data;
+          console.log('>>>>>>this.notesthis.notesthis.notes>>>>', this.notes);
+          this.internalNotes = true;
+        }
+      });
     }
 }

@@ -41,10 +41,6 @@ const routes: Routes = [
         path: 'discount/:brand',
         component: DiscountComponent
     },
-    // {
-    //   path: 'letterpress/parent/:brand',
-    //   component: LetterPressComponent
-    // },
     {
         path: 'letterpress/:brand',
         children: [
@@ -64,7 +60,16 @@ const routes: Routes = [
     },
     {
         path: 'orders/:group',
-        component: OrderComponent
+        children: [
+          {
+            path: '',
+            component: OrderComponent
+          },
+        {
+          path: ':order_brand/processing',
+          component: OrderComponent
+        }
+      ]
     },
     {
         path: 'sendErp/:brand',

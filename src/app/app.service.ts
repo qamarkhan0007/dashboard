@@ -243,7 +243,7 @@ export class AppService {
         });
     }
     saveUser(response, brand) {
-           this.response = response;
+            this.response = response;
             brand = brand + '_dev';
             this.dataValue = localStorage.getItem('token');
             this.token = 'Basic ' + btoa('token:' + this.dataValue);
@@ -301,5 +301,28 @@ export class AppService {
             console.log('>>>>>>>>>>>>>', res);
             return res.json();
         });
+    }
+    sendToLab(orderId, itemId, brand) {
+      console.log(orderId, itemId, brand);
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/send_to_lab/?key=' + brand +
+      '&lab=kmarsoptical&items=' + itemId),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+      return this._http.post(_path, {},  {headers: headers}).map(res => {
+          return res.json();
+      });
+    }
+    createInternalNotes(order_id, notes, brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/orders/' + order_id + '/internal_notes/?key=' + brand),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
+      body: any = {'message': notes};
+      return this._http.post(_path, body,  {headers: headers}).map(res => {
+          return res.json();
+      });
     }
 }
