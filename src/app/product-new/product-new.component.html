@@ -6,10 +6,10 @@
             <div class="col-sm-10">
                 <tr>
                     <td class="td-style">
-                        <label ><b><h1>Product ID</h1></b></label>
+                        <label><b>Product ID</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"   [(ngModel)]="productById.legacy_product_id">
+                        <input type="text" class="form-control ng-pristine ng-valid"  readonly="true"  id="productId"  placeholder="Auto Assigned"   >
                     </td>
                 </tr>
             </div>
@@ -21,7 +21,7 @@
                         <label ><b>Legacy Product ID</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"   [(ngModel)]="productById.legacy_product_id">
+                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned" #legacyProduct  >
                     </td>
                 </tr>
             </div>
@@ -33,7 +33,7 @@
                         <label ><b>Name</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "name" placeholder="Auto Assigned"   [(ngModel)]="productById.name">
+                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "name" placeholder="Auto Assigned" #name>
                     </td>
                 </tr>
             </div>
@@ -46,7 +46,7 @@
                         <label ><b>Frame color</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "color" placeholder="Auto Assigned"   [(ngModel)]="productById.color">
+                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "color" placeholder="Auto Assigned"  #color>
                     </td>
                 </tr>
             </div>
@@ -59,7 +59,7 @@
                         <label ><b>Lens color</b></label>
                     </td>
                     <td>
-                        <input type="num" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_color" placeholder="Auto Assigned"  [(ngModel)]="productById.lens_color">
+                        <input type="num" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_color" placeholder="Auto Assigned"  #lensColor>
                     </td>
                 </tr>
             </div>
@@ -73,10 +73,10 @@
                     </td>
                     <td>
                         <ng-container *ngIf="productById.sunwear == 0">
-                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="sunwear">
+                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  value="sunwear">
                         </ng-container>
                         <ng-container *ngIf="productById.sunwear == 1">
-                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Eyewear">
+                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  value="Eyewear">
                         </ng-container>
                     </td>
                 </tr>
@@ -92,10 +92,10 @@
                     </td>
                     <td>
                         <ng-container *ngIf="productById.product_gender == 1">
-                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Men's">
+                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  value="Men's">
                         </ng-container>
                         <ng-container *ngIf="productById.product_gender == 2">
-                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Women's">
+                            <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  value="Women's">
                         </ng-container>
                     </td>
                 </tr>
@@ -123,7 +123,7 @@
                         <label ><b>Description</b></label>
                     </td>
                     <td>
-                        <textarea type="textarea" class="form-control ng-pristine ng-valid"  id="productId" name= "description" placeholder="Auto Assigned"  [(ngModel)]="productById.description">
+                        <textarea type="textarea" class="form-control ng-pristine ng-valid"  id="productId" name= "description" placeholder="Auto Assigned"  >
                         </textarea>
                     </td>
                 </tr>
@@ -137,7 +137,7 @@
                         <label ><b>Assests group</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
+                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  >
                     </td>
                 </tr>
             </div>
@@ -150,7 +150,7 @@
                         <label ><b>Product Details</b></label>
                     </td>
                     <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
+                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId"  placeholder="Auto Assigned"  >
                     </td>
                 </tr>
             </div>
@@ -274,7 +274,7 @@
                             <b>PRG_STANDARD_LENS_PRICE</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_STANDARD_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PRG_STANDARD_LENS_PRICE">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_STANDARD_LENS_PRICE" placeholder="Auto Assigned" >
                         </td>
                     </tr>
                 </div>
@@ -291,7 +291,7 @@
                             <b>STANDARD_INDEX_LENS_PRICE</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.STANDARD_INDEX_LENS_PRICE">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned" >
                         </td>
                     </tr>
                 </div>
@@ -303,7 +303,7 @@
                             <b>ORIGINAL_RX_PRICE</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.ORIGINAL_RX_PRICE">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned" >
                         </td>
                     </tr>
                 </div>
@@ -319,7 +319,7 @@
                             <b>bridge</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "bridge" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.bridge">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "bridge" placeholder="Auto Assigned">
                         </td>
                     </tr>
                 </div>
@@ -331,7 +331,7 @@
                             <b>lens_height</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_height" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_height">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_height" placeholder="Auto Assigned">
                         </td>
                     </tr>
                 </div>
@@ -343,7 +343,7 @@
                             <b>lens_width</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_width" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_width">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" placeholder="Auto Assigned">
                         </td>
                     </tr>
                 </div>
@@ -355,13 +355,13 @@
                             <b>temple</b>&nbsp;&nbsp;
                         </td>
                         <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "temple" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.temple">
+                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" placeholder="Auto Assigned" >
                         </td>
                     </tr>
                 </div>
             </div>
         <fieldset>
-                <input type="button" align="center" class="btn btn-primary"  id="button2"  value="save">
+                <input type="button" align="center" class="btn btn-primary"  id="button2" (click)="createProduct()" value="save">
                 <br>
                 <br>
                 <br>
