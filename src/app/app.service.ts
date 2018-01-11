@@ -325,4 +325,52 @@ export class AppService {
           return res.json();
       });
     }
+    receiveByLab(orderId, itemId, brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/received_by_lab/?key=' + brand +
+      '&lab_order_number=' + orderId + '&items=' + itemId),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+      return this._http.post(_path, {},  {headers: headers}).map(res => {
+        console.log('>>>>>>>>>receved by lab >>>>>>>>', res);
+          return res.json();
+      });
+    }
+    finishedProcessing(orderId, itemId, brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/lab_finished_processing/?key=' + brand +
+      '&items=' + itemId),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+      return this._http.post(_path, {},  {headers: headers}).map(res => {
+        console.log('>>>>>>>>>lab_finished_processing by lab >>>>>>>>', res);
+          return res.json();
+      });
+    }
+    receivedFromLab(orderId, itemId, brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/receive_from_lab/?key=' + brand +
+      '&items=' + itemId),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+      return this._http.post(_path, {},  {headers: headers}).map(res => {
+        console.log('>>>>>>>>>receive_from_lab >>>>>>>>', res);
+          return res.json();
+      });
+    }
+      return(orderId, itemId, brand, reason, description) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/authorize_return/?key=' + brand +
+        '&items=' + itemId + '&reason=' + reason + '&description=' + description),
+        headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+        return this._http.post(_path, {},  {headers: headers}).map(res => {
+          console.log('>>>>>>>>>receive_from_lab >>>>>>>>', res);
+            return res.json();
+        });
+    }
 }
