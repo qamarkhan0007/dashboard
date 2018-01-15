@@ -438,13 +438,23 @@
                   <option value="kmarsoptical">kmarsoptical 9</option>
                   <option value="tro">tro 13</option>
                 </select>
-                <!-- {{item.status}}
-                <div *ngIf=item.status>
-
-              </div> -->
-              <input (click)="sendToLab(item.id)" type="button" value="Send to lab" class="btn btn-lg btn-success send_to_lab"/>
+                <div [hidden]="selectedItem==item.id && (status==='lab' || status==='receiveByLab' || status==='finishedProcessing' || status==='receivedFromLab') " *ngIf="!item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
+                  <input (click)="sendToLab(item.id)" type="button" value="send to lab" class="btn btn-lg btn-success send_to_lab"/>
+                </div>
+                <div [hidden]="selectedItem==item.id && status==='receiveByLab'" *ngIf="selectedItem===item.id && status==='lab' || item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
+                  <input (click)="receiveByLab(item.id)" type="button" value="lab has received this frame" class="btn btn-lg btn-success send_to_lab"/>
+                </div>
+                <div [hidden]="selectedItem==item.id && status==='finishedProcessing'" *ngIf="selectedItem===item.id && status==='receiveByLab' || item.status.sent_to_lab_at && item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
+                  <input (click)="finishedProcessing(item.id)" type="button" value="lab is done processing order" class="btn btn-lg btn-success send_to_lab"/>
+                </div>
+                <div [hidden]="selectedItem==item.id && status==='receivedFromLab'" *ngIf="selectedItem===item.id && status==='finishedProcessing' || item.status.sent_to_lab_at && item.status.received_from_lab_at && item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
+                  <input (click)="receivedFromLab(item.id)" type="button" value="receive from lab" class="btn btn-lg btn-success send_to_lab"/>
+                </div>
+                <div [hidden]="selectedItem==item.id && status==='return'" *ngIf="selectedItem===item.id && status==='receivedFromLab' || item.status.sent_to_lab_at && item.status.received_from_lab_at && item.status.lab_finished_processing_at && item.status.received_by_lab_at">
+                  <input (click)="return(item.id)" type="button" value="Return" class="btn btn-lg btn-success send_to_lab"/>
+                </div>
               <hr>
-              <div class="container-fluid" *ngIf="!statte && itmId">
+              <div [hidden]="itmId===item.id" class="container-fluid">
                 <div class="panel-group">
                   <div class="panel panel-default">
                     <div class="panel-heading" >
@@ -917,35 +927,33 @@
         </div>
         <hr>
       </div>
+
+      <div class="row notes">
+        <h3>Internal notes</h3>
       <div class="container" *ngIf="internalNotes">
-      <div class="row" *ngFor="let notes of notes.internal_notes" >
-        <div class="col-md-1">Added:</div>
-        <div class="col-md-2">{{notes.created_at}}</div>
-        <div class="col-md-1">By</div>
-        <div class="col-md-2">{{notes.created_by}}</div>
-        <div class="col-md-5"><pre style="white-space: pre-wrap; ">{{msg}}</pre></div>
-
-        <div class="col-md-1">Not Lab</div>
-
+        <div class="row" *ngFor="let notes of internalNotes" >
+          <div class="col-md-1">Added:</div>
+          <div class="col-md-2">{{notes.created_at}}</div>
+          <div class="col-md-1">By</div>
+          <div class="col-md-2">{{notes.created_by}}</div>
+          <div class="col-md-5"><pre style="white-space: pre-wrap; ">{{msg}}</pre></div>
+          <div class="col-md-1">Not Lab</div>
+        </div>
       </div>
-      </div>
+    </div>
+
       <div class="container-fluid">
-        <div class="row">
-          <h3>Internal notes</h3>
-        </div>
-        <div id="note_list">
-        </div>
         <div class="row">
           <form id="note_form" class="form-horizontal">
             <div class="form-group">
-              <label class="control-label">Add a note</label>
+              <label class="control-label"><b>Add a note</b></label>
               <textarea class="form-control" name="message" style="width:500px; height:100px" #notes></textarea>
             </div>
             <div class="form-group">
               <label class="control-label">Show note to lab?</label>
               <input type="checkbox" name="lab_note" value="true">
             </div>
-            <button class="send_to_lab" type="button" (click)="createInternalNotes(notes.value)">Add note</button>
+            <button class="send_to_lab" type="button" (click)="createInternalNotes(notes)">Add note</button>
             <div id="note_status"></div>
           </form>
         </div>

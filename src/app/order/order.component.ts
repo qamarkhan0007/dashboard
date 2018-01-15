@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit {
     statte: any = false;
     status1: any = true;
     itm: any;
-    itmId: any = true;
+    itmId: any;
     response: any;
     getcustomerStatus: any = false;
     checkMe: any = false;
@@ -41,11 +41,13 @@ export class OrderComponent implements OnInit {
     token: any;
     order_brand: any;
     order_id: any;
-    internalNotes: any = false;
-    notes: any;
+    internalNotes: any;
+    selectedItem: any;
+    status: any;
 
     constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
       this.token = localStorage.getItem('token');
+      console.log(this.token);
     }
 
     ngOnInit() {
@@ -69,7 +71,6 @@ export class OrderComponent implements OnInit {
         this.foundOrder = this.orderData.find(x => {
             return x.order_id === orderId;
         });
-        console.log('>>>>>>>><<<this.foundOrderthis.foundOrder<<<<<', this.foundOrder);
         this.items = this.foundOrder.items.eyewear.items ;
         this.order_id = orderId;
     }
@@ -85,7 +86,6 @@ export class OrderComponent implements OnInit {
     cancelStatus(value, item_id) {
         this.itm = item_id;
         this.cancelStatuss = value;
-        console.log(this.itm, this.cancelStatuss);
         //   this.status1 = false;
         //   if (this.status1) {
         //   }else {
@@ -99,7 +99,8 @@ export class OrderComponent implements OnInit {
             this.responseData = res.data;
             if (res.data) {
                 this.statte = true;
-                this.itmId = false;
+                this.itmId = item;
+                console.log(JSON.stringify(this.responseData));
             }
         });
     }
@@ -175,16 +176,39 @@ export class OrderComponent implements OnInit {
     }
     sendToLab(itemId) {
       this._service.sendToLab(this.order_id, itemId, this.order_brand).subscribe(res => {
-        console.log(res.data);
-        console.log(res);
+        this.selectedItem = itemId;
+        this.status = 'lab';
+      });
+    }
+    receiveByLab(itemId) {
+      this._service.receiveByLab(this.order_id, itemId, this.order_brand).subscribe(res => {
+        this.selectedItem = itemId;
+        this.status = 'receiveByLab';
+      });
+    }
+    finishedProcessing(itemId) {
+      this._service.finishedProcessing(this.order_id, itemId, this.order_brand).subscribe(res => {
+        this.selectedItem = itemId;
+        this.status = 'finishedProcessing';
+      });
+    }
+    receivedFromLab(itemId) {
+      this._service.receivedFromLab(this.order_id, itemId, this.order_brand).subscribe(res => {
+        this.selectedItem = itemId;
+        this.status = 'receivedFromLab';
+      });
+    }
+    return(itemId, reason, description) {
+      this._service.return(this.order_id, itemId, this.order_brand, reason ,  description).subscribe(res => {
+        this.selectedItem = itemId;
+        this.status = 'return';
       });
     }
     createInternalNotes(notes) {
-      this._service.createInternalNotes(this.order_id, notes, this.order_brand ).subscribe(res => {
+      this._service.createInternalNotes(this.order_id, notes.value, this.order_brand ).subscribe(res => {
         if (res.data) {
-          this.notes = res.data;
-          console.log('>>>>>>this.notesthis.notesthis.notes>>>>', this.notes);
-          this.internalNotes = true;
+          this.internalNotes = res.data.internal_notes;
+          notes.value = '';
         }
       });
     }
