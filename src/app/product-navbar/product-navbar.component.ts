@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-product-navbar',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-navbar.component.css']
 })
 export class ProductNavbarComponent implements OnInit {
+    brand: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+      this.route.params.subscribe((params: Params) => {
+          this.brand = params['pro_brand'];
+          console.log('>>>>product_details>>>>>>>', this.brand);
+      });
   }
 
 }

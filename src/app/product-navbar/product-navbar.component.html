@@ -1,35 +1,35 @@
 <div>
-  <nav class="navbar navbar-expand-lg navbar-light rounded">
-    <a class="nbrand" routerLink="/home">eponym</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExample09">
-      <ul class="navbar-nav mr-auto">
-        <div class="dropdown">
-          <button class="dropbtn">Products</button>
-          <li class="dropdown-content">
-            <a routerLink='./'>List Products</a>
-            <a [routerLink]="['new']">Add new product</a>
-            <a href="orderhtk">List Product Collections</a>
-            <a href="orderhtk">Add new product</a>
-            <a href="orderhtk">Add new product Collection</a>
-          </li>
-          <router-outlet></router-outlet>
+    <nav class="navbar navbar-expand-lg navbar-light rounded">
+        <a class="nbrand" routerLink="/home">eponym</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <div class="dropdown">
+                    <button class="dropbtn">Products</button>
+                    <li class="dropdown-content">
+                        <a [routerLink]="['/home/product/'+brand]">List Products</a>
+                        <a [routerLink]="['/home/product/'+brand+'/new']">Add new product</a>
+                        <!-- <a [routerLink]="['orderhtk']">List Product Collections</a> -->
+                        <a [routerLink]="['/home/product/'+brand+'/collections']">Add new product collections</a>
+                        <!-- <a href="orderhtk">Add new product Collection</a> -->
+                    </li>
+                </div>
+                <router-outlet></router-outlet>
+                <div class="dropdown">
+                    <button class="dropbtn">LookUp Values</button>
+                    <li class="dropdown-content">
+                        <a [routerLink]="['/letterpress','classicspecs' ]">styles</a>
+                        <a [routerLink]="['/letterpress','ano' ]">Frames colors</a>
+                        <a [routerLink]="['/letterpress','billyreid' ]">Lens colors</a>
+                        <a [routerLink]="['/letterpress','jasonwu' ]">Template Map</a>
+                    </li>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="/login"><button class="button2" type="button" name="button" (click)='logout()'>logout</button></a></li>
+            </ul>
         </div>
-        <div class="dropdown">
-          <button class="dropbtn">LookUp Values</button>
-          <li class="dropdown-content">
-            <a [routerLink]="['/letterpress','classicspecs' ]">styles</a>
-            <a [routerLink]="['/letterpress','ano' ]">Frames colors</a>
-            <a [routerLink]="['/letterpress','billyreid' ]">Lens colors</a>
-            <a [routerLink]="['/letterpress','jasonwu' ]">Template Map</a>
-          </li>
-        </div>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login"><button class="button2" type="button" name="button" (click)='logout()'>logout</button></a></li>
-      </ul>
-    </div>
-  </nav>
+    </nav>
 </div>
