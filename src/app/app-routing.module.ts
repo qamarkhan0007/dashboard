@@ -15,6 +15,7 @@ import { OrderHtkComponent} from './order-htk/order-htk.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductNewComponent } from './product-new/product-new.component';
+import { ProductCollectionComponent } from './product-collection/product-collection.component';
 
 const routes: Routes = [
     {
@@ -86,13 +87,17 @@ const routes: Routes = [
                 path: '',
                 component: ProductComponent
             },
-            {
-                path: 'details/:product_id',
-                component: ProductDetailComponent
-            },
+            // {
+            //     path: 'details/:product_id',
+            //     component: ProductDetailComponent
+            // },
             {
                 path: 'new',
                 component: ProductNewComponent
+            },
+            {
+                path: 'collections',
+                component: ProductCollectionComponent
             }
         ]
     }

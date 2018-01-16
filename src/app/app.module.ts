@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AppService} from './app.service';
 import {HttpModule} from '@angular/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SelectModule} from 'angular2-select';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
+import { ProductCollectionComponent } from './product-collection/product-collection.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { ProductNavbarComponent } from './product-navbar/product-navbar.componen
     ProductComponent,
     ProductDetailComponent,
     ProductNewComponent,
-    ProductNavbarComponent
+    ProductNavbarComponent,
+    ProductCollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { ProductNavbarComponent } from './product-navbar/product-navbar.componen
     HttpModule,
     AppRoutingModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    SelectModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
