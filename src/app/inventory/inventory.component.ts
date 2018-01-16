@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import {ActivatedRoute, Params } from '@angular/router';
+import {ActivatedRoute, Params, Router } from '@angular/router';
 
 
 @Component({
@@ -14,34 +14,42 @@ export class InventoryComponent implements OnInit {
     save: any;
     aadjustInventory: any;
     token: any;
-  constructor(private route: ActivatedRoute , private service: AppService) {
+    getInventoryData: any;
+    adjustInventoryData: any;
+  constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
     this.token = localStorage.getItem('token');
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+        this.brand = params['brand'];
+        console.log('hello');
+        this.callMe();
+      });
+  }
+  callMe() {
+    this.router.events.subscribe((evt) => {
+      if (evt) {
+        location.reload();
+      }
+    });
   }
 
  getInventory(product_id) {
-     console.log('>>>>>>>>>>>>>>>0', product_id);
-     this.route.params.subscribe((params: Params) => {
-         this.brand = params['brand'];
-         this.service.getInventory(this.brand, product_id).subscribe(res => {
-             this.getInventory = res.data;
-             console.log('>>>>>>>>>>>>', this.getInventory);
-             this.responseData = 'true';
-         });
-     });
+   console.log(product_id);
+   this.service.getInventory(this.brand, product_id).subscribe(res => {
+       this.getInventoryData = res.data;
+       console.log('>>>>>>>>>>>>', this.getInventoryData);
+       this.responseData = true;
+   });
  }
 
  adjustInventory(ware, htk , tro , mars, product_id) {
-     this.route.params.subscribe((params: Params) => {
-         this.brand = params['brand'];
-         this.save = 'Saving....';
-         this.service.adjustInventory(this.brand, ware, htk , tro , mars , product_id).subscribe(res => {
-             this.adjustInventory = res.data;
-             console.log('>>>>>>>>>>>>', this.adjustInventory);
-             this.aadjustInventory = 'true';
-         });
-     });
+   this.save = 'Saving....';
+   this.service.adjustInventory(this.brand, ware, htk , tro , mars , product_id).subscribe(res => {
+       this.adjustInventoryData = res.data;
+       console.log('>>>>>>>>>>>>', this.adjustInventoryData);
+       this.aadjustInventory = true;
+   });
  }
 }
