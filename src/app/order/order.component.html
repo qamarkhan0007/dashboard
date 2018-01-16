@@ -41,7 +41,7 @@
               <li><p (click)='atLab()' class='makeMeAnchor'>At Lab</p></li>&nbsp;&nbsp;&nbsp;&nbsp;
               <li><p (click)='unshipped()' class='makeMeAnchor'>Unshipped</p></li>&nbsp;&nbsp;&nbsp;&nbsp;
             </ul>
-            <form method="POST">
+            <form method="POST" *ngIf="!shipment">
               <table class="table table-condensed table-bordered">
                 <tr>
                   <th>Order</th>
@@ -69,6 +69,42 @@
                     <td>{{item.product_id}}</td>
                     <td>{{item.lens_type}}</td>
                     <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+
+            <form name="shipForm" method="POST" *ngIf="shipment">
+              <table class="table table-condensed table-bordered">
+                <tr>
+                  <th>Order</th>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Item</th>
+                  <th>Type</th>
+                  <th>Include</th>
+                  <th></th>
+                </tr>
+                <tbody *ngFor="let order of orderData">
+                  <tr class="firstTd fnt">
+                    <td><a (click)="showMeOrder(order.order_id)" id="makeMeAnchorColor" class="makeMeAnchor">{{order.order_id}}</a></td>
+                    <td>{{order.ordered_at}}</td>
+                    <td><a (click)="getCustomer(order.customer.email)" id="makeMeAnchorColor">{{order.customer.name}}</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input (click)="ship(order.order_id, valueItem)" type="button" value="ship" class="btn btn-lg  send_to_lab"/></td>
+                  </tr>
+                  <tr class="fnt" *ngFor="let item of order.items.eyewear.items">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{item.product_id}}</td>
+                    <td>{{item.lens_type}}</td>
+                    <td *ngIf="!item.status.shipped_at"><input #Item type="checkbox" name="valueItem" value="itemid" id="selectMe"  (click)="checkShip(item.id,shipItem)" #shipItem>
+                    </td>
+                    <td *ngIf="item.status.shipped_at">shipped</td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -438,7 +474,7 @@
                   <option value="kmarsoptical">kmarsoptical 9</option>
                   <option value="tro">tro 13</option>
                 </select>
-                <div [hidden]="selectedItem==item.id && (status==='lab' || status==='receiveByLab' || status==='finishedProcessing' || status==='receivedFromLab') " *ngIf="!item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
+                <div [hidden]="selectedItem==item.id && (status==='lab' || status==='receiveByLab' || status==='finishedProcessing' || status==='receivedFromLab') " *ngIf="!item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at && !item.status.cancelled_at">
                   <input (click)="sendToLab(item.id)" type="button" value="send to lab" class="btn btn-lg btn-success send_to_lab"/>
                 </div>
                 <div [hidden]="selectedItem==item.id && status==='receiveByLab'" *ngIf="selectedItem===item.id && status==='lab' || item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at">
@@ -458,7 +494,7 @@
                 <div class="panel-group">
                   <div class="panel panel-default">
                     <div class="panel-heading" >
-                      <h4 class="panel-title">
+                      <h4 class="panel-title" *ngIf="!item.status.cancelled_at">
                         <a data-toggle="collapse" (click)="cancelStatus('cancel', item.id)">Cancellation</a>
                       </h4>
                     </div>
