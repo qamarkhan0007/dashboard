@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <br>
-<div class="container" *ngIf='token'>
+<div class="container" *ngIf='token && state'>
     <div class="row">
         <div class="col-xs-18 col-md-12">
             <h1>{{brand}}</h1><br>show
@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody *ngFor="let user of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
-                        <td>{{user.first_name}}</td>
+                        <td id="user">{{user.first_name}}</td>
                         <td>{{user.email}}</td>
             </tbody>
             </table>

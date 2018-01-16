@@ -34,7 +34,7 @@
                     <td><ng-container *ngIf="product.incomplete == 0">
                         <td>false</td>
                     </ng-container></td>
-                    <td id=assests>assests</td>
+                    <td id=assests><a [routerLink]="['./assests',product.product_id]">assests</a></td>
                 </tr>
             </tbody>
     </table>

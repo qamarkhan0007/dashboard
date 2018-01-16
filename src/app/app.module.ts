@@ -26,6 +26,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
 import { ProductCollectionComponent } from './product-collection/product-collection.component';
+import { ProductAssestComponent } from './product-assest/product-assest.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ProductCollectionComponent } from './product-collection/product-collect
     ProductDetailComponent,
     ProductNewComponent,
     ProductNavbarComponent,
-    ProductCollectionComponent
+    ProductCollectionComponent,
+    ProductAssestComponent
   ],
   imports: [
     BrowserModule,
