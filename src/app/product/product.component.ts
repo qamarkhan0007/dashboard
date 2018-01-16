@@ -21,7 +21,6 @@ productData: any;
       this.getProducts();
   }
   getProducts() {
-      console.log('>>>>>>>>>');
       this.service.getProducts(this.brand).subscribe(res => {
           this.productData = res.data;
       });

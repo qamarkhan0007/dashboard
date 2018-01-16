@@ -69,3 +69,11 @@ bottom:0;
   border: #2E86C1;
   color: #2E86C1;
 }
+#user:hover{
+    cursor:pointer;
+    color:#154360;
+    text-decoration:underline;
+}
+#user{
+    color:#5499C7;
+}
