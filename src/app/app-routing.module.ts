@@ -17,6 +17,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductCollectionComponent } from './product-collection/product-collection.component';
 import { ProductAssestComponent } from './product-assest/product-assest.component';
+import { StoreUpdateComponent } from './store-update/store-update.component';
 
 const routes: Routes = [
     {
@@ -37,7 +38,16 @@ const routes: Routes = [
     },
     {
         path: 'store/:brand',
-        component: StoreLocationComponent
+        children: [
+            {
+                path: '',
+                component: StoreLocationComponent
+            },
+            {
+                path: ':kiosk_id',
+                component: StoreUpdateComponent
+            }
+        ]
     },
     {
         path: 'discount/:brand',
@@ -63,15 +73,15 @@ const routes: Routes = [
     {
         path: 'orders/:group',
         children: [
-          {
-            path: '',
-            component: OrderComponent
-          },
-        {
-          path: ':order_brand/processing',
-          component: OrderComponent
-        }
-      ]
+            {
+                path: '',
+                component: OrderComponent
+            },
+            {
+                path: ':order_brand/processing',
+                component: OrderComponent
+            }
+        ]
     },
     {
         path: 'sendErp/:brand',
