@@ -27,13 +27,14 @@ export class SendErpComponent implements OnInit {
       this._service.ErpSend(select.value, perform.value, payload.value, this.brand).subscribe(res => {
           this.erpData = res.data;
           this.distat = true;
+          window.scroll(0, 0);
       });
       payload.value = '';
       perform.value = '';
       that = this;
       setTimeout(function () {
         that.distat = false;
-      }, 1000);
+    }, 2000);
       return false;
   }
   }
