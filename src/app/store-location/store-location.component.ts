@@ -13,10 +13,11 @@ export class StoreLocationComponent implements OnInit {
     statusform: any;
     storeData: any;
     token: any;
+    status: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
     constructor(private service: AppService , private route: ActivatedRoute) {
-      this.token = localStorage.getItem('token');
+        this.token = localStorage.getItem('token');
     }
 
     ngOnInit() {
@@ -40,7 +41,6 @@ export class StoreLocationComponent implements OnInit {
     }
     createStore(kiosk_id, kiosk_name, address1, address2, city, state, zip, country, phone, authorize ) {
         this.route.params.subscribe((params: Params) => {
-            console.log('>>>>>>authorizeauthorize>>>>>>', authorize.checked);
             this.brand = params['brand'];
             const obj = {
                 'name': kiosk_name,
@@ -59,10 +59,13 @@ export class StoreLocationComponent implements OnInit {
                 'is_cc_authorized': authorize.checked
             };
             this.service.createStore(obj, this.brand)
-                .subscribe(res => {
-                    this.storeData = res.data;
-                });
+            .subscribe(res => {
+                this.storeData = res.data;
             });
-
-        }
+        });
     }
+    updateStore(koisk_id) {
+        console.log('>>>>>>>>>>>');
+        this.status = true;
+    }
+}
