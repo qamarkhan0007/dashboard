@@ -16,14 +16,12 @@ productData: any;
   ngOnInit() {
       this.route.params.subscribe((params: Params) => {
           this.brand = params['pro_brand'];
-          console.log('>>>>>>>>', this.brand);
       });
       this.getProducts();
   }
   getProducts() {
       this.service.getProducts(this.brand).subscribe(res => {
           this.productData = res.data;
-          console.log('>>>>>>>>>>>>', JSON.stringify(this.productData));
       });
   }
 }

@@ -18,6 +18,10 @@ import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductCollectionComponent } from './product-collection/product-collection.component';
 import { ProductAssestComponent } from './product-assest/product-assest.component';
 import { StoreUpdateComponent } from './store-update/store-update.component';
+import { LookupstylesComponent } from './lookupComponent/lookupstyles/lookupstyles.component';
+import { LookupFramesComponent } from './lookupComponent/lookup-frames/lookup-frames.component';
+import { LookupLensComponent } from './lookupComponent/lookup-lens/lookup-lens.component';
+import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/lookup-templates.component';
 
 const routes: Routes = [
     {
@@ -113,9 +117,25 @@ const routes: Routes = [
             {
                 path: 'collections',
                 component: ProductCollectionComponent
+            },
+            {
+                path: 'lookup/styles',
+                component: LookupstylesComponent
+            },
+            {
+                path: 'lookup/frames',
+                component: LookupFramesComponent
+            },
+            {
+                path: 'lookup/colors',
+                component: LookupLensComponent
+            },
+            {
+                path: 'lookup/maps',
+                component: LookupTemplatesComponent
             }
         ]
-    }
+    },
 ];
 
 @NgModule({
