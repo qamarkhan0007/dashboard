@@ -77,3 +77,17 @@ bottom:0;
 #user{
     color:#5499C7;
 }
+.makeMeAnchor{
+    color:#5499C7;
+}
+.button2 {
+    background-color: #2E86C1;
+    color: #D6EAF8;
+    border: 1px solid #2E86C1;
+    border-radius: .2em;
+}
+
+.button2:hover {
+    background-color: #2E86C1;
+    color: white;
+}

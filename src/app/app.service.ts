@@ -28,6 +28,17 @@ export class AppService {
       return res.json();
     });
   }
+  showUser(email, brand) {
+    brand = brand + '_dev';
+    this.dataValue = localStorage.getItem('token');
+    this.token = 'Basic ' + btoa('token:' + this.dataValue);
+    const _path: string = ('http://localhost:3000/3.0/users/' + email + '?key=' + brand),
+    headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+    return this._http.get(_path, {headers: headers}).map(res => {
+      console.log(res);
+      return res.json();
+    });
+  }
 
   getStores(brand) {
     brand = brand + '_dev';
@@ -452,5 +463,15 @@ getAssests(brand) {
     return this._http.get(_path, {headers: headers}).map(res => {
         return res.json();
     });
+}
+resetPassword(email, brand) {
+  brand = brand + '_dev';
+  this.dataValue = localStorage.getItem('token');
+  this.token = 'Basic ' + btoa('token:' + this.dataValue);
+  const _path: string = ('http://localhost:3000/3.0/users/' + email + '/forgot_password?key=' + brand),
+  headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+  return this._http.post(_path, {}, {headers: headers}).map(res => {
+      return res.json();
+  });
 }
 }

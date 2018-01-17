@@ -63,6 +63,7 @@ export class DiscountComponent implements OnInit {
     }
 
     createDiscount(discount_code: any, discount_type: any , amount: any, quantity: any, discount_reason: any, date: any) {
+        let that;
         this.route.params.subscribe((params: Params) => {
             this.brand = params['brand'];
             const obj = {
@@ -76,6 +77,7 @@ export class DiscountComponent implements OnInit {
             this.service.createDiscount(obj, this.brand)
             .subscribe(res => {
                 this.msg = 'Created successfully';
+                this.getDiscounts();
             }, err => {
                 err._body = JSON.parse(err._body);
                 this.msg = err._body.data.message;
@@ -87,6 +89,11 @@ export class DiscountComponent implements OnInit {
             discount_reason.value = '';
             date.value = '';
         });
+        window.scroll(0, 0);
+        that = this;
+        setTimeout(function () {
+          that.msg = null;
+        }, 2000);
     }
     clickedDiscount(discount_name) {
         this.route.params.subscribe((params: Params) => {
@@ -102,7 +109,9 @@ export class DiscountComponent implements OnInit {
             this.brand = params['brand'];
             this.service.updateDiscount(discount_name, discount_type, amount, quantity, discount_reason, expiration_date, this.brand)
             .subscribe(res => {
-                location.reload();
+              this.data = this.getDiscounts();
+              console.log(res.data);
+              this.discountCode = false;
             });
         });
     }
