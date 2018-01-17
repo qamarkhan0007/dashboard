@@ -23,6 +23,7 @@ productData: any;
   getProducts() {
       this.service.getProducts(this.brand).subscribe(res => {
           this.productData = res.data;
+          console.log('>>>>>>>>>>>>', JSON.stringify(this.productData));
       });
   }
 }

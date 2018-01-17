@@ -28,6 +28,10 @@ import { ProductNavbarComponent } from './product-navbar/product-navbar.componen
 import { ProductCollectionComponent } from './product-collection/product-collection.component';
 import { ProductAssestComponent } from './product-assest/product-assest.component';
 import { StoreUpdateComponent } from './store-update/store-update.component';
+import { LookupstylesComponent } from './lookupComponent/lookupstyles/lookupstyles.component';
+import { LookupFramesComponent } from './lookupComponent/lookup-frames/lookup-frames.component';
+import { LookupLensComponent } from './lookupComponent/lookup-lens/lookup-lens.component';
+import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/lookup-templates.component';
 
 
 @NgModule({
@@ -50,7 +54,11 @@ import { StoreUpdateComponent } from './store-update/store-update.component';
     ProductNavbarComponent,
     ProductCollectionComponent,
     ProductAssestComponent,
-    StoreUpdateComponent
+    StoreUpdateComponent,
+    LookupstylesComponent,
+    LookupFramesComponent,
+    LookupLensComponent,
+    LookupTemplatesComponent
   ],
   imports: [
     BrowserModule,
