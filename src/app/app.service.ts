@@ -9,25 +9,36 @@ export class AppService {
     token: any;
     response: any;
 
-    constructor(private _http: Http) { }
-    authLogin(data: any) {
-        const _path: string = ('http://localhost:3000/3.0/dashboard/users/auth?key=DASHBOARD'),
-        body = JSON.stringify({'email': (data.email).toLowerCase(), 'password': data.password}),
-        headers = new Headers({'Content-Type': 'application/json'}),
-        options = new RequestOptions({headers: headers});
-        return this._http.post(_path, body, options).map(res => {
-            return res.json();
-        });
-    }
-    getUser(brand) {
-        brand = brand + '_dev';
-        const _path: string = ('http://localhost:3000/3.0/users?key=' + brand),
-        headers = new Headers({'Content-Type': 'application/json'}),
-        options = new RequestOptions({headers: headers});
-        return this._http.get(_path, options).map(res => {
-            return res.json();
-        });
-    }
+  constructor(private _http: Http) { }
+  authLogin(data: any) {
+    const _path: string = ('http://localhost:3000/3.0/dashboard/users/auth?key=DASHBOARD'),
+    body = JSON.stringify({'email': (data.email).toLowerCase(), 'password': data.password}),
+    headers = new Headers({'Content-Type': 'application/json'}),
+    options = new RequestOptions({headers: headers});
+    return this._http.post(_path, body, options).map(res => {
+      return res.json();
+    });
+  }
+  getUser(brand) {
+    brand = brand + '_dev';
+    const _path: string = ('http://localhost:3000/3.0/users?key=' + brand),
+    headers = new Headers({'Content-Type': 'application/json'}),
+    options = new RequestOptions({headers: headers});
+    return this._http.get(_path, options).map(res => {
+      return res.json();
+    });
+  }
+  showUser(email, brand) {
+    brand = brand + '_dev';
+    this.dataValue = localStorage.getItem('token');
+    this.token = 'Basic ' + btoa('token:' + this.dataValue);
+    const _path: string = ('http://localhost:3000/3.0/users/' + email + '?key=' + brand),
+    headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+    return this._http.get(_path, {headers: headers}).map(res => {
+      console.log(res);
+      return res.json();
+    });
+  }
 
     getStores(brand) {
         brand = brand + '_dev';
@@ -497,5 +508,15 @@ export class AppService {
         return this._http.put(_path,  body , {headers: headers}).map(res => {
             return res.json();
         });
+    }
+    resetPassword(email, brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/users/' + email + '/forgot_password?key=' + brand),
+      headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
+      return this._http.post(_path, {}, {headers: headers}).map(res => {
+          return res.json();
+      });
     }
 }
