@@ -22,8 +22,11 @@ export class UserComponent implements OnInit {
     userEmail: any;
     response: any;
     saved: any;
+    order: any = 'first_name';
+    reverse: any = false;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
+    private arrLenght: any;
 
     constructor(private service: AppService , private route: ActivatedRoute, private router: Router) {
         this.token = localStorage.getItem('token');
@@ -84,4 +87,14 @@ export class UserComponent implements OnInit {
         }, 2000);
       });
     }
+    countMe(count) {
+        this.arrLenght = count;
+    }
+    setOrder(value: string) {
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }
+    this.order = value;
+    console.log(this.order);
+  }
 }

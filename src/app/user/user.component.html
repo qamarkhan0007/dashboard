@@ -14,17 +14,18 @@
       <table class="table table-bordered" id="tableBorder">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
+            <th [class.active]="order === 'first_name'" (click)="setOrder('first_name')">Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+            <th [class.active]="order === 'email'" (click)="setOrder('email')">Email<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
           </tr>
         </thead>
-        <tbody *ngFor="let user of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+        <tr *ngFor="let user of data | orderBy: order :reverse:'case-insensitive' | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue} count as count">
           <td id="user" (click)="showUser(user.email)">{{user.first_name}}</td>
+          <p *ngIf="countMe(count)"></p>
           <td>{{user.email}}</td>
-        </tbody>
+      </tr>
       </table>
       <br>
-      show {{(CurrentPageValue * selectedValue)-selectedValue}} to {{CurrentPageValue * selectedValue + selectedValue -selectedValue}} of {{data.length}} entries
+      show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data.length}} entries
       <div class="formatting">
         <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
       </div>

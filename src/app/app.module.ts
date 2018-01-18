@@ -5,7 +5,7 @@ import {AppService} from './app.service';
 import {HttpModule} from '@angular/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'angular2-select';
-
+import { OrderModule } from 'ngx-order-pipe';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -68,7 +68,8 @@ import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/loo
     AppRoutingModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    SelectModule
+    SelectModule,
+    OrderModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
