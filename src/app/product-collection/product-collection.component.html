@@ -1,3 +1,26 @@
-<p>
-  product-collection works!
-</p>
+<app-product-navbar></app-product-navbar>
+<br>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-18 col-sm-12">
+    <table class="table table-bordered custom-tbl">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Slug</th>
+        </tr>
+
+      </thead>
+      <tbody *ngFor="let collection of collectionData">
+        <td  id="formedAt">
+          {{collection.name}}
+        </td>
+        <td>
+          {{collection.slug}}
+        </td>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</div>

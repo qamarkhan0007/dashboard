@@ -15,7 +15,7 @@
             <tbody *ngFor="let product of productData | filter:filter">
                 <tr>
                     <td>{{product.name}}</td>
-                    <td id=assests><a [routerLink]="['./',product.product_id ]">{{product.product_id}}</a></td>
+                    <td><a [routerLink]="['./',product.product_id ]">{{product.product_id}}</a></td>
                     <td>{{product.color}}</td>
                     <td><ng-container *ngIf="product.product_gender == 1">
                         <td>Mens's</td>

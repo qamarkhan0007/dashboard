@@ -1,3 +1,22 @@
-<p>
-  product-assest works!
-</p>
+<app-product-navbar></app-product-navbar>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-18 col-sm-12">
+      <table class="table table-bordered custom-tbl">
+        <thead>
+          <tr>
+            <th>Assests</th>
+          </tr>
+
+        </thead>
+        <tbody *ngFor="let assesst of assestsData">
+          <td  id="formedAt">
+            {{assesst}}
+          </td>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -39,8 +39,9 @@
                         <div class="select2-container ng-valid ng-dirty" id="s2id_frame_color">
                         </div>
                         <select id="frame_color" [(ngModel)]="Active">
-                            <option [ngValue]="1" selected= selected>Active</option>
-                            <option [ngValue]="0" >In Active</option>
+                          <input type="checkbox" checked data-toggle="toggle">
+                            <option [ngValue]="1" name="active" selected= selected>Active</option>
+                            <option [ngValue]="0"  name="inactive">In Active</option>
                         </select>
                     </td>
                     <td>

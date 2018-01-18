@@ -16,8 +16,8 @@ productData: any;
   ngOnInit() {
       this.route.params.subscribe((params: Params) => {
           this.brand = params['pro_brand'];
+          this.getProducts();
       });
-      this.getProducts();
   }
   getProducts() {
       this.service.getProducts(this.brand).subscribe(res => {

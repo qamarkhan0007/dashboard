@@ -15,27 +15,43 @@ export class HomeComponent implements OnInit {
   upcData: any;
   reportUpc: any = false;
   msg: any;
+  file: any;
   constructor(private route: Router , private _service: AppService) {
-      this.token = localStorage.getItem('token');
+    this.token = localStorage.getItem('token');
   }
 
   ngOnInit() {
-      this.getAllbatches();
+    this.getAllbatches();
   }
   createUpc(batchName, file) {
-      this._service.createUpc(batchName, file).subscribe(res => {
-      });
+    console.log('>>>>>>>>>>>>>crete', batchName);
+    console.log('>>>>>>>>>>>>>crete', file);
+    this._service.createUpc(batchName, file).subscribe(res => {
+      console.log('>>>>>>>>>>>>', res.data);
+      if (res.data === 200) {
+        this.show = false;
+      }
+    });
   }
   getAllbatches() {
-      this._service.getAllbatches()
-      .subscribe(res => {
-          this.upcData = res.data;
-      });
+    this._service.getAllbatches()
+    .subscribe(res => {
+      this.upcData = res.data;
+      console.log('>>>>>>>>>>>.batch name', this.upcData);
+    });
   }
-  getReportUpc() {
-      this.reportUpc = true;
-      this.msg = 'Ok';
-      this.hide = false;
+  getReportUpc(batch) {
+    let that;
+    this._service.getReport(batch).subscribe(res => {
+        this.reportUpc = true;
+        this.msg = 'Ok';
+        this.hide = false;
+    });
+    that = this;
+    setTimeout(function () {
+      that.reportUpc = false;
+  }, 2000);
+    return false;
   }
 
 
