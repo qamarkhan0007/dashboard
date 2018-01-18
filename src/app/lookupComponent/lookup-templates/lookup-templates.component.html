@@ -1,3 +1,70 @@
-<p>
-  lookup-templates works!
-</p>
+<app-product-navbar></app-product-navbar><br>
+<br>
+<br>
+<div class="container">
+    <div>&nbsp;</div>
+    <form class="ng-valid ng-dirty">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search" ></i></div>
+                <input type="text" class="form-control ng-valid ng-dirty" name="search" placeholder="Filter" [(ngModel)]="filter">
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+                <tr>
+                    <td width="15%">
+                        <a ng-click="sortType = 'id'; sortReverse = !sortReverse">ID</a>
+                        <span ng-show="sortType == 'id' &amp;&amp; !sortReverse" class="fa fa-caret-down ng-hide"></span>
+                        <span ng-show="sortType == 'id' &amp;&amp; sortReverse" class="fa fa-caret-up ng-hide"></span>
+                    </td>
+                    <td width="60%">
+                        <a ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</a>
+                        <span ng-show="sortType == 'name' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' &amp;&amp; sortReverse" class="fa fa-caret-up ng-hide"></span>
+                    </td>
+                    <td width="15%">Active</td>
+                    <td width="10%">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" readonly="" placeholder="New"></td>
+                    <td>
+                        <input type="text" class="form-control ng-dirty ng-invalid ng-invalid-required" name="name" [(ngModel)]="name" required="">
+                    </td>
+                    <td>
+                        <div class="select2-container ng-valid ng-dirty" id="s2id_frame_color">
+                        </div>
+                        <select id="frame_color" [(ngModel)]="Active">
+                            <option [ngValue]="1" selected= selected>Active</option>
+                            <option [ngValue]="0" >In Active</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary button2" (click)="createTemplates(name, Active)">Add</button>
+                    </td>
+                </tr>
+                <tr *ngFor = "let templates of TemplateData | filter:filter">
+                    <td><input type="text" class="form-control"  [(ngModel)]="templates.id" readonly="" ></td>
+                    <td>
+                        <input type="text" class="form-control ng-dirty ng-invalid ng-invalid-required" [(ngModel)]="templates.name" required="">
+                    </td>
+                    <td>
+                        <div class="select2-container ng-valid ng-dirty" id="s2id_frame_color" >
+                        </div>
+                        <select id="frame_color" name="active_flag" [(ngModel)]="templates.active_flag">
+                            <option [ngValue]="1" se>Active</option>
+                            <option [ngValue]="0">In Active</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary button2" (click)="updateTemplate(templates.id, templates.name, templates.active_flag)">update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

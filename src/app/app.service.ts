@@ -35,7 +35,6 @@ export class AppService {
     const _path: string = ('http://localhost:3000/3.0/users/' + email + '?key=' + brand),
     headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
     return this._http.get(_path, {headers: headers}).map(res => {
-      console.log(res);
       return res.json();
     });
   }
@@ -293,11 +292,9 @@ export class AppService {
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
-        console.log('>>>>>>>>>>>', this.token);
         const _path: string = ('http://localhost:3000/3.0/products/?key=' + brand),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.get(_path, {headers: headers}).map(res => {
-            console.log('>>>>>>>>>>>res products >>>>>>>>>>>>', res);
             return res.json();
         });
     }
@@ -305,16 +302,13 @@ export class AppService {
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
-        console.log('>>>>>>>>>>>', this.token);
         const _path: string = ('http://localhost:3000/3.0/products/?key=' + brand + '&product_id=' + product_id),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.get(_path, {headers: headers}).map(res => {
-            console.log('>>>>>>>>>>>>>', res);
             return res.json();
         });
     }
     sendToLab(orderId, itemId, brand) {
-        console.log(orderId, itemId, brand);
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
@@ -344,7 +338,6 @@ export class AppService {
         '&lab_order_number=' + orderId + '&items=' + itemId),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.post(_path, {},  {headers: headers}).map(res => {
-            console.log('>>>>>>>>>receved by lab >>>>>>>>', res);
             return res.json();
         });
     }
@@ -356,7 +349,6 @@ export class AppService {
         '&items=' + itemId),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.post(_path, {},  {headers: headers}).map(res => {
-            console.log('>>>>>>>>>lab_finished_processing by lab >>>>>>>>', res);
             return res.json();
         });
     }
@@ -368,7 +360,6 @@ export class AppService {
         '&items=' + itemId),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.post(_path, {},  {headers: headers}).map(res => {
-            console.log('>>>>>>>>>receive_from_lab >>>>>>>>', res);
             return res.json();
         });
     }
@@ -380,7 +371,6 @@ export class AppService {
         '&items=' + itemId + '&reason=' + reason + '&description=' + description),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
         return this._http.post(_path, {},  {headers: headers}).map(res => {
-            console.log('>>>>>>>>>receive_from_lab >>>>>>>>', res);
             return res.json();
         });
     }
@@ -391,9 +381,7 @@ export class AppService {
         const _path: string = ('http://localhost:3000/3.0/orders/' + orderId + '/eyewear/ship/?key=' + brand),
         body: any = {'items': itemId, 'courier': 'USPS'},
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
-        console.log('>>>>>bodybody>>>>>>', JSON.stringify(body));
         return this._http.post(_path, body,  {headers: headers}).map(res => {
-            console.log('>>>>>>>>>receive_from_lab >>>>>>>>', res);
             return res.json();
         });
     }
@@ -479,7 +467,6 @@ export class AppService {
         const _path: string = ('http://localhost:3000/3.0/products/update_inventory?key=' + brand),
         body: any = {'overwrite': true, 'file': file},
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token});
-        console.log('>>>>>>>>>>>>body', body);
         return this._http.put(_path, body,  {headers: headers}).map(res => {
             return res.json();
         });
@@ -496,7 +483,6 @@ export class AppService {
         });
     }
     updateData(data, brand) {
-        console.log('>>>>>>>>', data);
         brand = brand + '_dev';
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
@@ -504,7 +490,6 @@ export class AppService {
         body: any = data,
         headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
         options = new RequestOptions({headers: headers});
-        console.log('>>>>>>>>>>>body', body);
         return this._http.put(_path,  body , {headers: headers}).map(res => {
             return res.json();
         });
@@ -518,5 +503,106 @@ export class AppService {
       return this._http.post(_path, {}, {headers: headers}).map(res => {
           return res.json();
       });
+    }
+
+    createFrameColor(brand, active) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/frame_colors' + '?key=' + brand),
+        body: any = active,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.post(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    updateFrame(brand, data, id) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/frame_colors/' + id + '?key=' + brand),
+        body: any = data,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.put(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+
+    }
+    createstyles(brand, active) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/styles' + '?key=' + brand),
+        body: any = active,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.post(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    updateStyle(brand, data, id) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/styles/' + id + '?key=' + brand),
+        body: any = data,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.put(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+
+    }
+    createLensColor(brand, active) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/lens_colors' + '?key=' + brand),
+        body: any = active,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.post(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    updateLens(brand, data, id) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/lens_colors/' + id + '?key=' + brand),
+        body: any = data,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.put(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+
+    }
+    createTemplates(brand, active) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/template_map' + '?key=' + brand),
+        body: any = active,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.post(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
+    updateTemplateMap(brand, data, id) {
+        brand = brand + '_dev';
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/lookup/template_map/' + id + '?key=' + brand),
+        body: any = data,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.put(_path,  body , {headers: headers}).map(res => {
+            return res.json();
+        });
+
     }
 }
