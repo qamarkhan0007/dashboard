@@ -103,10 +103,6 @@ const routes: Routes = [
                 component: ProductComponent
             },
             {
-                path: ':product_id',
-                component: ProductDetailComponent
-            },
-            {
                 path: 'new',
                 component: ProductNewComponent
             },
@@ -133,6 +129,10 @@ const routes: Routes = [
             {
                 path: 'lookup/maps',
                 component: LookupTemplatesComponent
+            },
+            {
+              path: ':product_id',
+              component: ProductDetailComponent
             }
         ]
     },

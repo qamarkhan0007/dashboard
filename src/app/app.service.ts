@@ -278,12 +278,13 @@ export class AppService {
     createUpc(batchName, file) {
         this.dataValue = localStorage.getItem('token');
         this.token = 'Basic ' + btoa('token:' + this.dataValue);
-        const _path: string = ('http://localhost:3000/3.0/dashboard/upc_codes?key=DASHBOARD'),
+        const _path: string = ('http://localhost:3000/3.0/upc_codes?key=DASHBOARD'),
         headers = new Headers({'Content-Type': 'application/json', 'Authorization': this.token}),
         body: any = {
-            'batch_names': batchName ,
-            'file': file
+            'batch_name': batchName ,
+            'file':  file
         };
+        console.log('>>>>>>>>>>', JSON.stringify(body));
         return this._http.post(_path, body, {headers: headers}).map(res => {
             return res.json();
         });
@@ -603,6 +604,39 @@ export class AppService {
         return this._http.put(_path,  body , {headers: headers}).map(res => {
             return res.json();
         });
-
+    }
+    updateProduct(brand, data, product_id) {
+      console.log('>>>>>>>>product_id', product_id);
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/products/' + product_id + '/?key=' + brand),
+      body: any = data,
+      headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+      options = new RequestOptions({headers: headers});
+      return this._http.post(_path,  body , {headers: headers}).map(res => {
+          return res.json();
+      });
+    }
+    getReport(batch) {
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/reports/upc_codes/?key=classicspecs_dev&batch_name' + batch),
+      headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+      options = new RequestOptions({headers: headers});
+      return this._http.get(_path, {headers: headers}).map(res => {
+          return res.json();
+      });
+    }
+    getCollections(brand) {
+      brand = brand + '_dev';
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/products/collections' + '/?key=' + brand),
+      headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+      options = new RequestOptions({headers: headers});
+      return this._http.get(_path, {headers: headers}).map(res => {
+          return res.json();
+      });
     }
 }

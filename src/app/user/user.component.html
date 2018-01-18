@@ -18,7 +18,7 @@
             <th>Email</th>
           </tr>
         </thead>
-        <tbody *ngFor="let user of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+        <tbody *ngFor="let user of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue }">
           <td id="user" (click)="showUser(user.email)">{{user.first_name}}</td>
           <td>{{user.email}}</td>
         </tbody>

@@ -52,20 +52,20 @@
                         <div *ngIf ="show" id="form1" class="pop">
                             <form class="form-inline" id="upload_upc_codes" method="POST" action="/upc_codes" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="batchname" class="form-label" #batch_name>Batch Name
+                                    <label for="batchname" class="form-label">Batch Name
                                     </label>&nbsp;
                                     <div>
-                                        <input type="text" name="batchname" class="form-control">
+                                        <input type="text" name="batchname" class="form-control" #batch_name>
                                     </div>
                                 </div>
                                 <br><br>
 
                                 <div class="form-group">
-                                    <label for="available_upc_codes" class="form-label" #file>Select file
+                                    <label for="available_upc_codes" class="form-label" >Select file
                                     </label>&nbsp;&nbsp;
-                                    <input type="file" class="file" name="available_upc_codes">
+                                    <input type="file" class="file" name="available_upc_codes"  #file>
                                 </div>
-                                <button type="submit" value="Save" class="btn btn-primary btn-sm" style="float: right;margin-right: 10px" (onclick)="createUpc(batch_name,file)">Upload</button>
+                                <button type="submit" value="Save" class="btn btn-primary btn-sm" style="float: right;margin-right: 10px" (click)="createUpc(batch_name.value,file.value)">Upload</button>
                             </form>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <div *ngIf ="hide" id="form2" class="pop">
                             <form class="form-inline" method="POST" id="email_upc_codes" action="/reports/email_upc_codes">
                                 <div class="form-group">
-                                    <label for="reportbatchname" class="form-label">Batch Name
+                                    <label #batch for="reportbatchname" class="form-label">Batch Name
                                     </label>&nbsp;&nbsp;&nbsp;
                                     <div>
                                         <select name="reportbatchname" class="custom-select">
@@ -84,7 +84,7 @@
                                         </select>
                                     </div>
                                 </div>&nbsp;&nbsp;
-                                <button type="submit" value="Save" class="btn btn-primary btn-sm" style="float: right;margin-right: 10px" (click)="getReportUpc()">Get Report</button>
+                                <button type="submit" value="Save" class="btn btn-primary btn-sm" style="float: right;margin-right: 10px" (click)="getReportUpc(batch)">Get Report</button>
                             </form>
                         </div>
                     </div>

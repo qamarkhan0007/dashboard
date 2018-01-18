@@ -1,7 +1,7 @@
 <app-product-navbar></app-product-navbar>
 <br>
 <div class="container" *ngIf="showProd">
-  <form class="form-horizontal ng-scope ng-valid ng-dirty" role="form">
+  <form class="form-horizontal ng-scope ng-valid ng-dirty" role="form" #form="ngForm">
     <div class="form-group">
       <div class="col-sm-10">
         <tr>
@@ -92,10 +92,10 @@
           </td>
           <td>
             <ng-container *ngIf="productById.product_gender == 1">
-              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Men's">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "gender" placeholder="Auto Assigned"  value="Men's" [(ngModel)]="gender">
             </ng-container>
             <ng-container *ngIf="productById.product_gender == 2">
-              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Women's">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "gender" placeholder="Auto Assigned"   value="Women's" [(ngModel)]="gender">
             </ng-container>
           </td>
         </tr>
@@ -137,7 +137,7 @@
             <label ><b>Assests group</b></label>
           </td>
           <td>
-            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "assestgroup" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
           </td>
         </tr>
       </div>
@@ -163,7 +163,7 @@
             <label ><b>Social Id</b></label>
           </td>
           <td>
-            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "social_id" placeholder="Auto Assigned"  [(ngModel)]="productById.social_id">
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "social_id" placeholder="Auto Assigned"  [(ngModel)]="productById.social_id">
           </td>
         </tr>
       </div>
@@ -175,7 +175,7 @@
             <label ><b>Upc code</b></label>
           </td>
           <td>
-            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "upc_codes" placeholder="Auto Assigned"  [(ngModel)]="productById.upc_codes">
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "upc_codes" placeholder="Auto Assigned"  [(ngModel)]="productById.upc_codes">
           </td>
         </tr>
       </div>
@@ -370,8 +370,8 @@
       </div>
     </div>
     <div>
-      <input type="button" align="right" class="btn btn-primary pull-right button2"  id="button2"  value="save">
-      <input type="button" align="right" class="btn btn-primary pull-right button2"  id="button2"  value="saveAll">
+      <input type="button" align="right" class="btn btn-primary pull-right button2" (click)="updateProduct(form.value)" id="button2"  value="save">
+      <input type="button" align="right" class="btn btn-primary pull-right button2"  (click)="updateProduct(form.value)" id="button2"  value="saveAll">
       <br>
       <br>
       <br>
@@ -383,19 +383,19 @@
   </form>
 </div>
 <!-- <div class="modal-dialog" role="document">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h4 class="modal-title" id="myModalLabel">Assign New UPC Code</h4>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-         </div>
-         <div class="modal-body">
-          <div style="padding-left: 10%;padding-right: 10%;">
-            <input type="text" class="form-control row ng-valid ng-dirty" id="upcModalc_desc" placeholder="Additional Description" ng-model="product.upc_desc">
-          </div>
-          </div>
-         <div class="modal-footer" style="padding-right: 10%;">
-           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-           <button type="button" class="btn btn-primary" ng-click="assignUpcCode()" data-dismiss="modal">Submit</button>
-         </div>
-       </div>
-     </div> -->
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">Assign New UPC Code</h4>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body">
+<div style="padding-left: 10%;padding-right: 10%;">
+<input type="text" class="form-control row ng-valid ng-dirty" id="upcModalc_desc" placeholder="Additional Description" ng-model="product.upc_desc">
+</div>
+</div>
+<div class="modal-footer" style="padding-right: 10%;">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary" ng-click="assignUpcCode()" data-dismiss="modal">Submit</button>
+</div>
+</div>
+</div> -->
