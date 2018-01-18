@@ -12,6 +12,7 @@ export class ProductDetailComponent implements OnInit {
     brand: any;
     product_id: any;
     productById: any;
+    showProd: any = false;
     constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
 
      }
@@ -27,8 +28,11 @@ export class ProductDetailComponent implements OnInit {
         this.service.getProductsById(this.brand, this.product_id).subscribe(res => {
             if (res.data) {
                 this.productById = res.data[0];
-                console.log('>>>>>>>>>>>', this.productById);
+                this.showProd = true;
             }
         });
+    }
+    addUpc() {
+      alert('This API is not working ...');
     }
 }

@@ -1,376 +1,401 @@
 <app-product-navbar></app-product-navbar>
 <br>
-<div class="container">
-    <form class="form-horizontal ng-scope ng-valid ng-dirty" role="form">
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Product ID</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name="product_id"  readonly="true" placeholder="Auto Assigned" [(ngModel)]="product_id">
-                    </td>
-                </tr>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Legacy Product ID</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"   [(ngModel)]="productById.legacy_product_id">
-                    </td>
-                </tr>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Name</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "name" placeholder="Auto Assigned" readonly="true"  [(ngModel)]="productById.name">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Frame color</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "color" placeholder="Auto Assigned" readonly="true"  [(ngModel)]="productById.color">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Lens color</b></label>
-                    </td>
-                    <td>
-                        <input type="num" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_color" placeholder="Auto Assigned" readonly="true" [(ngModel)]="productById.lens_color">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Sunwear?</b></label>
-                    </td>
-                    <td>
-                        <ng-container *ngIf="productById.sunwear == 0">
-                            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="sunwear">
-                        </ng-container>
-                        <ng-container *ngIf="productById.sunwear == 1">
-                            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Eyewear">
-                        </ng-container>
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Gender</b></label>
-                    </td>
-                    <td>
-                        <ng-container *ngIf="productById.product_gender == 1">
-                            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Men's">
-                        </ng-container>
-                        <ng-container *ngIf="productById.product_gender == 2">
-                            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Women's">
-                        </ng-container>
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Tags</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "tags" placeholder="Auto Assigned"  [(ngModel)]="productById.tags">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Description</b></label>
-                    </td>
-                    <td>
-                        <textarea type="textarea" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "description" placeholder="Auto Assigned"  [(ngModel)]="productById.description">
-                        </textarea>
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Assests group</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Product Details</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
-                    </td>
-                </tr>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Social Id</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "social_id" placeholder="Auto Assigned"  [(ngModel)]="productById.social_id">
-                    </td>
-                </tr>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-10">
-                <tr>
-                    <td class="td-style">
-                        <label ><b>Upc code</b></label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "upc_codes" placeholder="Auto Assigned"  [(ngModel)]="productById.upc_codes">
-                    </td>
-                </tr>
-            </div>
-        </div>
+<div class="container" *ngIf="showProd">
+  <form class="form-horizontal ng-scope ng-valid ng-dirty" role="form">
+    <div class="form-group">
+      <div class="col-sm-10">
         <tr>
-            <td>
-                <input type="button" align="right" class="btn btn-primary pull-right"  id="button2"  value="Assign new Upc">
+          <td class="td-style">
+            <label ><b>Product ID</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name="product_id"  readonly="true" placeholder="Auto Assigned" [(ngModel)]="product_id">
+          </td>
+        </tr>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Legacy Product ID</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "legacy_product_id" placeholder="Auto Assigned"   [(ngModel)]="productById.legacy_product_id">
+          </td>
+        </tr>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Name</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "name" placeholder="Auto Assigned" readonly="true"  [(ngModel)]="productById.name">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Frame color</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid"  id="productId" name= "color" placeholder="Auto Assigned" readonly="true"  [(ngModel)]="productById.color">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Lens color</b></label>
+          </td>
+          <td>
+            <input type="num" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_color" placeholder="Auto Assigned" readonly="true" [(ngModel)]="productById.lens_color">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Sunwear?</b></label>
+          </td>
+          <td>
+            <ng-container *ngIf="productById.sunwear == 0">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="sunwear">
+            </ng-container>
+            <ng-container *ngIf="productById.sunwear == 1">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Eyewear">
+            </ng-container>
+          </td>
+        </tr>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Gender</b></label>
+          </td>
+          <td>
+            <ng-container *ngIf="productById.product_gender == 1">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Men's">
+            </ng-container>
+            <ng-container *ngIf="productById.product_gender == 2">
+              <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  value="Women's">
+            </ng-container>
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Tags</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "tags" placeholder="Auto Assigned"  [(ngModel)]="productById.tags">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Description</b></label>
+          </td>
+          <td>
+            <textarea type="textarea" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "description" placeholder="Auto Assigned"  [(ngModel)]="productById.description">
+            </textarea>
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Assests group</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Product Details</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "legacy_product_id" placeholder="Auto Assigned"  [(ngModel)]="productById.legacy_product_id">
+          </td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Social Id</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "social_id" placeholder="Auto Assigned"  [(ngModel)]="productById.social_id">
+          </td>
+        </tr>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10">
+        <tr>
+          <td class="td-style">
+            <label ><b>Upc code</b></label>
+          </td>
+          <td>
+            <input type="text" class="form-control ng-pristine ng-valid" readonly="true" id="productId" name= "upc_codes" placeholder="Auto Assigned"  [(ngModel)]="productById.upc_codes">
+          </td>
+        </tr>
+      </div>
+    </div>
+    <tr>
+      <td>
+        <input type="button" align="right" class="btn btn-primary pull-right button2"  id="button2"  value="Assign New UPC Code" (click)="addUpc()">
+      </td>
+    </tr><br><br>
+    <div class="form-group">
+      <h3>Prices</h3>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <label><b>No_LENS</b></label>
             </td>
-        </tr><br>
-        <fieldset>
-            <h3>Prices</h3>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>No_LENS</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "NO_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.NO_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>HIGH_INDEX_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "HIGH_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.HIGH_INDEX_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>ORIGINAL_RX_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.ORIGINAL_RX_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>STANDARD_INDEX_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.STANDARD_INDEX_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>PLANO_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PLANO_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PLANO_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>READING_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "READING_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.READING_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>PRG_HIGH_INDEX_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_HIGH_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PRG_HIGH_INDEX_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>PRG_STANDARD_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_STANDARD_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PRG_STANDARD_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-        </fieldset>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "NO_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.NO_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <label><b>HIGH_INDEX_LENS PRICE</b></label>
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "HIGH_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.HIGH_INDEX_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>ORIGINAL_RX_PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.ORIGINAL_RX_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>STANDARD_INDEX_LENS PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.STANDARD_INDEX_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>PLANO_LENS_PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PLANO_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PLANO_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>READING_LENS_PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "READING_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.READING_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>PRG_HIGH_INDEX_LENS PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_HIGH_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PRG_HIGH_INDEX_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>PRG_STANDARD_LENS PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "PRG_STANDARD_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.PRG_STANDARD_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+    </div>
 
+    <br><br>
+    <div>
+      <h3>Original Prices For Sale</h3>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>STANDARD_INDEX_LENS PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.STANDARD_INDEX_LENS_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>ORIGINAL_RX_PRICE</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.ORIGINAL_RX_PRICE">
+            </td>
+          </tr>
+        </div>
+      </div>
+    </div>
 
-        <fieldset>
-            <h3>Original Prices For Sale</h3>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>STANDARD_INDEX_LENS_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "STANDARD_INDEX_LENS_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.STANDARD_INDEX_LENS_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>ORIGINAL_RX_PRICE</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "ORIGINAL_RX_PRICE" placeholder="Auto Assigned"  [(ngModel)]="productById.prices.ORIGINAL_RX_PRICE">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <h3>Measurements</h3>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>bridge</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "bridge" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.bridge">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>lens_height</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_height" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_height">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>lens_width</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_width" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_width">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <tr>
-                        <td class="td-style">
-                            <b>temple</b>&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "temple" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.temple">
-                        </td>
-                    </tr>
-                </div>
-            </div>
-        <fieldset>
-                <input type="button" align="right" class="btn btn-primary pull-right"  id="button2"  value="save">
-                <input type="button" align="right" class="btn btn-primary pull-right"  id="button2"  value="saveAll">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+    <br><br>
+    <div>
+      <h3>Measurements</h3>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>bridge</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "bridge" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.bridge">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>lens_height</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_height" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_height">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>lens_width</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "lens_width" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.lens_width">
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-20">
+          <tr>
+            <td class="td-style">
+              <b>temple</b>&nbsp;&nbsp;
+            </td>
+            <td>
+              <input type="number" class="form-control ng-pristine ng-valid"  id="productId" name= "temple" placeholder="Auto Assigned"  [(ngModel)]="productById.measurements.temple">
+            </td>
+          </tr>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type="button" align="right" class="btn btn-primary pull-right button2"  id="button2"  value="save">
+      <input type="button" align="right" class="btn btn-primary pull-right button2"  id="button2"  value="saveAll">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </form>
+</div>
+<!-- <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h4 class="modal-title" id="myModalLabel">Assign New UPC Code</h4>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         </div>
+         <div class="modal-body">
+          <div style="padding-left: 10%;padding-right: 10%;">
+            <input type="text" class="form-control row ng-valid ng-dirty" id="upcModalc_desc" placeholder="Additional Description" ng-model="product.upc_desc">
+          </div>
+          </div>
+         <div class="modal-footer" style="padding-right: 10%;">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-primary" ng-click="assignUpcCode()" data-dismiss="modal">Submit</button>
+         </div>
+       </div>
+     </div> -->
