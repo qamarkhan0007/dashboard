@@ -1,66 +1,53 @@
-
-<app-navbar></app-navbar><br><br>
+<app-navbar></app-navbar>
+<br><br>
 
 <div *ngIf='token' class="container">
-    <div class="row">
-        <div class="col-xs-18 col-sm-12">
-            <div *ngIf= "distat" id="alerrtinfoalert" class="alert alert-info">{{erpData}}</div>
-            <h1>{{brand}}</h1>
-            <form class="form-horizontal" role="form" method="POST" action="/send_erp_request/classicspecs/">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="action">Action:</label>
-                    <div class="col-sm-10">
-                        <select id="action" name="action" class="input-xlarge form-control" required #selectedValue>
-                            <option value="authorize_return" >authorize_return</option>
-
-                            <option value="cancel_items" >cancel_items</option>
-
-                            <option value="create_store_credit" >create_store_credit</option>
-
-                            <option value="new_order" >new_order</option>
-
-                            <option value="new_product" >new_product</option>
-
-                            <option value="receive_frame" >receive_frame</option>
-
-                            <option value="receive_htk" >receive_htk</option>
-
-                            <option value="refund_items" >refund_items</option>
-
-                            <option value="refund_order" >refund_order</option>
-
-                            <option value="send_to_lab" >send_to_lab</option>
-
-                            <option value="ship_htk" >ship_htk</option>
-
-                            <option value="ship_items" >ship_items</option>
-
-                            <option value="update_store_credit" >update_store_credit</option>
-
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="performed_at">Performed At:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="performed_at" name="performed_at" placeholder="Performed At" #perform required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="payload">Payload</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" name="payload" id="payload" style="width:500px; height:100px" #payload required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-default button2" (click)='ErpSend(selectedValue,perform, payload)'>Submit</button>
-                    </div>
-                </div>
-            </form>
+  <div class="row">
+    <div class="col-xs-18 col-sm-12">
+      <div *ngIf= "distat" id="alerrtinfoalert" class="alert alert-info">{{erpData}}</div>
+      <h1>{{brand}}</h1>
+      <form class="form-horizontal" role="form" method="POST" action="/send_erp_request/classicspecs/">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="action">Action:</label>
+          <div class="col-sm-10">
+            <select id="action" name="action" class="input-xlarge form-control" required #selectedValue>
+              <option value="authorize_return" >authorize_return</option>
+              <option value="cancel_items" >cancel_items</option>
+              <option value="create_store_credit" >create_store_credit</option>
+              <option value="new_order" >new_order</option>
+              <option value="new_product" >new_product</option>
+              <option value="receive_frame" >receive_frame</option>
+              <option value="receive_htk" >receive_htk</option>
+              <option value="refund_items" >refund_items</option>
+              <option value="refund_order" >refund_order</option>
+              <option value="send_to_lab" >send_to_lab</option>
+              <option value="ship_htk" >ship_htk</option>
+              <option value="ship_items" >ship_items</option>
+              <option value="update_store_credit" >update_store_credit</option>
+            </select>
+          </div>
         </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="performed_at">Performed At:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="performed_at" name="performed_at" placeholder="Performed At" #perform required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="payload">Payload</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" name="payload" id="payload" style="width:500px; height:100px" #payload required></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default button2" (click)='ErpSend(selectedValue,perform, payload)'>Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

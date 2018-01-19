@@ -1,41 +1,41 @@
 <app-product-navbar></app-product-navbar>
 <br>
 <div class="container">
-    <h5 align="left">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
-        <table class="table table-condensed table-bordered">
-            <tr>
-                <th>Name</th>
-                <th>ProductID</th>
-                <th>Color</th>
-                <th>Product Gender</th>
-                <th>Sun/Opticals</th>
-                <th>Incomplete</th>
-                <th></th>
-            </tr>
-            <tbody *ngFor="let product of productData | filter:filter">
-                <tr>
-                    <td>{{product.name}}</td>
-                    <td><a [routerLink]="['./',product.product_id ]">{{product.product_id}}</a></td>
-                    <td>{{product.color}}</td>
-                    <td><ng-container *ngIf="product.product_gender == 1">
-                        <td>Mens's</td>
-                    </ng-container>
-                    <ng-container *ngIf="product.product_gender == 2">
-                        <td>women's</td>
-                    </ng-container></td>
-                    <td>
-                    <ng-container *ngIf="product.sunwear == 0">
-                        <td>Eyewear</td>
-                    </ng-container>
-                    <ng-container *ngIf="product.sunwear == 1">
-                        <td>sunwear</td>
-                    </ng-container>
-                    </td>
-                    <td><ng-container *ngIf="product.incomplete == 0">
-                        <td>false</td>
-                    </ng-container></td>
-                    <td id=assests><a [routerLink]="['./assests',product.product_id]">assests</a></td>
-                </tr>
-            </tbody>
-    </table>
+  <h5 align="left">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
+  <table class="table table-condensed table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>ProductID</th>
+      <th>Color</th>
+      <th>Product Gender</th>
+      <th>Sun/Opticals</th>
+      <th>Incomplete</th>
+      <th></th>
+    </tr>
+    <tbody *ngFor="let product of productData | filter:filter">
+      <tr>
+        <td>{{product.name}}</td>
+        <td><a [routerLink]="['./',product.product_id ]">{{product.product_id}}</a></td>
+        <td>{{product.color}}</td>
+        <td><ng-container *ngIf="product.product_gender == 1">
+          <td>Mens's</td>
+        </ng-container>
+        <ng-container *ngIf="product.product_gender == 2">
+          <td>women's</td>
+        </ng-container></td>
+        <td>
+          <ng-container *ngIf="product.sunwear == 0">
+            <td>Eyewear</td>
+          </ng-container>
+          <ng-container *ngIf="product.sunwear == 1">
+            <td>sunwear</td>
+          </ng-container>
+        </td>
+        <td><ng-container *ngIf="product.incomplete == 0">
+          <td>false</td>
+        </ng-container></td>
+        <td id=assests><a [routerLink]="['./assests',product.product_id]">assests</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -22,7 +22,6 @@ export class ProductCollectionComponent implements OnInit {
 
   getCollections() {
     this.service.getCollections(this.brand).subscribe(res => {
-      console.log('>>>>>>>>>>>>>', res.data);
       this.collectionData = res.data;
     });
   }

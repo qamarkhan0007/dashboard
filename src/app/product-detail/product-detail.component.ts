@@ -14,9 +14,7 @@ export class ProductDetailComponent implements OnInit {
   productById: any;
   showProd: any = false;
   prices: any;
-  constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
-
-  }
+  constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -29,7 +27,6 @@ export class ProductDetailComponent implements OnInit {
     this.service.getProductsById(this.brand, this.product_id).subscribe(res => {
       if (res.data) {
         this.productById = res.data[0];
-        console.log('>>>>>>>>>>>>>>>', JSON.stringify(this.productById));
         this.showProd = true;
       }
     });
@@ -38,7 +35,6 @@ export class ProductDetailComponent implements OnInit {
     alert('This API is not working ...');
   }
   updateProduct(form) {
-    console.log('>>>>form>>>>>>>>>>>>>>', JSON.stringify(form));
     this.prices = {
       'prices': {
         'NO_LENS_PRICE': form.NO_LENS_PRICE,
@@ -79,7 +75,7 @@ export class ProductDetailComponent implements OnInit {
     };
     this.service.updateProduct(this.brand, this.prices, form.product_id).subscribe(res => {
       if (res.code === 200) {
-          this.router.navigate(['./home/product/' + this.brand]);
+        this.router.navigate(['./home/product/' + this.brand]);
       }
     });
   }

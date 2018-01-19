@@ -21,7 +21,6 @@ export class ProductAssestComponent implements OnInit {
   }
   getAssests() {
     this.service.getAssests(this.brand).subscribe(res => {
-      console.log('>>>>>>>>>>>>>', res.data);
       this.assestsData = res.data;
     });
   }

@@ -176,7 +176,6 @@ export class OrderComponent implements OnInit {
     this._service.saveUser(this.response, brand).subscribe(res => {
       this.saved = 'saving...';
       location.reload();
-      //this.route.navigate(['']);
     });
   }
   sendToLab(itemId) {
@@ -231,9 +230,7 @@ export class OrderComponent implements OnInit {
     }
   }
   ship(order_id, itemId) {
-    console.log('>>>>>>>>>>order_is', order_id);
     this._service.shipped(order_id, this.shipArray, this.order_brand).subscribe(res => {
-      console.log(res.data);
       this.selectedItem = itemId;
     });
   }

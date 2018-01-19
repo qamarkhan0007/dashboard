@@ -3,9 +3,7 @@
 <div class="container" *ngIf="!foundOrder && !getcustomerStatus && !updateUserPage && !checkMe" >
   <div class="row">
     <div class="col-xs-18 col-sm-12">
-      <h2>
-        Select a Brand
-      </h2>
+      <h2>Select a Brand</h2>
       <br>
       <div class="container">
         <div class="row">
@@ -489,175 +487,322 @@
                 <div [hidden]="selectedItem==item.id && status==='return'" *ngIf="selectedItem===item.id && status==='receivedFromLab' || item.status.sent_to_lab_at && item.status.received_from_lab_at && item.status.lab_finished_processing_at && item.status.received_by_lab_at">
                   <input (click)="return(item.id)" type="button" value="Return" class="btn btn-lg btn-success send_to_lab"/>
                 </div>
-              <hr>
-              <div [hidden]="itmId===item.id" class="container-fluid">
-                <div class="panel-group">
-                  <div class="panel panel-default">
-                    <div class="panel-heading" >
-                      <h4 class="panel-title" *ngIf="!item.status.cancelled_at">
-                        <a data-toggle="collapse" (click)="cancelStatus('cancel', item.id)">Cancellation</a>
-                      </h4>
-                    </div>
-                    <div class="panel-body" *ngIf="cancelStatuss==='cancel' && itm===item.id">
-                      <div class="row">
-                        <div class="col-sm-3"><label for="return_reason">Reason</label></div>
-                        <div class="col-sm-9">
-                          <select name="return_reason" id="return_reason" class="form-control" size="1" #selectedvalue>
-                            <option value="">--select reason code--</option>
-
-                            <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
-
-                            <option value="Lab - Incorrect Prescription (both eyes)">Lab - Incorrect Prescription (both eyes)</option>
-
-                            <option value="Lab - Lens Edged in Incorrectly">Lab - Lens Edged in Incorrectly</option>
-
-                            <option value="Lab - Frame not bench aligned">Lab - Frame not bench aligned</option>
-
-                            <option value="Lab - Wrong frame sent">Lab - Wrong frame sent</option>
-
-                            <option value="Lab - Wrong frame color sent">Lab - Wrong frame color sent</option>
-
-                            <option value="Lab - Other Lab Issue">Lab - Other Lab Issue</option>
-
-                            <option value="USPS - Package took too long to receive">USPS - Package took too long to receive</option>
-
-                            <option value="USPS - Other USPS Issue">USPS - Other USPS Issue</option>
-
-                            <option value="Eponym Office - Wrong rx entered">Eponym Office - Wrong rx entered</option>
-
-                            <option value="Eponym Office - Wrong frame entered">Eponym Office - Wrong frame entered</option>
-
-                            <option value="Eponym Office - Wrong customer information entered by eponym">Eponym Office - Wrong customer information entered by eponym</option>
-
-                            <option value="Eponym Office - Wrong type of lens entered">Eponym Office - Wrong type of lens entered</option>
-
-                            <option value="Eponym Office - Other customer service issued">Eponym Office - Other customer service issued</option>
-
-                            <option value="Eponym Office - Processing time too long">Eponym Office - Processing time too long</option>
-
-                            <option value="Eponym Retail - Wrong rx entered">Eponym Retail - Wrong rx entered</option>
-
-                            <option value="Eponym Retail - Wrong frame entered">Eponym Retail - Wrong frame entered</option>
-
-                            <option value="Eponym Retail - Wrong customer information entered by eponym">Eponym Retail - Wrong customer information entered by eponym</option>
-
-                            <option value="Eponym Retail - Wrong type of lens entered">Eponym Retail - Wrong type of lens entered</option>
-
-                            <option value="Eponym Retail - Other retail issue">Eponym Retail - Other retail issue</option>
-
-                            <option value="Warranty - Frame Damaged">Warranty - Frame Damaged</option>
-
-                            <option value="Warranty - Lens Damaged (AR)">Warranty - Lens Damaged (AR)</option>
-
-                            <option value="Warranty - Lens Damaged (scratch)">Warranty - Lens Damaged (scratch)</option>
-
-                            <option value="Warranty - Lens Damaged (other)">Warranty - Lens Damaged (other)</option>
-
-                            <option value="Reprocessed">Reprocessed</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (Right eye)">Rx Doctor - Incorrect Rx (Right eye)</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (left eye)">Rx Doctor - Incorrect Rx (left eye)</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (both eyes)">Rx Doctor - Incorrect Rx (both eyes)</option>
-
-                            <option value="Rx Doctor - Revised Prescription">Rx Doctor - Revised Prescription</option>
-
-                            <option value="Rx Doctor - Cancellation related to non-release of rx">Rx Doctor - Cancellation related to non-release of rx</option>
-
-                            <option value="Rx Doctor - Wrong rx submitted">Rx Doctor - Wrong rx submitted</option>
-
-                            <option value="Rx Doctor - Rx out of range">Rx Doctor - Rx out of range</option>
-
-                            <option value="Customer - Didn&#39;t like style">Customer - Didn&#39;t like style</option>
-
-                            <option value="Customer - Didn&#39;t like color">Customer - Didn&#39;t like color</option>
-
-                            <option value="Customer - Didn&#39;t like style/color">Customer - Didn&#39;t like style/color</option>
-
-                            <option value="Customer - Wrong Rx entered (right eye)">Customer - Wrong Rx entered (right eye)</option>
-
-                            <option value="Customer - Wrong Rx entered (left eye)">Customer - Wrong Rx entered (left eye)</option>
-
-                            <option value="Customer - Wrong rx entered (both eyes)">Customer - Wrong rx entered (both eyes)</option>
-
-                            <option value="Customer - Unable to obtain PD">Customer - Unable to obtain PD</option>
-
-                            <option value="Customer - General dissatisfaction">Customer - General dissatisfaction</option>
-
-                            <option value="Customer - Wrong shipping address entered/misdelivery">Customer - Wrong shipping address entered/misdelivery</option>
-
-                            <option value="Customer - Lens aesthetics">Customer - Lens aesthetics</option>
-
-                            <option value="Customer - Cancellation related to invalid prescription-PROGRESSIVES">Customer - Cancellation related to invalid prescription-PROGRESSIVES</option>
-
-                            <option value="Customer - Cancellation related to invalid prescription (expired)">Customer - Cancellation related to invalid prescription (expired)</option>
-
-                            <option value="Customer - Rx adaptation issue">Customer - Rx adaptation issue</option>
-
-                            <option value="Customer - Changed mind about order">Customer - Changed mind about order</option>
-
-                            <option value="Customer - Fraud">Customer - Fraud</option>
-
-                            <option value="Customer - Meant to order HTK">Customer - Meant to order HTK</option>
-
-                            <option value="Customer - Did not fit">Customer - Did not fit</option>
-
-                            <option value="Other - Progressives - Lens Type Non Adapt">Other - Progressives - Lens Type Non Adapt</option>
-
-                            <option value="EXCHANGE">EXCHANGE</option>
-
-                            <option value="Eponym Office - Replacement">Eponym Office - Replacement</option>
-
-                            <option value="Other - Other">Other - Other</option>
-
-                            <option value="USPS - Lost package">USPS - Lost package</option>
-
-                            <option value="USPS - Misdelivered package">USPS - Misdelivered package</option>
-
-                            <option value="USPS - Address verification issue">USPS - Address verification issue</option>
-
-                          </select>
-                        </div>
-                      </div><br>
-                      <div class="row">
-                        <div class="col-sm-3"><label for="return_description">Description</label></div>
-                        <div class="col-sm-9"><input type="text" class="form-control" name="return_description"
-                          id="return_description"
-                          size="30" [(ngModel)]="return_description"></div>
-                        </div>
-                        <br>
+                <hr>
+                <div [hidden]="itmId===item.id" class="container-fluid">
+                  <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" >
+                        <h4 class="panel-title" *ngIf="!item.status.cancelled_at">
+                          <a data-toggle="collapse" (click)="cancelStatus('cancel', item.id)">Cancellation</a>
+                        </h4>
+                      </div>
+                      <div class="panel-body" *ngIf="cancelStatuss==='cancel' && itm===item.id">
                         <div class="row">
-                          <div class="col-sm-3"></div>
+                          <div class="col-sm-3"><label for="return_reason">Reason</label></div>
                           <div class="col-sm-9">
-                            <input type="button" data-orderid="4857466" data-itemid="0"
-                            data-brand="classicspecs"
-                            class="btn btn-danger btn-xs cancel_item" (click)="cancelItem(foundOrder.order_id, selectedvalue.value,item.id )"value="Cancel item">
+                            <select name="return_reason" id="return_reason" class="form-control" size="1" #selectedvalue>
+                              <option value="">--select reason code--</option>
+
+                              <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
+
+                              <option value="Lab - Incorrect Prescription (both eyes)">Lab - Incorrect Prescription (both eyes)</option>
+
+                              <option value="Lab - Lens Edged in Incorrectly">Lab - Lens Edged in Incorrectly</option>
+
+                              <option value="Lab - Frame not bench aligned">Lab - Frame not bench aligned</option>
+
+                              <option value="Lab - Wrong frame sent">Lab - Wrong frame sent</option>
+
+                              <option value="Lab - Wrong frame color sent">Lab - Wrong frame color sent</option>
+
+                              <option value="Lab - Other Lab Issue">Lab - Other Lab Issue</option>
+
+                              <option value="USPS - Package took too long to receive">USPS - Package took too long to receive</option>
+
+                              <option value="USPS - Other USPS Issue">USPS - Other USPS Issue</option>
+
+                              <option value="Eponym Office - Wrong rx entered">Eponym Office - Wrong rx entered</option>
+
+                              <option value="Eponym Office - Wrong frame entered">Eponym Office - Wrong frame entered</option>
+
+                              <option value="Eponym Office - Wrong customer information entered by eponym">Eponym Office - Wrong customer information entered by eponym</option>
+
+                              <option value="Eponym Office - Wrong type of lens entered">Eponym Office - Wrong type of lens entered</option>
+
+                              <option value="Eponym Office - Other customer service issued">Eponym Office - Other customer service issued</option>
+
+                              <option value="Eponym Office - Processing time too long">Eponym Office - Processing time too long</option>
+
+                              <option value="Eponym Retail - Wrong rx entered">Eponym Retail - Wrong rx entered</option>
+
+                              <option value="Eponym Retail - Wrong frame entered">Eponym Retail - Wrong frame entered</option>
+
+                              <option value="Eponym Retail - Wrong customer information entered by eponym">Eponym Retail - Wrong customer information entered by eponym</option>
+
+                              <option value="Eponym Retail - Wrong type of lens entered">Eponym Retail - Wrong type of lens entered</option>
+
+                              <option value="Eponym Retail - Other retail issue">Eponym Retail - Other retail issue</option>
+
+                              <option value="Warranty - Frame Damaged">Warranty - Frame Damaged</option>
+
+                              <option value="Warranty - Lens Damaged (AR)">Warranty - Lens Damaged (AR)</option>
+
+                              <option value="Warranty - Lens Damaged (scratch)">Warranty - Lens Damaged (scratch)</option>
+
+                              <option value="Warranty - Lens Damaged (other)">Warranty - Lens Damaged (other)</option>
+
+                              <option value="Reprocessed">Reprocessed</option>
+
+                              <option value="Rx Doctor - Incorrect Rx (Right eye)">Rx Doctor - Incorrect Rx (Right eye)</option>
+
+                              <option value="Rx Doctor - Incorrect Rx (left eye)">Rx Doctor - Incorrect Rx (left eye)</option>
+
+                              <option value="Rx Doctor - Incorrect Rx (both eyes)">Rx Doctor - Incorrect Rx (both eyes)</option>
+
+                              <option value="Rx Doctor - Revised Prescription">Rx Doctor - Revised Prescription</option>
+
+                              <option value="Rx Doctor - Cancellation related to non-release of rx">Rx Doctor - Cancellation related to non-release of rx</option>
+
+                              <option value="Rx Doctor - Wrong rx submitted">Rx Doctor - Wrong rx submitted</option>
+
+                              <option value="Rx Doctor - Rx out of range">Rx Doctor - Rx out of range</option>
+
+                              <option value="Customer - Didn&#39;t like style">Customer - Didn&#39;t like style</option>
+
+                              <option value="Customer - Didn&#39;t like color">Customer - Didn&#39;t like color</option>
+
+                              <option value="Customer - Didn&#39;t like style/color">Customer - Didn&#39;t like style/color</option>
+
+                              <option value="Customer - Wrong Rx entered (right eye)">Customer - Wrong Rx entered (right eye)</option>
+
+                              <option value="Customer - Wrong Rx entered (left eye)">Customer - Wrong Rx entered (left eye)</option>
+
+                              <option value="Customer - Wrong rx entered (both eyes)">Customer - Wrong rx entered (both eyes)</option>
+
+                              <option value="Customer - Unable to obtain PD">Customer - Unable to obtain PD</option>
+
+                              <option value="Customer - General dissatisfaction">Customer - General dissatisfaction</option>
+
+                              <option value="Customer - Wrong shipping address entered/misdelivery">Customer - Wrong shipping address entered/misdelivery</option>
+
+                              <option value="Customer - Lens aesthetics">Customer - Lens aesthetics</option>
+
+                              <option value="Customer - Cancellation related to invalid prescription-PROGRESSIVES">Customer - Cancellation related to invalid prescription-PROGRESSIVES</option>
+
+                              <option value="Customer - Cancellation related to invalid prescription (expired)">Customer - Cancellation related to invalid prescription (expired)</option>
+
+                              <option value="Customer - Rx adaptation issue">Customer - Rx adaptation issue</option>
+
+                              <option value="Customer - Changed mind about order">Customer - Changed mind about order</option>
+
+                              <option value="Customer - Fraud">Customer - Fraud</option>
+
+                              <option value="Customer - Meant to order HTK">Customer - Meant to order HTK</option>
+
+                              <option value="Customer - Did not fit">Customer - Did not fit</option>
+
+                              <option value="Other - Progressives - Lens Type Non Adapt">Other - Progressives - Lens Type Non Adapt</option>
+
+                              <option value="EXCHANGE">EXCHANGE</option>
+
+                              <option value="Eponym Office - Replacement">Eponym Office - Replacement</option>
+
+                              <option value="Other - Other">Other - Other</option>
+
+                              <option value="USPS - Lost package">USPS - Lost package</option>
+
+                              <option value="USPS - Misdelivered package">USPS - Misdelivered package</option>
+
+                              <option value="USPS - Address verification issue">USPS - Address verification issue</option>
+
+                            </select>
+                          </div>
+                        </div><br>
+                        <div class="row">
+                          <div class="col-sm-3"><label for="return_description">Description</label></div>
+                          <div class="col-sm-9"><input type="text" class="form-control" name="return_description"
+                            id="return_description"
+                            size="30" [(ngModel)]="return_description"></div>
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                              <input type="button" data-orderid="4857466" data-itemid="0"
+                              data-brand="classicspecs"
+                              class="btn btn-danger btn-xs cancel_item" (click)="cancelItem(foundOrder.order_id, selectedvalue.value,item.id )"value="Cancel item">
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div *ngIf="statte && cancelStatuss==='cancel' && itm===item.id">
-                  <p>This item was cancelled</p>
+                  <div *ngIf="statte && cancelStatuss==='cancel' && itm===item.id">
+                    <p>This item was cancelled</p>
+                  </div>
+                  <div class="container-fluid">
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapseRefund0">Refund</a>
+                          </h4>
+                        </div>
+                        <div id="collapseRefund0" class="panel-collapse collapse">
+                          <div class="panel-body">
+
+                            <form method="POST"
+                            action="/orders/classicspecs/4857466/refund_item/0">
+                            <div class="form-group">
+                              <label for="return_reason">Reason</label>
+                              <select name="return_reason" id="return_reason" size="1" class="form-control">
+                                <option value="">--select reason code--</option>
+
+                                <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
+
+                                <option value="Lab - Incorrect Prescription (both eyes)">Lab - Incorrect Prescription (both eyes)</option>
+
+                                <option value="Lab - Lens Edged in Incorrectly">Lab - Lens Edged in Incorrectly</option>
+
+                                <option value="Lab - Frame not bench aligned">Lab - Frame not bench aligned</option>
+
+                                <option value="Lab - Wrong frame sent">Lab - Wrong frame sent</option>
+
+                                <option value="Lab - Wrong frame color sent">Lab - Wrong frame color sent</option>
+
+                                <option value="Lab - Other Lab Issue">Lab - Other Lab Issue</option>
+
+                                <option value="USPS - Package took too long to receive">USPS - Package took too long to receive</option>
+
+                                <option value="USPS - Other USPS Issue">USPS - Other USPS Issue</option>
+
+                                <option value="Eponym Office - Wrong rx entered">Eponym Office - Wrong rx entered</option>
+
+                                <option value="Eponym Office - Wrong frame entered">Eponym Office - Wrong frame entered</option>
+
+                                <option value="Eponym Office - Wrong customer information entered by eponym">Eponym Office - Wrong customer information entered by eponym</option>
+
+                                <option value="Eponym Office - Wrong type of lens entered">Eponym Office - Wrong type of lens entered</option>
+
+                                <option value="Eponym Office - Other customer service issued">Eponym Office - Other customer service issued</option>
+
+                                <option value="Eponym Office - Processing time too long">Eponym Office - Processing time too long</option>
+
+                                <option value="Eponym Retail - Wrong rx entered">Eponym Retail - Wrong rx entered</option>
+
+                                <option value="Eponym Retail - Wrong frame entered">Eponym Retail - Wrong frame entered</option>
+
+                                <option value="Eponym Retail - Wrong customer information entered by eponym">Eponym Retail - Wrong customer information entered by eponym</option>
+
+                                <option value="Eponym Retail - Wrong type of lens entered">Eponym Retail - Wrong type of lens entered</option>
+
+                                <option value="Eponym Retail - Other retail issue">Eponym Retail - Other retail issue</option>
+
+                                <option value="Warranty - Frame Damaged">Warranty - Frame Damaged</option>
+
+                                <option value="Warranty - Lens Damaged (AR)">Warranty - Lens Damaged (AR)</option>
+
+                                <option value="Warranty - Lens Damaged (scratch)">Warranty - Lens Damaged (scratch)</option>
+
+                                <option value="Warranty - Lens Damaged (other)">Warranty - Lens Damaged (other)</option>
+
+                                <option value="Reprocessed">Reprocessed</option>
+
+                                <option value="Rx Doctor - Incorrect Rx (Right eye)">Rx Doctor - Incorrect Rx (Right eye)</option>
+
+                                <option value="Rx Doctor - Incorrect Rx (left eye)">Rx Doctor - Incorrect Rx (left eye)</option>
+
+                                <option value="Rx Doctor - Incorrect Rx (both eyes)">Rx Doctor - Incorrect Rx (both eyes)</option>
+
+                                <option value="Rx Doctor - Revised Prescription">Rx Doctor - Revised Prescription</option>
+
+                                <option value="Rx Doctor - Cancellation related to non-release of rx">Rx Doctor - Cancellation related to non-release of rx</option>
+
+                                <option value="Rx Doctor - Wrong rx submitted">Rx Doctor - Wrong rx submitted</option>
+
+                                <option value="Rx Doctor - Rx out of range">Rx Doctor - Rx out of range</option>
+
+                                <option value="Customer - Didn&#39;t like style">Customer - Didn&#39;t like style</option>
+
+                                <option value="Customer - Didn&#39;t like color">Customer - Didn&#39;t like color</option>
+
+                                <option value="Customer - Didn&#39;t like style/color">Customer - Didn&#39;t like style/color</option>
+
+                                <option value="Customer - Wrong Rx entered (right eye)">Customer - Wrong Rx entered (right eye)</option>
+
+                                <option value="Customer - Wrong Rx entered (left eye)">Customer - Wrong Rx entered (left eye)</option>
+
+                                <option value="Customer - Wrong rx entered (both eyes)">Customer - Wrong rx entered (both eyes)</option>
+
+                                <option value="Customer - Unable to obtain PD">Customer - Unable to obtain PD</option>
+
+                                <option value="Customer - General dissatisfaction">Customer - General dissatisfaction</option>
+
+                                <option value="Customer - Wrong shipping address entered/misdelivery">Customer - Wrong shipping address entered/misdelivery</option>
+
+                                <option value="Customer - Lens aesthetics">Customer - Lens aesthetics</option>
+
+                                <option value="Customer - Cancellation related to invalid prescription-PROGRESSIVES">Customer - Cancellation related to invalid prescription-PROGRESSIVES</option>
+
+                                <option value="Customer - Cancellation related to invalid prescription (expired)">Customer - Cancellation related to invalid prescription (expired)</option>
+
+                                <option value="Customer - Rx adaptation issue">Customer - Rx adaptation issue</option>
+
+                                <option value="Customer - Changed mind about order">Customer - Changed mind about order</option>
+
+                                <option value="Customer - Fraud">Customer - Fraud</option>
+
+                                <option value="Customer - Meant to order HTK">Customer - Meant to order HTK</option>
+
+                                <option value="Customer - Did not fit">Customer - Did not fit</option>
+
+                                <option value="Other - Progressives - Lens Type Non Adapt">Other - Progressives - Lens Type Non Adapt</option>
+
+                                <option value="EXCHANGE">EXCHANGE</option>
+
+                                <option value="Eponym Office - Replacement">Eponym Office - Replacement</option>
+
+                                <option value="Other - Other">Other - Other</option>
+
+                                <option value="USPS - Lost package">USPS - Lost package</option>
+
+                                <option value="USPS - Misdelivered package">USPS - Misdelivered package</option>
+
+                                <option value="USPS - Address verification issue">USPS - Address verification issue</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="return_description">Description</label>
+                              <input type="text" class="form-control" name="return_description" id="return_description"
+                              placeholder="Description">
+                            </div>
+                            <div class="form-group">
+                              <label for="amount">Refund amount</label>
+                              <input type="number" class="form-control" step=".01" name="amount" id="amount" min="0"
+                              placeholder="87.1">
+                            </div>
+                            <input type="submit" class="btn btn-danger btn-xs" value="Refund">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="container-fluid">
                   <div class="panel-group">
                     <div class="panel panel-default">
                       <div class="panel-heading">
                         <h4 class="panel-title">
-                          <a data-toggle="collapse" href="#collapseRefund0">Refund</a>
+                          <a data-toggle="collapse" href="#collapseCredit0">Store Credit</a>
                         </h4>
                       </div>
-                      <div id="collapseRefund0" class="panel-collapse collapse">
+                      <div id="collapseCredit0" class="panel-collapse collapse">
                         <div class="panel-body">
-
                           <form method="POST"
-                          action="/orders/classicspecs/4857466/refund_item/0">
+                          action="/orders/classicspecs/4857466/store_credit/0">
                           <div class="form-group">
-                            <label for="return_reason">Reason</label>
-                            <select name="return_reason" id="return_reason" size="1" class="form-control">
+                            <label for="reason">Reason</label>
+                            <select name="reason" id="reason" size="1" class="form-control">
                               <option value="">--select reason code--</option>
 
                               <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
@@ -774,268 +919,121 @@
                             </select>
                           </div>
                           <div class="form-group">
-                            <label for="return_description">Description</label>
-                            <input type="text" class="form-control" name="return_description" id="return_description"
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" name="description" id="description"
                             placeholder="Description">
                           </div>
                           <div class="form-group">
-                            <label for="amount">Refund amount</label>
-                            <input type="number" class="form-control" step=".01" name="amount" id="amount" min="0"
-                            placeholder="87.1">
+                            <label for="amount">Credit amount: </label>
+                            <input type="number" class="form-control" step=".01" name="amount" id="amount"
+                            placeholder="87.1" min="0"
+                            required>
+                            <input type="hidden" name="email" value="mukesh@unyscape.com">
                           </div>
-                          <input type="submit" class="btn btn-danger btn-xs" value="Refund">
+                          <input type="submit" class="btn btn-danger btn-xs" value="Issue Credit">
                         </form>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="container-fluid">
-                <div class="panel-group">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapseCredit0">Store Credit</a>
-                      </h4>
-                    </div>
-                    <div id="collapseCredit0" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <form method="POST"
-                        action="/orders/classicspecs/4857466/store_credit/0">
-                        <div class="form-group">
-                          <label for="reason">Reason</label>
-                          <select name="reason" id="reason" size="1" class="form-control">
-                            <option value="">--select reason code--</option>
+            </td>
+          </tr>
 
-                            <option value="Lab - Incorrect Prescription (one eye)">Lab - Incorrect Prescription (one eye)</option>
 
-                            <option value="Lab - Incorrect Prescription (both eyes)">Lab - Incorrect Prescription (both eyes)</option>
+        </table>
+        <hr>
+        <div class="container-fluid">
+          <div class="row">
+            <h3>Transactions</h3>
+          </div>
+          <div class="row">
+            <div class="col-xs-2"><label class="control-label">Amount</label></div>
+            <div class="col-xs-4"><p class="form-control-static">$87.10; </p></div>
+            <div class="col-xs-2"><label class="control-label">Refunded</label></div>
+            <div class="col-xs-4"><p class="form-control-static">$0.00</p></div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-2"><label class="control-label">Credit Id</label></div>
+            <div class="col-xs-4"><label class="control-label">Credit Available</label></div>
+            <div class="col-xs-6"><label class="control-label">Actions</label></div>
+          </div>
+          <hr>
+        </div>
 
-                            <option value="Lab - Lens Edged in Incorrectly">Lab - Lens Edged in Incorrectly</option>
+        <div class="row notes">
+          <h3>Internal notes</h3>
+          <div class="container" *ngIf="internalNotes">
+            <div class="row" *ngFor="let notes of internalNotes" >
+              <div class="col-md-1">Added:</div>
+              <div class="col-md-2">{{notes.created_at}}</div>
+              <div class="col-md-1">By</div>
+              <div class="col-md-2">{{notes.created_by}}</div>
+              <div class="col-md-5"><pre style="white-space: pre-wrap; ">{{msg}}</pre></div>
+              <div class="col-md-1">Not Lab</div>
+            </div>
+          </div>
+        </div>
 
-                            <option value="Lab - Frame not bench aligned">Lab - Frame not bench aligned</option>
+        <div class="container-fluid">
+          <div class="row">
+            <form id="note_form" class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label"><b>Add a note</b></label>
+                <textarea class="form-control" name="message" style="width:500px; height:100px" #notes></textarea>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Show note to lab?</label>
+                <input type="checkbox" name="lab_note" value="true">
+              </div>
+              <button class="send_to_lab" type="button" (click)="createInternalNotes(notes)">Add note</button>
+              <div id="note_status"></div>
+            </form>
+          </div>
+        </div>
 
-                            <option value="Lab - Wrong frame sent">Lab - Wrong frame sent</option>
 
-                            <option value="Lab - Wrong frame color sent">Lab - Wrong frame color sent</option>
+        <h3>History</h3>
+        <pre>
+          []
+        </pre>
 
-                            <option value="Lab - Other Lab Issue">Lab - Other Lab Issue</option>
 
-                            <option value="USPS - Package took too long to receive">USPS - Package took too long to receive</option>
-
-                            <option value="USPS - Other USPS Issue">USPS - Other USPS Issue</option>
-
-                            <option value="Eponym Office - Wrong rx entered">Eponym Office - Wrong rx entered</option>
-
-                            <option value="Eponym Office - Wrong frame entered">Eponym Office - Wrong frame entered</option>
-
-                            <option value="Eponym Office - Wrong customer information entered by eponym">Eponym Office - Wrong customer information entered by eponym</option>
-
-                            <option value="Eponym Office - Wrong type of lens entered">Eponym Office - Wrong type of lens entered</option>
-
-                            <option value="Eponym Office - Other customer service issued">Eponym Office - Other customer service issued</option>
-
-                            <option value="Eponym Office - Processing time too long">Eponym Office - Processing time too long</option>
-
-                            <option value="Eponym Retail - Wrong rx entered">Eponym Retail - Wrong rx entered</option>
-
-                            <option value="Eponym Retail - Wrong frame entered">Eponym Retail - Wrong frame entered</option>
-
-                            <option value="Eponym Retail - Wrong customer information entered by eponym">Eponym Retail - Wrong customer information entered by eponym</option>
-
-                            <option value="Eponym Retail - Wrong type of lens entered">Eponym Retail - Wrong type of lens entered</option>
-
-                            <option value="Eponym Retail - Other retail issue">Eponym Retail - Other retail issue</option>
-
-                            <option value="Warranty - Frame Damaged">Warranty - Frame Damaged</option>
-
-                            <option value="Warranty - Lens Damaged (AR)">Warranty - Lens Damaged (AR)</option>
-
-                            <option value="Warranty - Lens Damaged (scratch)">Warranty - Lens Damaged (scratch)</option>
-
-                            <option value="Warranty - Lens Damaged (other)">Warranty - Lens Damaged (other)</option>
-
-                            <option value="Reprocessed">Reprocessed</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (Right eye)">Rx Doctor - Incorrect Rx (Right eye)</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (left eye)">Rx Doctor - Incorrect Rx (left eye)</option>
-
-                            <option value="Rx Doctor - Incorrect Rx (both eyes)">Rx Doctor - Incorrect Rx (both eyes)</option>
-
-                            <option value="Rx Doctor - Revised Prescription">Rx Doctor - Revised Prescription</option>
-
-                            <option value="Rx Doctor - Cancellation related to non-release of rx">Rx Doctor - Cancellation related to non-release of rx</option>
-
-                            <option value="Rx Doctor - Wrong rx submitted">Rx Doctor - Wrong rx submitted</option>
-
-                            <option value="Rx Doctor - Rx out of range">Rx Doctor - Rx out of range</option>
-
-                            <option value="Customer - Didn&#39;t like style">Customer - Didn&#39;t like style</option>
-
-                            <option value="Customer - Didn&#39;t like color">Customer - Didn&#39;t like color</option>
-
-                            <option value="Customer - Didn&#39;t like style/color">Customer - Didn&#39;t like style/color</option>
-
-                            <option value="Customer - Wrong Rx entered (right eye)">Customer - Wrong Rx entered (right eye)</option>
-
-                            <option value="Customer - Wrong Rx entered (left eye)">Customer - Wrong Rx entered (left eye)</option>
-
-                            <option value="Customer - Wrong rx entered (both eyes)">Customer - Wrong rx entered (both eyes)</option>
-
-                            <option value="Customer - Unable to obtain PD">Customer - Unable to obtain PD</option>
-
-                            <option value="Customer - General dissatisfaction">Customer - General dissatisfaction</option>
-
-                            <option value="Customer - Wrong shipping address entered/misdelivery">Customer - Wrong shipping address entered/misdelivery</option>
-
-                            <option value="Customer - Lens aesthetics">Customer - Lens aesthetics</option>
-
-                            <option value="Customer - Cancellation related to invalid prescription-PROGRESSIVES">Customer - Cancellation related to invalid prescription-PROGRESSIVES</option>
-
-                            <option value="Customer - Cancellation related to invalid prescription (expired)">Customer - Cancellation related to invalid prescription (expired)</option>
-
-                            <option value="Customer - Rx adaptation issue">Customer - Rx adaptation issue</option>
-
-                            <option value="Customer - Changed mind about order">Customer - Changed mind about order</option>
-
-                            <option value="Customer - Fraud">Customer - Fraud</option>
-
-                            <option value="Customer - Meant to order HTK">Customer - Meant to order HTK</option>
-
-                            <option value="Customer - Did not fit">Customer - Did not fit</option>
-
-                            <option value="Other - Progressives - Lens Type Non Adapt">Other - Progressives - Lens Type Non Adapt</option>
-
-                            <option value="EXCHANGE">EXCHANGE</option>
-
-                            <option value="Eponym Office - Replacement">Eponym Office - Replacement</option>
-
-                            <option value="Other - Other">Other - Other</option>
-
-                            <option value="USPS - Lost package">USPS - Lost package</option>
-
-                            <option value="USPS - Misdelivered package">USPS - Misdelivered package</option>
-
-                            <option value="USPS - Address verification issue">USPS - Address verification issue</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="description">Description</label>
-                          <input type="text" class="form-control" name="description" id="description"
-                          placeholder="Description">
-                        </div>
-                        <div class="form-group">
-                          <label for="amount">Credit amount: </label>
-                          <input type="number" class="form-control" step=".01" name="amount" id="amount"
-                          placeholder="87.1" min="0"
-                          required>
-                          <input type="hidden" name="email" value="mukesh@unyscape.com">
-                        </div>
-                        <input type="submit" class="btn btn-danger btn-xs" value="Issue Credit">
-                      </form>
-                    </div>
-                  </div>
+        <hr>
+        <a href="/orders/classicspecs/4857466/api">plz ignore</a>
+        <div id="creditModal" class="modal fade modal-lg" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Restore Store Credit</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-3"><label class="control-label">Credit Id</label></div>
+                  <div class="col-sm-9"><label id="creditIdLabel"></label></div>
                 </div>
+                <div class="row">
+                  <div class="col-sm-3"><label class="control-label">Amount</label></div>
+                  <div class="col-sm-9"><input type="number" id="revert_amount" name="revert_amount" #revert_amount value="" min="0" class="form-control"> </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"><label class="control-label">Reason</label></div>
+                  <div class="col-sm-9"><input type="text" id="revert_reason" name="revert_reason" #revert_reason value="" class="form-control"> </div>
+                </div>
+                <input type="hidden" name="order_id" id = "order_id" value=""/>
+                <input type="hidden" name="credit_id" id = "credit_id" value=""/>
+                <input type="hidden" name="brand_id" id = "brand_id" value=""/>
               </div>
-            </div>
-          </td>
-        </tr>
-
-
-      </table>
-      <hr>
-      <div class="container-fluid">
-        <div class="row">
-          <h3>Transactions</h3>
-        </div>
-        <div class="row">
-          <div class="col-xs-2"><label class="control-label">Amount</label></div>
-          <div class="col-xs-4"><p class="form-control-static">$87.10; </p></div>
-          <div class="col-xs-2"><label class="control-label">Refunded</label></div>
-          <div class="col-xs-4"><p class="form-control-static">$0.00</p></div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-2"><label class="control-label">Credit Id</label></div>
-          <div class="col-xs-4"><label class="control-label">Credit Available</label></div>
-          <div class="col-xs-6"><label class="control-label">Actions</label></div>
-        </div>
-        <hr>
-      </div>
-
-      <div class="row notes">
-        <h3>Internal notes</h3>
-      <div class="container" *ngIf="internalNotes">
-        <div class="row" *ngFor="let notes of internalNotes" >
-          <div class="col-md-1">Added:</div>
-          <div class="col-md-2">{{notes.created_at}}</div>
-          <div class="col-md-1">By</div>
-          <div class="col-md-2">{{notes.created_by}}</div>
-          <div class="col-md-5"><pre style="white-space: pre-wrap; ">{{msg}}</pre></div>
-          <div class="col-md-1">Not Lab</div>
-        </div>
-      </div>
-    </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <form id="note_form" class="form-horizontal">
-            <div class="form-group">
-              <label class="control-label"><b>Add a note</b></label>
-              <textarea class="form-control" name="message" style="width:500px; height:100px" #notes></textarea>
-            </div>
-            <div class="form-group">
-              <label class="control-label">Show note to lab?</label>
-              <input type="checkbox" name="lab_note" value="true">
-            </div>
-            <button class="send_to_lab" type="button" (click)="createInternalNotes(notes)">Add note</button>
-            <div id="note_status"></div>
-          </form>
-        </div>
-      </div>
-
-
-      <h3>History</h3>
-      <pre>
-        []
-      </pre>
-
-
-      <hr>
-      <a href="/orders/classicspecs/4857466/api">plz ignore</a>
-      <div id="creditModal" class="modal fade modal-lg" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Restore Store Credit</h4>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-sm-3"><label class="control-label">Credit Id</label></div>
-                <div class="col-sm-9"><label id="creditIdLabel"></label></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default modal_revert_credit">Revert Credit</button>
+                <button type="button" class="btn btn-default modal_revert_cancel_credit">Revert and Cancel</button>
               </div>
-              <div class="row">
-                <div class="col-sm-3"><label class="control-label">Amount</label></div>
-                <div class="col-sm-9"><input type="number" id="revert_amount" name="revert_amount" #revert_amount value="" min="0" class="form-control"> </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3"><label class="control-label">Reason</label></div>
-                <div class="col-sm-9"><input type="text" id="revert_reason" name="revert_reason" #revert_reason value="" class="form-control"> </div>
-              </div>
-              <input type="hidden" name="order_id" id = "order_id" value=""/>
-              <input type="hidden" name="credit_id" id = "credit_id" value=""/>
-              <input type="hidden" name="brand_id" id = "brand_id" value=""/>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default modal_revert_credit">Revert Credit</button>
-              <button type="button" class="btn btn-default modal_revert_cancel_credit">Revert and Cancel</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

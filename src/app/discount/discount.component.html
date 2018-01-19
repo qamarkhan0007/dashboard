@@ -51,31 +51,20 @@
                     <td>
                       <select id="discount_reason" name="discount_reason" #discount_reason class="form-control input-xlarge" required>
                         <option value="">Please Select</option>
-
                         <option value="Cancel Exchange">Cancel Exchange</option>
-
                         <option value="Exchange">Exchange</option>
-
                         <option value="Gratis">Gratis</option>
-
                         <option value="Normal">Normal</option>
-
                         <option value="Promotional">Promotional</option>
-
                         <option value="Replace">Replace</option>
-
                         <option value="Warranty">Warranty</option>
-
                       </select>
                     </td>
                     <td><input type="date" #date name="expiration_date" class="form-control input-xlarge"></td>
                     <td><input class="button2" id="buttonValue" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="button" value="Create New"></td>
-                    <!-- <td><button id="buttonValue" onclick="showDiv('toggle')" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="submit"> Create New</button></td> -->
                   </tr>
                 </thead>
                 <tbody *ngFor="let discount of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
-
-                  <!-- //<ng-container  -->
                   <tr *ngIf="!quantityAvailable && !expirationDate">
                     <td><a id="formedAt" (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
                     <td>{{discount.discount_type}}</td>
@@ -86,46 +75,43 @@
                     <td></td>
                   </tr>
                   <tr *ngIf="quantityAvailable && (discount.quantity > 0) && !expirationDate">
-                  <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
-                  <td>{{discount.discount_type}}</td>
-                  <td>{{discount.amount}}</td>
-                  <td>{{discount.quantity}}</td>
-                  <td>{{discount.discount_reason}}</td>
-                  <td>{{discount.expiration_date}}</td>
-                  <td></td>
-                </tr>
+                    <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
+                    <td>{{discount.discount_type}}</td>
+                    <td>{{discount.amount}}</td>
+                    <td>{{discount.quantity}}</td>
+                    <td>{{discount.discount_reason}}</td>
+                    <td>{{discount.expiration_date}}</td>
+                    <td></td>
+                  </tr>
 
-                <tr *ngIf="!quantityAvailable && expirationDate">
-                <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
-                <td>{{discount.discount_type}}</td>
-                <td>{{discount.amount}}</td>
-                <td>{{discount.quantity}}</td>
-                <td>{{discount.discount_reason}}</td>
-                <td>{{discount.expiration_date}}</td>
-                <td></td>
-              </tr>
+                  <tr *ngIf="!quantityAvailable && expirationDate">
+                    <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
+                    <td>{{discount.discount_type}}</td>
+                    <td>{{discount.amount}}</td>
+                    <td>{{discount.quantity}}</td>
+                    <td>{{discount.discount_reason}}</td>
+                    <td>{{discount.expiration_date}}</td>
+                    <td></td>
+                  </tr>
 
-                <tr *ngIf="expirationDate && quantityAvailable">
-                <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
-                <td>{{discount.discount_type}}</td>
-                <td>{{discount.amount}}</td>
-                <td>{{discount.quantity}}</td>
-                <td>{{discount.discount_reason}}</td>
-                <td>{{discount.expiration_date}}</td>
-                <td></td>
-              </tr>
-              </tbody>
-              <!-- </thead> -->
-
-            </table>
-            <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
-          </div>
-        </form>
+                  <tr *ngIf="expirationDate && quantityAvailable">
+                    <td><a (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
+                    <td>{{discount.discount_type}}</td>
+                    <td>{{discount.amount}}</td>
+                    <td>{{discount.quantity}}</td>
+                    <td>{{discount.discount_reason}}</td>
+                    <td>{{discount.expiration_date}}</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-
 
   <div class="container" *ngIf="discountCode">
     <h2>{{brand}}</h2>
@@ -160,40 +146,34 @@
         <div class="col-sm-10">
           <select id="discount_reason" value={{data.discount_reason}} name="discount_reason" #discount_reason required class="form-control input-xlarge">
             <option value="">Please Select</option>
-
             <option value="Cancel Exchange" >Cancel Exchange</option>
-
             <option value="Exchange" >Exchange</option>
-
             <option value="Gratis" >Gratis</option>
-
             <option value="Normal"  selected>Normal</option>
-
             <option value="Promotional" >Promotional</option>
-
             <option value="Replace" >Replace</option>
-
             <option value="Warranty" >Warranty</option>
-
           </select>
         </div>
       </div>
+
       <div class="form-group">
         <label class="control-label col-sm-2">Expiration:</label>
         <div class="col-sm-10">
           <input type="date" value={{data.expiration_date}} #expiration_date name="expiration_date" class="form-control input-xlarge">
         </div>
       </div>
+
       <div class="form-group">
         <label class="control-label col-sm-2">Last Updated By:</label>
         <div class="col-sm-10 bottom-left">
           {{data.updated_by}}
         </div>
       </div>
+
       <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" value="Save" (click)="updateDiscount(data.discount_code,discount_type.value, amount.value, quantity.value, discount_reason.value, expiration_date.value)" class="btn btn-default">
       </div>
-
     </form>
   </div>
 </div>
