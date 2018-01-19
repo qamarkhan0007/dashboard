@@ -17,6 +17,9 @@ export class DiscountComponent implements OnInit {
     currentDate: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
+    order: any = 'discount_code';
+    reverse: any = false;
+    private arrLenght: any;
     constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
       this.token = localStorage.getItem('token');
     }
@@ -115,4 +118,14 @@ export class DiscountComponent implements OnInit {
             });
         });
     }
+    countMe(count) {
+        this.arrLenght = count;
+    }
+    setOrder(value: string) {
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }
+    this.order = value;
+    console.log(this.order);
+  }
 }

@@ -16,6 +16,9 @@ export class StoreLocationComponent implements OnInit {
     status: any;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
+    order: any = 'name';
+    reverse: any = false;
+    arrLenght: any;
     constructor(private service: AppService , private route: ActivatedRoute) {
         this.token = localStorage.getItem('token');
     }
@@ -67,5 +70,15 @@ export class StoreLocationComponent implements OnInit {
     updateStore(koisk_id) {
         console.log('>>>>>>>>>>>');
         this.status = true;
+    }
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
+    countMe(count) {
+        this.arrLenght = count;
     }
 }

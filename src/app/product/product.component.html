@@ -4,15 +4,15 @@
     <h5 align="left">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
         <table class="table table-condensed table-bordered">
             <tr>
-                <th>Name</th>
-                <th>ProductID</th>
-                <th>Color</th>
-                <th>Product Gender</th>
-                <th>Sun/Opticals</th>
-                <th>Incomplete</th>
+                <th [class.active]="order === 'name'" (click)="setOrder('name')">Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                <th [class.active]="order === 'product_id'" (click)="setOrder('product_id')">ProductID<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                <th [class.active]="order === 'color'" (click)="setOrder('color')">Color<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                <th [class.active]="order === 'product_gender'" (click)="setOrder('product_gender')">Product Gender<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                <th [class.active]="order === 'sunwear'" (click)="setOrder('sunwear')">Sun/Opticals<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                <th [class.active]="order === 'incomplete'" (click)="setOrder('incomplete')">Incomplete<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
                 <th></th>
             </tr>
-            <tbody *ngFor="let product of productData | filter:filter">
+            <tbody *ngFor="let product of productData | orderBy: order :reverse:'case-insensitive' | filter:filter ">
                 <tr>
                     <td>{{product.name}}</td>
                     <td><a [routerLink]="['./',product.product_id ]">{{product.product_id}}</a></td>
