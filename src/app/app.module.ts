@@ -32,6 +32,7 @@ import { LookupstylesComponent } from './lookupComponent/lookupstyles/lookupstyl
 import { LookupFramesComponent } from './lookupComponent/lookup-frames/lookup-frames.component';
 import { LookupLensComponent } from './lookupComponent/lookup-lens/lookup-lens.component';
 import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/lookup-templates.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/loo
     LookupstylesComponent,
     LookupFramesComponent,
     LookupLensComponent,
-    LookupTemplatesComponent
+    LookupTemplatesComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
