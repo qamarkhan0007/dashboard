@@ -12,7 +12,6 @@ export class UserComponent implements OnInit {
   brand: any;
   userBrand: any;
   token: any;
-  state: any = false;
   order: any = 'first_name';
   reverse: any = false;
   private CurrentPageValue: any = 1;
@@ -35,7 +34,6 @@ export class UserComponent implements OnInit {
       this.brand = params['brand'];
       this.service.getUser(this.brand).subscribe(res => {
         if (res.data) {
-          this.state = true;
           this.data = res.data;
         }
       });

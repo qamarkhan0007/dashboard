@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <br>
-<div class="container" *ngIf='token && state && !foundUser && !updateUserPage'>
+<div class="container" *ngIf='token && !foundUser && !updateUserPage'>
   <div class="row">
     <div class="col-xs-18 col-md-12">
       <h1>{{brand}}</h1><br>show
@@ -25,7 +25,7 @@
         </tr>
       </table>
       <br>
-      show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data.length}} entries
+      show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data?.length}} entries
       <div class="formatting">
         <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
       </div>

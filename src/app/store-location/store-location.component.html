@@ -42,7 +42,7 @@
                     </tbody>
                 </table>
                 <br>
-                 show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data.length}} entries
+                 show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data?.length}} entries
                 <div class="formatting">
                     <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
                 </div>

@@ -35,7 +35,7 @@ export class StoreUpdateComponent implements OnInit {
     });
   }
   addMe(new_pin) {
-    this.pins.push(new_pin);
+    this.pins.push(new_pin.toString());
     this.data.pin_codes = this.data.pin_codes.concat(this.pins);
     this.pins = [];
     this.statuschange = true;
