@@ -29,7 +29,6 @@ export class InventoryComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.brand = params['brand'];
-      console.log('hello');
       this.callMe();
     });
   }

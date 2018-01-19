@@ -49,12 +49,10 @@ export class OrderComponent implements OnInit {
 
   constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
     this.token = localStorage.getItem('token');
-    console.log(this.token);
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params['order_brand']);
       if (params['order_brand']) {
         this.order_brand = params['order_brand'];
         this.getOrders(params['order_brand']);
@@ -73,7 +71,6 @@ export class OrderComponent implements OnInit {
     this.foundOrder = this.orderData.find(x => {
       return x.order_id === orderId;
     });
-    console.log('Hello', this.foundOrder);
     this.items = this.foundOrder.items.eyewear.items ;
     this.order_id = orderId;
   }
