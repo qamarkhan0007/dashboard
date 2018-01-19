@@ -30,12 +30,12 @@
               <table class="table table-bordered table-condensed table-hover display" id="discount_codes" style="width:100%">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Discount Amount</th>
-                    <th>Quantity</th>
-                    <th>Discount Reason</th>
-                    <th>Expiration</th>
+                      <th [class.active]="order === 'discount_code'" (click)="setOrder('discount_code')">Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                      <th [class.active]="order === 'discount_type'" (click)="setOrder('discount_type')">Type<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                      <th [class.active]="order === 'amount'" (click)="setOrder('amount')">Discount Amount<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                      <th [class.active]="order === 'quantity'" (click)="setOrder('quantity')">Quantity<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                      <th [class.active]="order === 'discount_reason'" (click)="setOrder('discount_reason')">Discount Reason<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                      <th [class.active]="order === 'expiration_date'" (click)="setOrder('expiration_date')">Expiration<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
                     <th>&nbsp;</th>
                   </tr>
                   <tr>
@@ -64,8 +64,11 @@
                     <td><input class="button2" id="buttonValue" (click)="createDiscount(discount_code, discount_type , amount, quantity, discount_reason, date)" type="button" value="Create New"></td>
                   </tr>
                 </thead>
-                <tbody *ngFor="let discount of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
+                <tbody *ngFor="let discount of data |orderBy: order :reverse:'case-insensitive'| filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue} count as count">
+
+                  <!-- //<ng-container  -->
                   <tr *ngIf="!quantityAvailable && !expirationDate">
+                       <p *ngIf="countMe(count)"></p>
                     <td><a id="formedAt" (click)="clickedDiscount(discount.discount_code)">{{discount.discount_code}}</a></td>
                     <td>{{discount.discount_type}}</td>
                     <td>{{discount.amount}}</td>
@@ -105,6 +108,8 @@
                   </tr>
                 </tbody>
               </table>
+              <br>
+              show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data.length}} entries
               <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
             </div>
           </form>

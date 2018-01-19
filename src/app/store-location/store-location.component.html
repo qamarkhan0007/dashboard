@@ -1,49 +1,52 @@
 <app-navbar></app-navbar>
 <br>
 <div *ngIf='token'>
-  <div class="container" *ngIf ="!statusform && !status">
-    <div class="row">
-      <div class="col-xs-18 col-md-12">
-        <h1>{{brand}}</h1>
-        <br>
-        <div id="newStore">
-          <a (click)="createStoreStatus()">create new store</a>
-        </div>
-        <br>show
-        <select [(ngModel)]="selectedValue" class="box">
-          <option [ngValue] = "10">10</option>
-          <option [ngValue] = "20">25</option>
-          <option [ngValue] = "50">50</option>
-          <option [ngValue] = "100">100</option>
-        </select>entries
-        <h5 align="right">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
-        <table class="table table-bordered custom-tbl">
-          <thead>
-            <tr>
-              <th>Kiosk Id</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Phone</th>
-              <th>Pins</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let store of data | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue}">
-            <td id = "newStore" [routerLink]="['./', store.kiosk_id]">{{store.kiosk_id}}</td>
-            <td>{{store.name}}</td>
-            <td>{{store.address.address1}}
-              {{store.address.address2}}
-              {{store.address.city}}
-              {{store.address.country}}
-              {{store.address.state}}
-            </td>
-            <td>{{store.address.phone}}</td>
-            <td>{{store.pin_codes}}</td>
-          </tbody>
-        </table>
-        <br>
-        show {{(CurrentPageValue * selectedValue)-selectedValue}} to {{CurrentPageValue * selectedValue + selectedValue -selectedValue}} of {{data?.length}} entries
-        <div class="formatting">
-          <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
+    <div class="container" *ngIf ="!statusform && !status">
+        <div class="row">
+            <div class="col-xs-18 col-md-12">
+                <h1>{{brand}}</h1>
+                <br>
+                <div id="newStore">
+                    <a (click)="createStoreStatus()">create new store</a>
+                </div>
+                <br>show
+                <select [(ngModel)]="selectedValue" class="box">
+                    <option [ngValue] = "10">10</option>
+                    <option [ngValue] = "20">25</option>
+                    <option [ngValue] = "50">50</option>
+                    <option [ngValue] = "100">100</option>
+                </select>entries
+                <h5 align="right">Search <input type="text" name="search" [(ngModel)]="filter"></h5>
+                <table class="table table-bordered custom-tbl">
+                    <thead>
+                        <tr>
+                            <th [class.active]="order === 'kiosk_id'" (click)="setOrder('kiosk_id')">Kiosk Id<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                            <th [class.active]="order === 'name'" (click)="setOrder('name')">Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                            <th [class.active]="order === 'address1'" (click)="setOrder('address1')">Address<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                            <th [class.active]="order === 'phone'" (click)="setOrder('phone')">Phone<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                            <th [class.active]="order === 'pin_codes'" (click)="setOrder('pin_codes')">Pins<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let store of data | orderBy: order :reverse:'case-insensitive' | filter:filter | paginate: { itemsPerPage: selectedValue, currentPage: CurrentPageValue} count as count">
+                        <p *ngIf="countMe(count)"></p>
+                        <td id = "newStore" [routerLink]="['./', store.kiosk_id]">{{store.kiosk_id}}</td>
+                        <td>{{store.name}}</td>
+                        <td>{{store.address.address1}}
+                            {{store.address.address2}}
+                            {{store.address.city}}
+                            {{store.address.country}}
+                            {{store.address.state}}
+                        </td>
+                        <td>{{store.address.phone}}</td>
+                        <td>{{store.pin_codes}}</td>
+                    </tbody>
+                </table>
+                <br>
+                 show {{(CurrentPageValue * selectedValue)-(selectedValue-1)}} to {{arrLenght}} of {{data.length}} entries
+                <div class="formatting">
+                    <pagination-controls (pageChange)="CurrentPageValue = $event" maxSize="10"></pagination-controls>
+                </div>
+            </div>
         </div>
       </div>
     </div>

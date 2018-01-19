@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  brand: any;
-  productData: any;
+brand: any;
+productData: any;
+order: any = 'name';
+reverse: any = false;
   constructor(private route: ActivatedRoute , private service: AppService, private router: Router) { }
 
   ngOnInit() {
@@ -24,4 +26,11 @@ export class ProductComponent implements OnInit {
       this.productData = res.data;
     });
   }
+  setOrder(value: string) {
+  if (this.order === value) {
+    this.reverse = !this.reverse;
+  }
+  this.order = value;
+  console.log(this.order);
+}
 }
