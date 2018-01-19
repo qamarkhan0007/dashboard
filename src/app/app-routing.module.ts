@@ -23,6 +23,7 @@ import { LookupFramesComponent } from './lookupComponent/lookup-frames/lookup-fr
 import { LookupLensComponent } from './lookupComponent/lookup-lens/lookup-lens.component';
 import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/lookup-templates.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { StoreCreateComponent } from './store-create/store-create.component';
 
 const routes: Routes = [
     {
@@ -56,6 +57,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: StoreLocationComponent
+            },
+            {
+                path: 'create',
+                component: StoreCreateComponent
             },
             {
                 path: ':kiosk_id',
