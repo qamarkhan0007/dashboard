@@ -22,6 +22,7 @@ import { LookupstylesComponent } from './lookupComponent/lookupstyles/lookupstyl
 import { LookupFramesComponent } from './lookupComponent/lookup-frames/lookup-frames.component';
 import { LookupLensComponent } from './lookupComponent/lookup-lens/lookup-lens.component';
 import { LookupTemplatesComponent } from './lookupComponent/lookup-templates/lookup-templates.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
     {
@@ -38,7 +39,16 @@ const routes: Routes = [
     },
     {
         path: 'user/:brand',
-        component: UserComponent
+        children: [
+          {
+            path: '',
+            component: UserComponent,
+          },
+          {
+            path: 'details/:email',
+            component: UserDetailsComponent,
+          }
+        ]
     },
     {
         path: 'store/:brand',
