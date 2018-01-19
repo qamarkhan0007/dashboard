@@ -15,6 +15,7 @@ export class DiscountComponent implements OnInit {
   token: any;
   discountCode: any;
   currentDate: any;
+  arrLenght: any = 0;
   private CurrentPageValue: any = 1;
   private selectedValue: any = 10;
   constructor(private route: ActivatedRoute , private service: AppService, private router: Router) {
@@ -112,5 +113,8 @@ export class DiscountComponent implements OnInit {
         this.discountCode = false;
       });
     });
+  }
+  countMe(count) {
+      this.arrLenght = count;
   }
 }

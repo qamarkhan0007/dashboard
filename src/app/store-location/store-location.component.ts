@@ -16,7 +16,7 @@ export class StoreLocationComponent implements OnInit {
     status: any;
     order: any = 'name';
     reverse: any = false;
-    arrLenght: any;
+    arrLenght: any = 0;
     private CurrentPageValue: any = 1;
     private selectedValue: any = 10;
     constructor(private service: AppService , private route: ActivatedRoute) {

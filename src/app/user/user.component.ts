@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   reverse: any = false;
   private CurrentPageValue: any = 1;
   private selectedValue: any = 10;
-  private arrLenght: any;
+  private arrLenght: any = 0;
 
   constructor(private service: AppService , private route: ActivatedRoute, private router: Router) {
     this.token = localStorage.getItem('token');
