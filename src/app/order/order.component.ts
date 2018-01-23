@@ -36,7 +36,6 @@ export class OrderComponent implements OnInit {
   lastName: any;
   brand1: any;
   email: any;
-  saved: any;
   tempArray: any = [];
   token: any;
   order_brand: any;
@@ -91,13 +90,6 @@ export class OrderComponent implements OnInit {
   cancelStatus(value, item_id) {
     this.itm = item_id;
     this.cancelStatuss = value;
-    //   this.status1 = false;
-    //   if (this.status1) {
-    //   }else {
-    //       this.itm = item_id;
-    //       this.cancelStatuss = value;
-    //       this.status1 = true;
-    //   }
   }
   cancelItem(order_id, selectedvalue, item) {
     this._service.cancelItem(order_id, item, this.brandAfter, this.return_description, selectedvalue).subscribe(res => {
