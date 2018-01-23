@@ -1,3 +1,28 @@
-<div *ngIf='token'>
-  
+<app-navbar></app-navbar>
+<br>
+<br>
+<div class="myDiv">
+    <form method="POST">
+        <div *ngFor="let brand of brand"><h3><b>{{brand.name}}</b><a id="itemPrice">(packing_slips)</a></h3>
+            <table  class="table table-condensed table-bordered">
+                <thead>
+                    <th>Order</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Send Email</th>
+                    <th>Print</th>
+                    <th>Label</th>
+                </thead>
+                <tbody *ngFor = "let myData of orderData[brand.brand_key]">
+                    <td  width="10">{{myData.order_id}}</td>
+                    <td width="10">{{myData.name}}</td>
+                    <td width="10">{{myData.ordered_at}}</td>
+                    <td  width="10" ><input type="checkbox" name="email" #email></td>
+                    <td  width="10"><input type="checkbox" name="print" value="print"></td>
+                    <td  width="10"><input class="button2" type="button" value="ship" (click)="shipHtk(email,myData.order_id, brand.brand_key)"></td>
+                </tbody>
+                <br>
+            </table>
+        </div>
+    </form>
 </div>

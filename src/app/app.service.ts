@@ -10,6 +10,16 @@ export class AppService {
     response: any;
 
   constructor(private _http: Http) { }
+  getbrands() {
+      this.dataValue = localStorage.getItem('token');
+      this.token = 'Basic ' + btoa('token:' + this.dataValue);
+      const _path: string = ('http://localhost:3000/3.0/lookup/brands/?key=classicspecs_dev'),
+      headers =  new Headers({'Content-Type' : 'application/json', 'Authorization': this.token}),
+      options = new RequestOptions({headers: headers});
+      return this._http.get(_path, options).map(res => {
+          return res.json();
+      });
+  }
   authLogin(data: any) {
     const _path: string = ('http://localhost:3000/3.0/dashboard/users/auth?key=DASHBOARD'),
     body = JSON.stringify({'email': (data.email).toLowerCase(), 'password': data.password}),
@@ -606,7 +616,6 @@ export class AppService {
         });
     }
     updateProduct(brand, data, product_id) {
-      console.log('>>>>>>>>product_id', product_id);
       brand = brand + '_dev';
       this.dataValue = localStorage.getItem('token');
       this.token = 'Basic ' + btoa('token:' + this.dataValue);
@@ -638,5 +647,19 @@ export class AppService {
       return this._http.get(_path, {headers: headers}).map(res => {
           return res.json();
       });
+    }
+    shipHtk(email, order_id, brand) {
+        console.log('>>>>>>>>>>>>brand>>>>>', brand);
+        this.dataValue = localStorage.getItem('token');
+        this.token = 'Basic ' + btoa('token:' + this.dataValue);
+        const _path: string = ('http://localhost:3000/3.0/orders/' + order_id + '/htk/ship/?key=' + brand),
+        body: any = email,
+        headers = new Headers({'Content-Type': 'application/json' , 'Authorization': this.token}),
+        options = new RequestOptions({headers: headers});
+        return this._http.post(_path,  body , {headers: headers}).map(res => {
+            console.log('>>>>>>>>>>>>>>>>', res);
+            return res.json();
+        });
+
     }
 }
