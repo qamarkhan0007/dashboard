@@ -10,25 +10,25 @@
           <div class="col-md-2">
             <ul class="nav-pills nav-stacked">
               <li>
-                <a href="http://localhost:4200/orders/eyewear/ano/processing" class="makeMeAnchor" >ano</a>
+                <a [routerLink]="['/orders/eyewear/', 'ano', 'processing']" class="makeMeAnchor" >ano</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/billyreid/processing" class="makeMeAnchor" >billyreid</a>
+                <a [routerLink]="['/orders/eyewear/', 'billyreid', 'processing']" class="makeMeAnchor" >billyreid</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/classicspecs/processing" class="makeMeAnchor">classicspecs</a>
+                <a [routerLink]="['/orders/eyewear/', 'classicspecs', 'processing']" class="makeMeAnchor">classicspecs</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/jasonwu/processing" class="makeMeAnchor">jasonwu</a>
+                <a [routerLink]="['/orders/eyewear/', 'jasonwu', 'processing']" class="makeMeAnchor">jasonwu</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/johnnywas/processing" class="makeMeAnchor">johnnywas</a>
+                <a [routerLink]="['/orders/eyewear/', 'johnnywas', 'processing']" class="makeMeAnchor">johnnywas</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/ottavo/processing" class="makeMeAnchor">ottavo</a>
+                <a [routerLink]="['/orders/eyewear/', 'ottavo', 'processing']" class="makeMeAnchor">ottavo</a>
               </li>
               <li>
-                <a href="http://localhost:4200/orders/eyewear/stevenalanoptical/processing" class="makeMeAnchor">stevenalanoptical</a>
+                <a [routerLink]="['/orders/eyewear/', 'stevenalanoptical', 'processing']" class="makeMeAnchor">stevenalanoptical</a>
               </li>
               <router-outlet></router-outlet>
             </ul>
@@ -121,7 +121,7 @@
       <div class="col-xs-18 col-sm-12">
         <h2>
           {{brandAfter}}: {{response?.first_name}} {{response?.last_name}}
-          <h6><p class="makeMeAnchor" (click)="updateUser(response.email,response.first_name,response.last_name,brandAfter)">Edit</p></h6>
+          <h6><p class="makeMeAnchor" (click)="updateUser(response.email,response.first_name,response.last_name,response?.marketing.email_opt_in,brandAfter)">Edit</p></h6>
         </h2>
 
         <table class="table">
@@ -166,18 +166,18 @@
             <td>Addresses</td>
             <td *ngFor="let address of address">
               <tr>
-                {{address.first_name}} {{address.last_name}}<br>
-                {{address.address1}}<br>
-                {{address.address2}}<br>
-                {{address.city}}<br>
-                {{address.state}}<br>
-                {{address.country}}
+                {{address?.first_name}} {{address?.last_name}}<br>
+                {{address?.address1}}<br>
+                {{address?.address2}}<br>
+                {{address?.city}}<br>
+                {{address?.state}}<br>
+                {{address?.country}}
               </tr></td>
             </tr>
             <tr>
               <td>Rx</td>
               <td>
-                <b>{{response?.rx?.name_on_rx}})</b><br>
+                <b>{{response?.rx?.name_on_rx}}</b><br>
                 <br>RX_SEND_LATER<br>
                 <h6><table id="tabletime" border="1" cellpadding="0" cellspacing="0">
                   <tr>
@@ -222,10 +222,10 @@
               </div>
 
               <div class="row" style="border: 1px solid black" *ngFor="let res of getorderOfUsers">
-                <div class="col-sm-3"><a href="/orders/stevenalanoptical/3043132/view">{{res.order_number}}</a></div>
-                <div class="col-sm-3">{{res.ordered_at}}</div>
-                <div class="col-sm-3">{{res.order_net}}</div>
-                <div class="col-sm-3">{{res.discount_type}}</div>
+                <div class="col-sm-3"><a href="/orders/stevenalanoptical/3043132/view">{{res?.order_number}}</a></div>
+                <div class="col-sm-3">{{res?.ordered_at}}</div>
+                <div class="col-sm-3">{{res?.order_net}}</div>
+                <div class="col-sm-3">{{res?.discount_type}}</div>
               </div>
             </td>
           </tr>
@@ -243,33 +243,32 @@
 
 <div class="container" *ngIf='updateUserPage'>
   <div class="row">
+    <div class="alert alert-info" *ngIf="resetMsg">Password reset link sent to user</div>
     <div class="col-xs-18 col-sm-12">
       <h2>{{brand1}}:{{firstName}} {{lastName}}</h2>
-      <form id="user_form" action="/users/stevenalanoptical/rumo%40mailinator.com/edit">
+      <form id="user_form">
         <table class="table">
           <tr>
             <td>First Name</td>
-            <td><input type="text" class="form-control" name="first_name" #first_name /></td>
+            <td><input type="text" class="form-control" name="first_name" value="{{firstName}}" #first_name /></td>
           </tr>
           <tr>
             <td>Last Name</td>
-            <td><input type="text" class="form-control" name="last_name" #last_name /></td>
+            <td><input type="text" class="form-control" name="last_name" value="{{lastName}}" #last_name /></td>
           </tr>
           <tr>
             <td>Email</td>
-            <td><input type="text" class="form-control" name="email" value="rumo@mailinator.com" #email /></td>
+            <td><input type="text" class="form-control" name="email" value="{{userEmail}}" #email /></td>
           </tr>
           <tr>
             <td>Marketing Email Optin</td>
-            <td><input type="checkbox" class="input-lg" name="marketing.email_opt_in" value="true" #marketing /></td>
-          </tr>
+              <td><input type="checkbox" class="input-lg" #marketing />
+            </tr>
         </table>
-        <input type="submit" class="btn btn-primary" (click)="saveUser(first_name.value, last_name.value, email.value, marketing.value.checked, brand1)"value="Save">
-        <a href="/users/stevenalanoptical/rumo%40mailinator.com/view" class="btn btn-default">Cancel</a>
-
-        <a href="/users/stevenalanoptical/rumo%40mailinator.com/reset" class="btn btn-default">Reset Password</a>
+        <input type="submit" class="button2" (click)="saveUser(first_name.value, last_name.value, email.value, marketing, brand1)" value="Save">
+        <input class="button2" type="button"  value="Cancel" (click)="cancel()">
+        <input class="button2" type="button"  value="Reset Password" (click)="resetPassword(userEmail)">
         <br>
-        {{saved}}
         <div id="status"></div>
       </form>
     </div>
@@ -421,12 +420,17 @@
               <td>
                 <div class="panel  ">
                   <div class="panel-heading">
-                    <a data-toggle="collapse" href="#collapsestatus0">Status</a>
+                    <p class="makeMeAnchor" (click)="toggelStatus(item.id)">Status</p>
                   </div>
-                  <div id="collapsestatus0" class="panel-collapse collapse">
+                  <div *ngIf="showMeStatus===item.id && myStatus">
                     <div class="panel-body">
-                      <dl>
-                      </dl>
+                      <dl *ngIf="!item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at && !item.status.cancelled_at">ordered_at : {{item.status?.ordered_at}}</dl>
+                      <dl *ngIf="item.status.sent_to_lab_at && !item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at && !item.status.cancelled_at">sent_to_lab_at : {{item.status?.sent_to_lab_at}} sent_to_lab_by : {{item.status?.sent_to_lab_by}}</dl>
+                      <dl *ngIf="item.status.sent_to_lab_at && item.status.received_from_lab_at && !item.status.lab_finished_processing_at && !item.status.received_by_lab_at && !item.status.cancelled_at">received_from_lab_at : {{item.status?.received_from_lab_at}} received_from_lab_by : {{item.status?.received_from_lab_by}}</dl>
+                      <dl *ngIf="item.status.sent_to_lab_at && item.status.received_from_lab_at && item.status.lab_finished_processing_at && !item.status.received_by_lab_at && !item.status.cancelled_at">lab_finished_processing_at : {{item.status?.lab_finished_processing_at}} lab_finished_processing_by : {{item.status?.lab_finished_processing_by}}</dl>
+                      <dl *ngIf="item.status.sent_to_lab_at && item.status.received_from_lab_at && item.status.lab_finished_processing_at && item.status.received_by_lab_at && !item.status.cancelled_at">received_by_lab_at : {{item.status?.received_by_lab_at}} received_by_lab_by : {{item.status?.received_by_lab_by}}</dl>
+                      <dl *ngIf="item.status.cancelled_at">cancelled_at : {{item.status?.cancelled_at}} cancelled_by : {{item.status?.cancelled_by}}</dl>
+                      <!-- <dl>{{item.status?.sent_to_lab_at}}</dl> -->
                     </div>
                   </div>
                 </div>
