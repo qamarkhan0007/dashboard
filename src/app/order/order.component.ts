@@ -15,7 +15,7 @@ export class OrderComponent implements OnInit {
   foundOrder: any;
   items: any;
   prdId: any;
-  state: any = true;
+  state: any = false;
   cancelStatuss: any = true;
   brand: any;
   responseData: any;
@@ -46,6 +46,11 @@ export class OrderComponent implements OnInit {
   status: any;
   shipment: any = false;
   shipArray = [];
+  userEmail: any;
+  marketingEmail: any;
+  resetMsg: any = false;
+  showMeStatus: any;
+  myStatus: any = false;
 
   constructor(private route: ActivatedRoute , private _service: AppService, private router: Router) {
     this.token = localStorage.getItem('token');
@@ -100,7 +105,6 @@ export class OrderComponent implements OnInit {
       if (res.data) {
         this.statte = true;
         this.itmId = item;
-        console.log(JSON.stringify(this.responseData));
       }
     });
   }
@@ -114,6 +118,29 @@ export class OrderComponent implements OnInit {
       this._service.getOrdersByUsers(this.brandAfter, this.response.email).subscribe(respon => {
         this.getorderOfUsers = respon.data ;
       });
+    });
+  }
+  cancel() {
+    this.updateUserPage = false;
+    this.checkMe = true;
+  }
+  toggelStatus(id) {
+    if (this.myStatus) {
+      this.showMeStatus = id;
+      this.myStatus = false;
+    }else {
+      this.showMeStatus = id;
+      this.myStatus = true;
+    }
+  }
+  resetPassword(email) {
+    let that;
+    this._service.resetPassword(email, this.order_brand).subscribe(res => {
+      this.resetMsg = true;
+      that = this;
+      setTimeout(function () {
+        that.resetMsg = false;
+      }, 2000);
     });
   }
   processing() {
@@ -158,21 +185,27 @@ export class OrderComponent implements OnInit {
       this.orderData = this.tempArray;
     }
   }
-  updateUser(email, first, last , brand) {
+  updateUser(email, first, last , marketing, brand) {
     this.firstName = first;
     this.lastName = last;
-    this.email = email;
+    this.userEmail = email;
     this.brand1 = brand;
+    this.marketingEmail = marketing;
     this.updateUserPage = true ;
   }
   saveUser(first, last, email, marketing, brand ) {
     this.response.first_name = first;
     this.response.last_name = last;
     this.response.email = email;
-    this.response.marketing_opt_in = marketing;
+    if (marketing.checked) {
+      this.response.marketing.email_opt_in = 1;
+    }else {
+      this.response.marketing.email_opt_in = 0;
+    }
     this._service.saveUser(this.response, brand).subscribe(res => {
-      this.saved = 'saving...';
-      location.reload();
+      if (res.data) {
+      this.updateUserPage = false;
+      }
     });
   }
   sendToLab(itemId) {
@@ -195,7 +228,6 @@ export class OrderComponent implements OnInit {
   }
   receivedFromLab(itemId) {
     this._service.receivedFromLab(this.order_id, itemId, this.order_brand).subscribe(res => {
-      console.log(res.data);
       this.selectedItem = itemId;
       this.status = 'receivedFromLab';
     });
